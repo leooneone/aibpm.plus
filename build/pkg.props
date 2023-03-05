@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup>
+    <Version>0.9.0</Version>
+	<TargetFramework>net7.0</TargetFramework>
+	<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<Authors>xiaoxue</Authors>
+	<Company>xiaoxue</Company>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageProjectUrl>https://bpm.ailicloud.com</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/leooneone/AIBPM.Plus</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageTags>AIBPM;WebApi;HttpApi;</PackageTags>
+	<NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+</Project>

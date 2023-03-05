@@ -1,0 +1,18 @@
+﻿using AI.BPM.Domain.Activity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AI.BPM.Services.X.Dto
+{
+    public  class EmployeeSelectDto 
+    {
+
+
+        public long Id { get; set; }
+        public string Name { get; set; } 
+        public string Type { get; set; }
+    }
+}

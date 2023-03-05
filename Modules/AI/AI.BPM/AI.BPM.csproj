@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RepositoryUrl>https://www.github.com/leo.one.tt/aibpm.plus.git</RepositoryUrl>
+    <PackageProjectUrl>https://www.github.com/leo.one.tt/aibpm.plus</PackageProjectUrl>
+    <Authors>Leo</Authors>
+    <Company>AiliCloud</Company>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+	<ItemGroup>
+	  <Folder Include="Services\BPM\Business\" />
+	  <Folder Include="Services\BPM\Group\" />
+	</ItemGroup>
+ 
+
+	<ItemGroup>  	  <ProjectReference Include="..\..\..\src\platform\ZhonTai.Admin\ZhonTai.Admin.csproj" />  	  <ProjectReference Include="..\AI.Core\AI.Core.csproj" />
+
+	</ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup >
+		<PackageReference Include="FreeSql" Version="3.2.687" />
+		<PackageReference Include="FreeSql.Provider.MySql" Version="3.2.687" />
+		<PackageReference Include="FreeSql.Provider.SqlServer" Version="3.2.687" />
+		<PackageReference Include="FreeSql.Provider.PostgreSQL" Version="3.2.687" />
+		<PackageReference Include="FreeSql.Provider.Oracle" Version="3.2.687" />
+		<PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.687" />
+		<PackageReference Include="FreeSql.Provider.MySqlConnector" Version="3.2.687" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+	</ItemGroup>
+</Project>
