@@ -2,7 +2,7 @@
   //头像
   "avatar": {
     //上传路径 D:/upload/admin/avatar
-    "uploadPath": "../upload/admin/avatar",
+    "uploadPath": "/upload/admin/avatar",
     //请求路径
     "requestPath": "/upload/admin/avatar",
 
@@ -20,7 +20,7 @@
   //文档图片
   "document": {
     //上传路径 D:/upload/admin/document
-    "uploadPath": "../upload/admin/document",
+    "uploadPath": "/upload/admin/document",
     //请求路径
     "requestPath": "/images",
 

@@ -85,7 +85,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
 
                     instance.TemplateId = input.TemplateId;
                     instance.GroupId = tpl.GroupId;
-                    instance.Name = tpl.Name;
+                    instance.Name = $"{User.Name}发起的『{tpl.Name}』流程";
                     instance.OUId = input.OUId;
                     instance.InitiatorId = User.Id;
                     if (!input.IsSaveOnly)

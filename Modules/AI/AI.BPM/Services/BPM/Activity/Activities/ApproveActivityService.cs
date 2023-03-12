@@ -337,7 +337,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <param name="activity"></param>
         /// <returns></returns>
 
-        public virtual async Task<List<WorkItemEntity>> AddWorkItems(ActivityOutput activityInput, string PreviousActivityId)
+        public override async Task<List<WorkItemEntity>> AddNextWorkItems(ActivityOutput activityInput, string PreviousActivityId)
         {
             ActivityModel activity = activityInput.CurrentActivity;
             var instance = activityInput.Instance;

@@ -69,7 +69,7 @@ namespace AI.BPM.Services.WorkflowTemplate
         /// <returns></returns>
 
         public async Task<TemplateGetOutput> GetAsync(long id)
-        {
+        { 
             var ent = await _workflowTemplateRepository.Select
           .WhereDynamic(id)
           //.Where(a => a.Version == version)

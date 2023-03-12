@@ -31,8 +31,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Modules\AI\AI.BPM\AI.BPM.csproj" />
-		<ProjectReference Include="..\..\platform\ZhonTai.Admin\ZhonTai.Admin.csproj" />
-		<ProjectReference Include="..\..\platform\ZhonTai.ApiUI\ZhonTai.ApiUI.csproj" />
+		<ProjectReference Include="..\..\..\src\platform\ZhonTai.ApiUI\ZhonTai.ApiUI.csproj" /> 
 	</ItemGroup>
 
 	<ItemGroup>
