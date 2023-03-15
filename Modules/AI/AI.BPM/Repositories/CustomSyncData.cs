@@ -30,7 +30,7 @@ public class CustomSyncData : SyncData, ISyncData
         using var tran = uow.GetOrBeginTransaction();
         var isTenant = appConfig.Tenant;
 
-        var dictionaryTypes = GetData<WorkflowTemplateEntity>(isTenant, dbConfig.SyncDataPath);
+        var dictionaryTypes = GetData<WorkflowTemplateEntity>(isTenant, "InitData/BPM");
         await InitDataAsync(db, uow, tran, dictionaryTypes, dbConfig);
  
        /*  

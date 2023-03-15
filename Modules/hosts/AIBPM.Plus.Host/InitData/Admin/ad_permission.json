@@ -1236,21 +1236,6 @@
     "enabled": true,
     "childs": [
       {
-        "id": 163227168792646,
-        "parentId": 161227168497734,
-        "label": "AIBPM",
-        "type": 2,
-        "viewId": 361047593013317,
-        "path": "/help/aibpm",
-        "icon": "ele-Promotion",
-        "isKeepAlive": true,
-        "link": "http://freesql.net/guide",
-        "sort": 2,
-        "description": "",
-        "enabled": true,
-        "childs": []
-      },
-      {
         "id": 161227168792645,
         "parentId": 161227168497734,
         "label": "Admin",
@@ -1259,7 +1244,7 @@
         "path": "/help/admin",
         "icon": "ele-Promotion",
         "isKeepAlive": true,
-        "link": "https://bpm.ailicloud.net",
+        "link": "https://zhontai.net",
         "sort": 1,
         "description": "",
         "enabled": true,
@@ -1279,8 +1264,19 @@
         "description": "",
         "enabled": true,
         "childs": []
+      },
+      {
+        "id": 391431469342789,
+        "parentId": 161227168497734,
+        "label": "AIBPM",
+        "type": 2,
+        "path": "help/aibpm",
+        "icon": "ele-Promotion",
+        "isKeepAlive": true,
+        "link": "https://doc.bpm.ailicloud.com",
+        "enabled": true,
+        "childs": []
       }
-
     ]
   },
   {
@@ -1294,5 +1290,152 @@
     "isKeepAlive": true,
     "sort": 3,
     "enabled": true
+  },
+  {
+    "id": 385950606794821,
+    "label": "工作流",
+    "type": 1,
+    "name": "",
+    "path": "/bpm",
+    "redirect": "/bpm/application",
+    "icon": "ele-OfficeBuilding",
+    "opened": true,
+    "isKeepAlive": true,
+    "enabled": true,
+    "childs": [
+      {
+        "id": 385951043878981,
+        "parentId": 385950606794821,
+        "label": "流程发起",
+        "type": 2,
+        "viewId": 385949553963077,
+        "path": "/bpm/application",
+        "icon": "ele-Memo",
+        "isKeepAlive": true,
+        "sort": 1,
+        "enabled": true,
+        "childs": [
+          {
+            "id": 391443876212805,
+            "parentId": 385951043878981,
+            "label": "查询已发布流程",
+            "code": "api:bpm:template:list-published",
+            "type": 3,
+            "isKeepAlive": true,
+            "sort": 1,
+            "enabled": true
+          },
+          {
+            "id": 391444721946693,
+            "parentId": 385951043878981,
+            "label": "发起流程",
+            "code": "api:bpm:workflow:open",
+            "type": 3,
+            "isKeepAlive": true,
+            "sort": 2,
+            "enabled": true
+          },
+          {
+            "id": 391444974260293,
+            "parentId": 385951043878981,
+            "label": "提交表单",
+            "code": "api:bpm:workflow:submit",
+            "type": 3,
+            "isKeepAlive": true,
+            "sort": 3,
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": 386207161311301,
+        "parentId": 385950606794821,
+        "label": "我的待办",
+        "type": 2,
+        "viewId": 385949773914181,
+        "path": "/bpm/upcoming",
+        "icon": "fa fa-tasks",
+        "isKeepAlive": true,
+        "sort": 2,
+        "enabled": true,
+        "childs": []
+      },
+      {
+        "id": 386208299384901,
+        "parentId": 385950606794821,
+        "label": "我的流程",
+        "type": 2,
+        "viewId": 385949917052997,
+        "path": "/bpm/instance",
+        "icon": "iconfont icon-siweidaotu",
+        "isKeepAlive": true,
+        "sort": 3,
+        "enabled": true,
+        "childs": []
+      },
+      {
+        "id": 389877587288133,
+        "parentId": 385950606794821,
+        "label": "仪表盘",
+        "type": 2,
+        "viewId": 389876948340805,
+        "path": "/bpm/dashboard/index",
+        "icon": "ele-TrendCharts",
+        "isKeepAlive": true,
+        "enabled": true,
+        "childs": []
+      },
+      {
+        "id": 390463634387013,
+        "parentId": 385950606794821,
+        "label": "流程管理",
+        "type": 1,
+        "path": "bpm/admin",
+        "icon": "ele-Memo",
+        "opened": true,
+        "isKeepAlive": true,
+        "sort": 13,
+        "enabled": true,
+        "childs": [
+          {
+            "id": 386208759869509,
+            "parentId": 390463634387013,
+            "label": "模版管理",
+            "type": 2,
+            "viewId": 385949310853189,
+            "path": "/bpm/admin/template",
+            "icon": "fa fa-wpforms",
+            "isKeepAlive": true,
+            "sort": 11,
+            "enabled": true,
+            "childs": [
+              {
+                "id": 386326380503109,
+                "parentId": 386208759869509,
+                "label": "发布模版",
+                "code": "api:bpm:template:publish",
+                "type": 3,
+                "isKeepAlive": true,
+                "sort": 1,
+                "enabled": true,
+                "childs": []
+              }
+            ]
+          },
+          {
+            "id": 390457431228485,
+            "parentId": 390463634387013,
+            "label": "流程监控",
+            "type": 2,
+            "viewId": 390457220284485,
+            "path": "/bpm/monitor",
+            "icon": "ele-Monitor",
+            "isKeepAlive": true,
+            "sort": 12,
+            "enabled": true
+          }
+        ]
+      }
+    ]
   }
 ]

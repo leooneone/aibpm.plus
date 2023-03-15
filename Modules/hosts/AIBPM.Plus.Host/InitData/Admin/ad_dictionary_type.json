@@ -1,9 +1,14 @@
 [
   {
-    "id": 187395320434757,
-    "name": "性别",
-    "code": "sex",
-    "description": "",
+    "id": 391439329738821,
+    "name": "流程分组",
+    "code": "bpm-group",
+    "enabled": true
+  },
+  {
+    "id": 391440894779461,
+    "name": "组织单元类型",
+    "code": "ou-type",
     "enabled": true
   }
 ]

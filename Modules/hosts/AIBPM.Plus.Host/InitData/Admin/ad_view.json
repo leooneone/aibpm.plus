@@ -238,5 +238,79 @@
         "childs": []
       }
     ]
+  },
+  {
+    "id": 385949069049925,
+    "label": "工作流",
+    "cache": true,
+    "sort": 1,
+    "enabled": true,
+    "childs": [
+      {
+        "id": 385949310853189,
+        "parentId": 385949069049925,
+        "name": "bpm/template",
+        "label": "模版管理",
+        "path": "bpm/admin/template",
+        "cache": true,
+        "sort": 11,
+        "enabled": true,
+        "childs": []
+      },
+      {
+        "id": 385949553963077,
+        "parentId": 385949069049925,
+        "name": "bpm/application",
+        "label": "流程发起",
+        "path": "bpm/application",
+        "cache": true,
+        "sort": 1,
+        "enabled": true,
+        "childs": []
+      },
+      {
+        "id": 385949773914181,
+        "parentId": 385949069049925,
+        "name": "bpm/upcoming",
+        "label": "我的待办",
+        "path": "bpm/upcoming",
+        "cache": true,
+        "sort": 2,
+        "enabled": true,
+        "childs": []
+      },
+      {
+        "id": 385949917052997,
+        "parentId": 385949069049925,
+        "name": "bpm/instance",
+        "label": "我的流程",
+        "path": "bpm/instance",
+        "cache": true,
+        "sort": 3,
+        "enabled": true,
+        "childs": []
+      },
+      {
+        "id": 389876948340805,
+        "parentId": 385949069049925,
+        "name": "bpm/dashboard",
+        "label": "仪表盘",
+        "path": "bpm/dashboard/index",
+        "cache": true,
+        "enabled": true,
+        "childs": []
+      },
+      {
+        "id": 390457220284485,
+        "parentId": 385949069049925,
+        "name": "bpm/monitor",
+        "label": "流程监控",
+        "path": "bpm/admin/monitor",
+        "cache": true,
+        "sort": 12,
+        "enabled": true,
+        "childs": []
+      }
+    ]
   }
 ]

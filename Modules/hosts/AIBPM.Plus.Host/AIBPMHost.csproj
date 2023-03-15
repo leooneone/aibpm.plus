@@ -40,6 +40,7 @@
 
 	<ItemGroup>
 	  <Folder Include="InitData\bpm\" />
+	  <Folder Include="InitData\admin\" />
 	</ItemGroup>
 
 	<ItemGroup>

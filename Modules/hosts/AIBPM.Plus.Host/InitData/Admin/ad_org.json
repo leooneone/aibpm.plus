@@ -1,11 +1,81 @@
 [
   {
     "id": 189097691009093,
-    "name": "中台",
+    "name": "AILICLOUD",
     "code": "",
     "value": "",
     "enabled": true,
     "sort": 1,
-    "description": ""
+    "description": "",
+    "childs": [
+      {
+        "id": 391447581126725,
+        "parentId": 189097691009093,
+        "name": "AIBPM",
+        "code": "AIBPM",
+        "enabled": true,
+        "sort": 1,
+        "childs": [
+          {
+            "id": 391447752503365,
+            "parentId": 391447581126725,
+            "name": "财务部",
+            "code": "FI",
+            "enabled": true,
+            "sort": 2,
+            "directorId": 391450500943941
+          },
+          {
+            "id": 391447829155909,
+            "parentId": 391447581126725,
+            "name": "IT部",
+            "code": "IT",
+            "enabled": true,
+            "sort": 1,
+            "directorId": 386321605353541
+          },
+          {
+            "id": 391447913197637,
+            "parentId": 391447581126725,
+            "name": "人事部",
+            "code": "HR",
+            "enabled": true,
+            "sort": 3,
+            "directorId": 391449683779653
+          },
+          {
+            "id": 391448102109253,
+            "parentId": 391447581126725,
+            "name": "行政部",
+            "code": "CA",
+            "enabled": true,
+            "sort": 4,
+            "directorId": 391449929683013
+          },
+          {
+            "id": 391448408477765,
+            "parentId": 391447581126725,
+            "name": "法务部",
+            "code": "LR",
+            "enabled": true,
+            "sort": 5,
+            "directorId": 391451290554437
+          },
+          {
+            "id": 391448493031493,
+            "parentId": 391447581126725,
+            "name": "风控部",
+            "code": "IR",
+            "enabled": true,
+            "sort": 6,
+            "directorId": 391450720129093
+          }
+        ],
+        "directorId": 386321605353541,
+        "type": 1
+      }
+    ],
+    "directorId": 386321605353541,
+    "type": 3
   }
 ]

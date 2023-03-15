@@ -1,0 +1,654 @@
+[
+  {
+    "id": 393034267590725,
+    "name": "请假",
+    "icon": "ele-Basketball",
+    "groupId": 3,
+    "remark": "适用于请假申请，精确扣减出勤时间，并同步考勤报表",
+    "fs": {
+      "startActivityId": "2",
+      "chartData": "<mxGraphModel grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\"><root><mxCell id=\"0\"/><mxCell id=\"1\" parent=\"0\"/><mxCell id=\"6\" value=\"病假\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\" edge=\"1\" parent=\"1\" source=\"2\" target=\"4\"><mxGeometry relative=\"1\" as=\"geometry\"><Array as=\"points\"><mxPoint x=\"210\" y=\"180\"/><mxPoint x=\"210\" y=\"270\"/></Array></mxGeometry></mxCell><mxCell id=\"9\" value=\"其他\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\" edge=\"1\" parent=\"1\" source=\"2\" target=\"8\"><mxGeometry relative=\"1\" as=\"geometry\"/></mxCell><mxCell id=\"2\" value=\"开始\" style=\"image;;type=start;html=1;image=/images/bpm/ailicloud/start.svg;strokeWidth=2\" vertex=\"1\" parent=\"1\"><mxGeometry x=\"90\" y=\"140\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell><mxCell id=\"7\" value=\"\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\" edge=\"1\" parent=\"1\" source=\"4\" target=\"8\"><mxGeometry relative=\"1\" as=\"geometry\"><Array as=\"points\"><mxPoint x=\"430\" y=\"270\"/><mxPoint x=\"430\" y=\"180\"/></Array></mxGeometry></mxCell><mxCell id=\"4\" value=\"主管审批\" style=\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2;strokeColor=#7F00FF;\" vertex=\"1\" parent=\"1\"><mxGeometry x=\"280\" y=\"230\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell><mxCell id=\"5\" value=\"结束\" style=\"image;;type=end;html=1;image=/images/bpm/ailicloud/end.svg;strokeWidth=2\" vertex=\"1\" parent=\"1\"><mxGeometry x=\"600\" y=\"140\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell><mxCell id=\"10\" value=\"\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\" edge=\"1\" parent=\"1\" source=\"8\" target=\"5\"><mxGeometry relative=\"1\" as=\"geometry\"/></mxCell><mxCell id=\"8\" value=\"部门经理审批\" style=\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2\" vertex=\"1\" parent=\"1\"><mxGeometry x=\"460\" y=\"140\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell></root></mxGraphModel>",
+      "nodes": {
+        "2": {
+          "permission": [
+            {
+              "fieldId": "field167812025318801",
+              "formOperate": 2
+            },
+            {
+              "fieldId": "field167812025318811",
+              "formOperate": 2
+            },
+            {
+              "fieldId": "field1678120297569",
+              "formOperate": 2
+            },
+            {
+              "fieldId": "field1678120360447",
+              "formOperate": 2
+            }
+          ],
+          "id": "2",
+          "title": "开始",
+          "type": "Start"
+        },
+        "4": {
+          "permission": [
+            {
+              "fieldId": "field167812025318801",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field167812025318811",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120297569",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120360447",
+              "formOperate": 1
+            }
+          ],
+          "id": "4",
+          "title": "主管审批",
+          "approve": {
+            "participants": {
+              "user": [],
+              "role": [],
+              "org": []
+            },
+            "assigneeType": "supervisor",
+            "signType": "string"
+          },
+          "type": "Approve"
+        },
+        "5": {
+          "permission": [],
+          "id": "5",
+          "title": "结束",
+          "approve": {},
+          "condition": {},
+          "type": "End"
+        },
+        "6": {
+          "id": "6",
+          "title": "病假",
+          "condition": {
+            "filters": [
+              {
+                "field": "field167812025318801",
+                "operator": 6,
+                "value": "病假"
+              }
+            ]
+          },
+          "type": "Condition"
+        },
+        "7": {
+          "permission": [],
+          "id": "7",
+          "title": "",
+          "approve": {},
+          "condition": {},
+          "type": "Condition"
+        },
+        "8": {
+          "permission": [
+            {
+              "fieldId": "field167812025318801",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field167812025318811",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120297569",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120360447",
+              "formOperate": 1
+            }
+          ],
+          "id": "8",
+          "title": "部门经理审批",
+          "approve": {
+            "participants": {
+              "user": [],
+              "role": [],
+              "org": []
+            },
+            "assigneeType": "director",
+            "signType": "string"
+          },
+          "type": "Approve"
+        },
+        "9": {
+          "id": "9",
+          "title": "其他",
+          "condition": {
+            "isDefault": true
+          },
+          "type": "Condition"
+        },
+        "10": {
+          "permission": [],
+          "id": "10",
+          "title": "",
+          "approve": {},
+          "condition": {},
+          "type": "Condition"
+        }
+      },
+      "lines": [
+        {
+          "id": "6",
+          "fromId": "2",
+          "toId": "4"
+        },
+        {
+          "id": "9",
+          "fromId": "2",
+          "toId": "8"
+        },
+        {
+          "id": "7",
+          "fromId": "4",
+          "toId": "8"
+        },
+        {
+          "id": "10",
+          "fromId": "8",
+          "toId": "5"
+        }
+      ]
+    },
+    "advancedContext": "{\"autoRepeat\":true,\"myAuditAutoPass\":true,\"approve\":{\"remarkTip\":\"\",\"remarkRequired\":false,\"notVisibleForSponsor\":false}}",
+    "advanced": {
+      "autoRepeat": true,
+      "myAuditAutoPass": true,
+      "approve": {
+        "remarkTip": ""
+      }
+    },
+    "basicContext": "{\"name\":\"请假\",\"icon\":\"ele-Basketball\",\"groupId\":\"3\",\"remark\":\"适用于请假申请，精确扣减出勤时间，并同步考勤报表\",\"range\":0,\"initiators\":{}}",
+    "formSetting": "{\"formRef\":\"elForm\",\"size\":\"small\",\"labelPosition\":\"right\",\"labelWidth\":100,\"gutter\":15,\"disabled\":false,\"span\":24,\"formBtns\":true,\"model\":{\"field167812025318801\":\"病假\",\"field167812025318811\":[\"\",\"\"],\"field1678120360447\":[]},\"mode\":\"designer\",\"activeId\":\"1678120360447\",\"formItems\":[{\"label\":\"请假类型\",\"dataType\":\"select\",\"showLabel\":true,\"tag\":\"el-select\",\"tagIcon\":\"select\",\"placeholder\":\"请选择请假类型\",\"style\":{\"width\":\"100%\"},\"span\":24,\"labelWidth\":null,\"clearable\":true,\"disabled\":false,\"required\":true,\"filterable\":false,\"multiple\":false,\"options\":[{\"label\":\"病假\",\"value\":\"病假\"},{\"label\":\"事假\",\"value\":\"事假\"},{\"label\":\"婚假\",\"value\":\"婚假\"},{\"label\":\"丧假\",\"value\":\"丧假\"},{\"label\":\"产假\",\"value\":\"产假\"},{\"label\":\"年假\",\"value\":\"年假\"}],\"regList\":[],\"changeTag\":true,\"proCondition\":true,\"cmpType\":\"custom\",\"formId\":\"167812025318801\",\"__ID\":\"1678120253188011678120253189\",\"layout\":\"colFormItem\",\"vModel\":\"field167812025318801\"},{\"label\":\"日期范围\",\"showLabel\":true,\"dataType\":\"range\",\"tag\":\"fc-date-duration\",\"showDuration\":true,\"tagIcon\":\"date-range\",\"defaultValue\":null,\"span\":24,\"labelWidth\":null,\"style\":{\"width\":\"100%\"},\"type\":\"daterange\",\"range-separator\":\"至\",\"start-placeholder\":\"开始日期\",\"end-placeholder\":\"结束日期\",\"disabled\":false,\"clearable\":true,\"required\":true,\"format\":\"YYYY-MM-DD\",\"value-format\":\"YYYY-MM-DD\",\"readonly\":false,\"regList\":[],\"changeTag\":true,\"proCondition\":true,\"asSummary\":false,\"cmpType\":\"custom\",\"formId\":\"167812025318811\",\"__ID\":\"1678120253188111678120253189\",\"layout\":\"colFormItem\",\"vModel\":\"field167812025318811\"},{\"label\":\"请假事由\",\"type\":\"string\",\"showLabel\":true,\"tag\":\"el-input\",\"tagIcon\":\"textarea\",\"dataType\":\"textarea\",\"placeholder\":\"请输入请假事由\",\"span\":24,\"labelWidth\":null,\"autosize\":{\"minRows\":4,\"maxRows\":9},\"style\":{\"width\":\"100%\"},\"maxlength\":\"500\",\"show-word-limit\":true,\"readonly\":false,\"disabled\":false,\"required\":true,\"regList\":[],\"changeTag\":true,\"proCondition\":false,\"asSummary\":false,\"formId\":\"1678120297569\",\"layout\":\"colFormItem\",\"vModel\":\"field1678120297569\"},{\"label\":\"图片\",\"showLabel\":true,\"tag\":\"el-upload\",\"tagIcon\":\"upload\",\"action\":\"htts://192.168.1.71:8000/api/admin/file/upload-file\",\"defaultValue\":[],\"labelWidth\":null,\"disabled\":false,\"required\":true,\"accept\":\"\",\"name\":\"file\",\"auto-upload\":true,\"showTip\":false,\"buttonText\":\"点击上传附件\",\"fileSize\":20,\"sizeUnit\":\"MB\",\"list-type\":\"text\",\"multiple\":false,\"regList\":[],\"changeTag\":true,\"proCondition\":false,\"asSummary\":false,\"formId\":\"1678120360447\",\"layout\":\"colFormItem\",\"vModel\":\"field1678120360447\"}]}",
+    "flowSetting": "{\"nodes\":{\"2\":{\"title\":\"开始\",\"id\":\"2\",\"type\":\"start\",\"permission\":[{\"fieldId\":\"field167812025318801\",\"required\":true,\"label\":\"请假类型\",\"formOperate\":2},{\"fieldId\":\"field167812025318811\",\"required\":true,\"label\":\"日期范围\",\"formOperate\":2},{\"fieldId\":\"field1678120297569\",\"required\":true,\"label\":\"请假事由\",\"formOperate\":2},{\"fieldId\":\"field1678120360447\",\"required\":true,\"label\":\"图片\",\"formOperate\":2}]},\"4\":{\"title\":\"主管审批\",\"id\":\"4\",\"type\":\"approve\",\"approve\":{\"participants\":{\"user\":[],\"role\":[],\"org\":[]},\"ouType\":\"0\",\"level\":0,\"isDirectorIn\":false,\"assigneeType\":\"supervisor\",\"formOperates\":[],\"SignType\":\"string\",\"optionalMultiUser\":false,\"optionalRange\":\"ALL\"},\"permission\":[{\"fieldId\":\"field167812025318801\",\"required\":true,\"label\":\"请假类型\",\"formOperate\":1},{\"fieldId\":\"field167812025318811\",\"required\":true,\"label\":\"日期范围\",\"formOperate\":1},{\"fieldId\":\"field1678120297569\",\"required\":true,\"label\":\"请假事由\",\"formOperate\":1},{\"fieldId\":\"field1678120360447\",\"required\":true,\"label\":\"图片\",\"formOperate\":1}]},\"5\":{\"title\":\"结束\",\"id\":\"5\",\"type\":\"end\",\"approve\":{},\"condition\":{},\"permission\":[]},\"6\":{\"title\":\"病假\",\"id\":\"6\",\"type\":\"condition\",\"condition\":{\"root\":true,\"logic\":\"And\",\"filters\":[{\"field\":\"field167812025318801\",\"label\":\"请假类型\",\"operator\":\"Equal\",\"config\":{},\"value\":\"病假\",\"tag\":\"el-select\",\"type\":\"select\",\"options\":[{\"label\":\"病假\",\"value\":\"病假\"},{\"label\":\"事假\",\"value\":\"事假\"},{\"label\":\"婚假\",\"value\":\"婚假\"},{\"label\":\"丧假\",\"value\":\"丧假\"},{\"label\":\"产假\",\"value\":\"产假\"},{\"label\":\"年假\",\"value\":\"年假\"}]}]}},\"7\":{\"title\":\"\",\"id\":\"7\",\"type\":\"condition\",\"approve\":{},\"condition\":{},\"permission\":[]},\"8\":{\"title\":\"部门经理审批\",\"id\":\"8\",\"type\":\"approve\",\"approve\":{\"participants\":{\"user\":[],\"role\":[],\"org\":[]},\"ouType\":\"0\",\"level\":0,\"isDirectorIn\":false,\"assigneeType\":\"director\",\"formOperates\":[],\"SignType\":\"string\",\"optionalMultiUser\":false,\"optionalRange\":\"ALL\"},\"permission\":[{\"fieldId\":\"field167812025318801\",\"required\":true,\"label\":\"请假类型\",\"formOperate\":1},{\"fieldId\":\"field167812025318811\",\"required\":true,\"label\":\"日期范围\",\"formOperate\":1},{\"fieldId\":\"field1678120297569\",\"required\":true,\"label\":\"请假事由\",\"formOperate\":1},{\"fieldId\":\"field1678120360447\",\"required\":true,\"label\":\"图片\",\"formOperate\":1}]},\"9\":{\"title\":\"其他\",\"id\":\"9\",\"type\":\"condition\",\"condition\":{\"isDefault\":true}},\"10\":{\"title\":\"\",\"id\":\"10\",\"type\":\"condition\",\"approve\":{},\"condition\":{},\"permission\":[]}},\"lines\":[{\"id\":\"6\",\"fromId\":\"2\",\"toId\":\"4\"},{\"id\":\"9\",\"fromId\":\"2\",\"toId\":\"8\"},{\"id\":\"7\",\"fromId\":\"4\",\"toId\":\"8\"},{\"id\":\"10\",\"fromId\":\"8\",\"toId\":\"5\"}],\"startActivityId\":\"2\",\"chartData\":\"<mxGraphModel grid=\\\"1\\\" gridSize=\\\"10\\\" guides=\\\"1\\\" tooltips=\\\"1\\\" connect=\\\"1\\\" arrows=\\\"1\\\" fold=\\\"1\\\" page=\\\"1\\\" pageScale=\\\"1\\\" pageWidth=\\\"827\\\" pageHeight=\\\"1169\\\"><root><mxCell id=\\\"0\\\"/><mxCell id=\\\"1\\\" parent=\\\"0\\\"/><mxCell id=\\\"6\\\" value=\\\"病假\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" edge=\\\"1\\\" parent=\\\"1\\\" source=\\\"2\\\" target=\\\"4\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"><Array as=\\\"points\\\"><mxPoint x=\\\"210\\\" y=\\\"180\\\"/><mxPoint x=\\\"210\\\" y=\\\"270\\\"/></Array></mxGeometry></mxCell><mxCell id=\\\"9\\\" value=\\\"其他\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" edge=\\\"1\\\" parent=\\\"1\\\" source=\\\"2\\\" target=\\\"8\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"2\\\" value=\\\"开始\\\" style=\\\"image;;type=start;html=1;image=/images/bpm/ailicloud/start.svg;strokeWidth=2\\\" vertex=\\\"1\\\" parent=\\\"1\\\"><mxGeometry x=\\\"90\\\" y=\\\"140\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"7\\\" value=\\\"\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" edge=\\\"1\\\" parent=\\\"1\\\" source=\\\"4\\\" target=\\\"8\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"><Array as=\\\"points\\\"><mxPoint x=\\\"430\\\" y=\\\"270\\\"/><mxPoint x=\\\"430\\\" y=\\\"180\\\"/></Array></mxGeometry></mxCell><mxCell id=\\\"4\\\" value=\\\"主管审批\\\" style=\\\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2;strokeColor=#7F00FF;\\\" vertex=\\\"1\\\" parent=\\\"1\\\"><mxGeometry x=\\\"280\\\" y=\\\"230\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"5\\\" value=\\\"结束\\\" style=\\\"image;;type=end;html=1;image=/images/bpm/ailicloud/end.svg;strokeWidth=2\\\" vertex=\\\"1\\\" parent=\\\"1\\\"><mxGeometry x=\\\"600\\\" y=\\\"140\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"10\\\" value=\\\"\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" edge=\\\"1\\\" parent=\\\"1\\\" source=\\\"8\\\" target=\\\"5\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"8\\\" value=\\\"部门经理审批\\\" style=\\\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2\\\" vertex=\\\"1\\\" parent=\\\"1\\\"><mxGeometry x=\\\"460\\\" y=\\\"140\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell></root></mxGraphModel>\"}",
+    "state": 2,
+    "version": 1
+  },
+  {
+    "id": 393754357608517,
+    "name": "请假",
+    "icon": "ele-Basketball",
+    "groupId": 3,
+    "remark": "适用于请假申请，精确扣减出勤时间，并同步考勤报表",
+    "fs": {
+      "startActivityId": "2",
+      "chartData": "<mxGraphModel grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\"><root><mxCell id=\"0\"/><mxCell id=\"1\" parent=\"0\"/><mxCell id=\"9\" value=\"\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\" edge=\"1\" parent=\"1\" source=\"2\" target=\"5\"><mxGeometry relative=\"1\" as=\"geometry\"/></mxCell><mxCell id=\"2\" value=\"开始\" style=\"shape=bpmShape;type=start;verticalLabelPosition=bottom;;strokeWidth=2\" vertex=\"1\" parent=\"1\"><mxGeometry x=\"170\" y=\"120\" width=\"50\" height=\"50\" as=\"geometry\"/></mxCell><mxCell id=\"8\" value=\"\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" edge=\"1\" parent=\"1\" source=\"5\" target=\"7\"><mxGeometry relative=\"1\" as=\"geometry\"/></mxCell><mxCell id=\"5\" value=\"人工_5\" style=\"image;;type=deal;html=1;image=/images/bpm/ailicloud/deal.svg;strokeWidth=2\" vertex=\"1\" parent=\"1\"><mxGeometry x=\"460\" y=\"170\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell><mxCell id=\"7\" value=\"结束\" style=\"image;;type=end;html=1;image=/images/bpm/ailicloud/end.svg;strokeWidth=2\" vertex=\"1\" parent=\"1\"><mxGeometry x=\"630\" y=\"290\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell></root></mxGraphModel>",
+      "nodes": {
+        "2": {
+          "permission": [
+            {
+              "fieldId": "field1678296592092",
+              "formOperate": 2
+            }
+          ],
+          "id": "2",
+          "title": "开始",
+          "type": "Start"
+        },
+        "4": {
+          "permission": [],
+          "id": "4",
+          "title": "",
+          "approve": {},
+          "condition": {},
+          "type": "Condition"
+        },
+        "5": {
+          "permission": [
+            {
+              "fieldId": "field1678296592092",
+              "formOperate": 1
+            }
+          ],
+          "id": "5",
+          "title": "人工_5",
+          "approve": {
+            "participants": {
+              "user": [],
+              "role": [],
+              "org": []
+            },
+            "assigneeType": "optional",
+            "signType": "string"
+          },
+          "type": "Deal"
+        },
+        "6": {
+          "permission": [],
+          "id": "6",
+          "title": "",
+          "approve": {},
+          "condition": {},
+          "type": "Condition"
+        },
+        "7": {
+          "permission": [],
+          "id": "7",
+          "title": "结束",
+          "approve": {},
+          "condition": {},
+          "type": "End"
+        },
+        "8": {
+          "permission": [],
+          "id": "8",
+          "title": "",
+          "approve": {},
+          "condition": {},
+          "type": "Condition"
+        },
+        "9": {
+          "permission": [],
+          "id": "9",
+          "title": "",
+          "approve": {},
+          "condition": {},
+          "type": "Condition"
+        }
+      },
+      "lines": [
+        {
+          "id": "8",
+          "fromId": "5",
+          "toId": "7"
+        },
+        {
+          "id": "9",
+          "fromId": "2",
+          "toId": "5"
+        }
+      ]
+    },
+    "advancedContext": "{\"autoRepeat\":true,\"myAuditAutoPass\":true,\"approve\":{\"remarkTip\":\"\",\"remarkRequired\":false,\"notVisibleForSponsor\":false}}",
+    "advanced": {
+      "autoRepeat": true,
+      "myAuditAutoPass": true,
+      "approve": {
+        "remarkTip": ""
+      }
+    },
+    "basicContext": "{\"name\":\"请假\",\"icon\":\"ele-Basketball\",\"groupId\":\"3\",\"remark\":\"适用于请假申请，精确扣减出勤时间，并同步考勤报表\",\"range\":0,\"initiators\":{}}",
+    "formSetting": "{\"formRef\":\"elForm\",\"size\":\"small\",\"labelPosition\":\"right\",\"labelWidth\":100,\"gutter\":15,\"disabled\":false,\"span\":24,\"formBtns\":true,\"model\":{},\"mode\":\"designer\",\"formItems\":[{\"label\":\"单行输入框\",\"dataType\":\"string\",\"showLabel\":true,\"tag\":\"el-input\",\"tagIcon\":\"input\",\"placeholder\":\"请输入单行输入框\",\"span\":24,\"labelWidth\":null,\"style\":{\"width\":\"100%\"},\"clearable\":true,\"prepend\":\"\",\"append\":\"\",\"prefix-icon\":\"\",\"suffix-icon\":\"\",\"maxlength\":null,\"show-word-limit\":false,\"readonly\":false,\"disabled\":false,\"required\":true,\"regList\":[],\"__slot__\":{},\"changeTag\":true,\"proCondition\":false,\"asSummary\":false,\"formId\":\"1678296592092\",\"layout\":\"colFormItem\",\"vModel\":\"field1678296592092\"}]}",
+    "flowSetting": "{\"nodes\":{\"2\":{\"title\":\"开始\",\"id\":\"2\",\"type\":\"start\",\"permission\":[{\"fieldId\":\"field1678296592092\",\"required\":true,\"label\":\"单行输入框\",\"formOperate\":2}]},\"4\":{\"title\":\"\",\"id\":\"4\",\"type\":\"condition\",\"approve\":{},\"condition\":{},\"permission\":[]},\"5\":{\"title\":\"人工_5\",\"id\":\"5\",\"type\":\"deal\",\"approve\":{\"participants\":{\"user\":[],\"role\":[],\"org\":[]},\"ouType\":\"0\",\"level\":0,\"isDirectorIn\":false,\"assigneeType\":\"optional\",\"formOperates\":[],\"SignType\":\"string\",\"optionalMultiUser\":false,\"optionalRange\":\"ALL\"},\"permission\":[{\"fieldId\":\"field1678296592092\",\"required\":true,\"label\":\"单行输入框\",\"formOperate\":1}]},\"6\":{\"title\":\"\",\"id\":\"6\",\"type\":\"condition\",\"approve\":{},\"condition\":{},\"permission\":[]},\"7\":{\"title\":\"结束\",\"id\":\"7\",\"type\":\"end\",\"approve\":{},\"condition\":{},\"permission\":[]},\"8\":{\"title\":\"\",\"id\":\"8\",\"type\":\"condition\",\"approve\":{},\"condition\":{},\"permission\":[]},\"9\":{\"title\":\"\",\"id\":\"9\",\"type\":\"condition\",\"approve\":{},\"condition\":{},\"permission\":[]}},\"lines\":[{\"id\":\"8\",\"fromId\":\"5\",\"toId\":\"7\"},{\"id\":\"9\",\"fromId\":\"2\",\"toId\":\"5\"}],\"startActivityId\":\"2\",\"chartData\":\"<mxGraphModel grid=\\\"1\\\" gridSize=\\\"10\\\" guides=\\\"1\\\" tooltips=\\\"1\\\" connect=\\\"1\\\" arrows=\\\"1\\\" fold=\\\"1\\\" page=\\\"1\\\" pageScale=\\\"1\\\" pageWidth=\\\"827\\\" pageHeight=\\\"1169\\\"><root><mxCell id=\\\"0\\\"/><mxCell id=\\\"1\\\" parent=\\\"0\\\"/><mxCell id=\\\"9\\\" value=\\\"\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\\\" edge=\\\"1\\\" parent=\\\"1\\\" source=\\\"2\\\" target=\\\"5\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"2\\\" value=\\\"开始\\\" style=\\\"shape=bpmShape;type=start;verticalLabelPosition=bottom;;strokeWidth=2\\\" vertex=\\\"1\\\" parent=\\\"1\\\"><mxGeometry x=\\\"170\\\" y=\\\"120\\\" width=\\\"50\\\" height=\\\"50\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"8\\\" value=\\\"\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\\\" edge=\\\"1\\\" parent=\\\"1\\\" source=\\\"5\\\" target=\\\"7\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"5\\\" value=\\\"人工_5\\\" style=\\\"image;;type=deal;html=1;image=/images/bpm/ailicloud/deal.svg;strokeWidth=2\\\" vertex=\\\"1\\\" parent=\\\"1\\\"><mxGeometry x=\\\"460\\\" y=\\\"170\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"7\\\" value=\\\"结束\\\" style=\\\"image;;type=end;html=1;image=/images/bpm/ailicloud/end.svg;strokeWidth=2\\\" vertex=\\\"1\\\" parent=\\\"1\\\"><mxGeometry x=\\\"630\\\" y=\\\"290\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell></root></mxGraphModel>\"}",
+    "state": 2,
+    "version": 2
+  },
+  {
+    "id": 394322284204101,
+    "name": "请假",
+    "icon": "ele-Basketball",
+    "groupId": 3,
+    "remark": "适用于请假申请，精确扣减出勤时间，并同步考勤报表",
+    "fs": {
+      "startActivityId": "2",
+      "chartData": "<mxGraphModel grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\"><root><mxCell id=\"0\"/><mxCell id=\"1\" parent=\"0\"/><mxCell id=\"6\" value=\"病假\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\" parent=\"1\" source=\"2\" target=\"4\" edge=\"1\"><mxGeometry relative=\"1\" as=\"geometry\"><Array as=\"points\"><mxPoint x=\"210\" y=\"180\"/><mxPoint x=\"210\" y=\"270\"/></Array></mxGeometry></mxCell><mxCell id=\"9\" value=\"其他\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\" parent=\"1\" source=\"2\" target=\"8\" edge=\"1\"><mxGeometry relative=\"1\" as=\"geometry\"/></mxCell><mxCell id=\"2\" value=\"开始\" style=\"image;;type=start;html=1;image=/images/bpm/ailicloud/start.svg;strokeWidth=2\" parent=\"1\" vertex=\"1\"><mxGeometry x=\"90\" y=\"140\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell><mxCell id=\"7\" value=\"\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\" parent=\"1\" source=\"4\" target=\"8\" edge=\"1\"><mxGeometry relative=\"1\" as=\"geometry\"><Array as=\"points\"><mxPoint x=\"430\" y=\"270\"/><mxPoint x=\"430\" y=\"180\"/></Array></mxGeometry></mxCell><mxCell id=\"4\" value=\"主管审批\" style=\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2;strokeColor=#7F00FF;\" parent=\"1\" vertex=\"1\"><mxGeometry x=\"280\" y=\"230\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell><mxCell id=\"5\" value=\"结束\" style=\"image;;type=end;html=1;image=/images/bpm/ailicloud/end.svg;strokeWidth=2\" parent=\"1\" vertex=\"1\"><mxGeometry x=\"600\" y=\"140\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell><mxCell id=\"10\" value=\"\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\" parent=\"1\" source=\"8\" target=\"5\" edge=\"1\"><mxGeometry relative=\"1\" as=\"geometry\"/></mxCell><mxCell id=\"8\" value=\"部门经理审批\" style=\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2\" parent=\"1\" vertex=\"1\"><mxGeometry x=\"460\" y=\"140\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell></root></mxGraphModel>",
+      "nodes": {
+        "2": {
+          "permission": [
+            {
+              "fieldId": "field167812025318801",
+              "formOperate": 2
+            },
+            {
+              "fieldId": "field167812025318811",
+              "formOperate": 2
+            },
+            {
+              "fieldId": "field1678120297569",
+              "formOperate": 2
+            },
+            {
+              "fieldId": "field1678120360447",
+              "formOperate": 2
+            }
+          ],
+          "id": "2",
+          "title": "开始",
+          "type": "Start"
+        },
+        "4": {
+          "permission": [
+            {
+              "fieldId": "field167812025318801",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field167812025318811",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120297569",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120360447",
+              "formOperate": 1
+            }
+          ],
+          "id": "4",
+          "title": "主管审批",
+          "approve": {
+            "participants": {
+              "user": [],
+              "role": [],
+              "org": []
+            },
+            "assigneeType": "supervisor",
+            "signType": "string"
+          },
+          "type": "Approve"
+        },
+        "5": {
+          "permission": [],
+          "id": "5",
+          "title": "结束",
+          "approve": {},
+          "condition": {},
+          "type": "End"
+        },
+        "6": {
+          "id": "6",
+          "title": "病假",
+          "condition": {
+            "filters": [
+              {
+                "field": "field167812025318801",
+                "operator": 6,
+                "value": "病假"
+              }
+            ]
+          },
+          "type": "Condition"
+        },
+        "7": {
+          "permission": [],
+          "id": "7",
+          "title": "",
+          "approve": {},
+          "condition": {},
+          "type": "Condition"
+        },
+        "8": {
+          "permission": [
+            {
+              "fieldId": "field167812025318801",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field167812025318811",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120297569",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120360447",
+              "formOperate": 1
+            }
+          ],
+          "id": "8",
+          "title": "部门经理审批",
+          "approve": {
+            "participants": {
+              "user": [],
+              "role": [],
+              "org": []
+            },
+            "assigneeType": "director",
+            "signType": "string"
+          },
+          "type": "Approve"
+        },
+        "9": {
+          "id": "9",
+          "title": "其他",
+          "condition": {
+            "isDefault": true
+          },
+          "type": "Condition"
+        },
+        "10": {
+          "permission": [],
+          "id": "10",
+          "title": "",
+          "approve": {},
+          "condition": {},
+          "type": "Condition"
+        }
+      },
+      "lines": [
+        {
+          "id": "6",
+          "fromId": "2",
+          "toId": "4"
+        },
+        {
+          "id": "9",
+          "fromId": "2",
+          "toId": "8"
+        },
+        {
+          "id": "7",
+          "fromId": "4",
+          "toId": "8"
+        },
+        {
+          "id": "10",
+          "fromId": "8",
+          "toId": "5"
+        }
+      ]
+    },
+    "advancedContext": "{\"autoRepeat\":true,\"myAuditAutoPass\":true,\"approve\":{\"remarkTip\":\"\",\"remarkRequired\":false,\"notVisibleForSponsor\":false}}",
+    "advanced": {
+      "autoRepeat": true,
+      "myAuditAutoPass": true,
+      "approve": {
+        "remarkTip": ""
+      }
+    },
+    "basicContext": "{\"name\":\"请假\",\"icon\":\"ele-Basketball\",\"groupId\":\"3\",\"remark\":\"适用于请假申请，精确扣减出勤时间，并同步考勤报表\",\"range\":0,\"initiators\":{}}",
+    "formSetting": "{\"formRef\":\"elForm\",\"size\":\"small\",\"labelPosition\":\"right\",\"labelWidth\":100,\"gutter\":15,\"disabled\":false,\"span\":24,\"formBtns\":true,\"model\":{\"field167812025318801\":\"病假\",\"field167812025318811\":[\"\",\"\"],\"field1678120360447\":[]},\"mode\":\"designer\",\"activeId\":\"1678120360447\",\"formItems\":[{\"label\":\"请假类型\",\"dataType\":\"select\",\"showLabel\":true,\"tag\":\"el-select\",\"tagIcon\":\"select\",\"placeholder\":\"请选择请假类型\",\"style\":{\"width\":\"100%\"},\"span\":24,\"labelWidth\":null,\"clearable\":true,\"disabled\":false,\"required\":true,\"filterable\":false,\"multiple\":false,\"options\":[{\"label\":\"病假\",\"value\":\"病假\"},{\"label\":\"事假\",\"value\":\"事假\"},{\"label\":\"婚假\",\"value\":\"婚假\"},{\"label\":\"丧假\",\"value\":\"丧假\"},{\"label\":\"产假\",\"value\":\"产假\"},{\"label\":\"年假\",\"value\":\"年假\"}],\"regList\":[],\"changeTag\":true,\"proCondition\":true,\"cmpType\":\"custom\",\"formId\":\"167812025318801\",\"__ID\":\"1678120253188011678120253189\",\"layout\":\"colFormItem\",\"vModel\":\"field167812025318801\"},{\"label\":\"日期范围\",\"showLabel\":true,\"dataType\":\"range\",\"tag\":\"fc-date-duration\",\"showDuration\":true,\"tagIcon\":\"date-range\",\"defaultValue\":null,\"span\":24,\"labelWidth\":null,\"style\":{\"width\":\"100%\"},\"type\":\"daterange\",\"range-separator\":\"至\",\"start-placeholder\":\"开始日期\",\"end-placeholder\":\"结束日期\",\"disabled\":false,\"clearable\":true,\"required\":true,\"format\":\"YYYY-MM-DD\",\"value-format\":\"YYYY-MM-DD\",\"readonly\":false,\"regList\":[],\"changeTag\":true,\"proCondition\":true,\"asSummary\":false,\"cmpType\":\"custom\",\"formId\":\"167812025318811\",\"__ID\":\"1678120253188111678120253189\",\"layout\":\"colFormItem\",\"vModel\":\"field167812025318811\"},{\"label\":\"请假事由\",\"type\":\"string\",\"showLabel\":true,\"tag\":\"el-input\",\"tagIcon\":\"textarea\",\"dataType\":\"textarea\",\"placeholder\":\"请输入请假事由\",\"span\":24,\"labelWidth\":null,\"autosize\":{\"minRows\":4,\"maxRows\":9},\"style\":{\"width\":\"100%\"},\"maxlength\":\"500\",\"show-word-limit\":true,\"readonly\":false,\"disabled\":false,\"required\":true,\"regList\":[],\"changeTag\":true,\"proCondition\":false,\"asSummary\":false,\"formId\":\"1678120297569\",\"layout\":\"colFormItem\",\"vModel\":\"field1678120297569\"},{\"label\":\"图片\",\"showLabel\":true,\"tag\":\"el-upload\",\"tagIcon\":\"upload\",\"action\":\"htts://192.168.1.71:8000/api/admin/file/upload-file\",\"defaultValue\":[],\"labelWidth\":null,\"disabled\":false,\"required\":true,\"accept\":\"\",\"name\":\"file\",\"auto-upload\":true,\"showTip\":false,\"buttonText\":\"点击上传附件\",\"fileSize\":20,\"sizeUnit\":\"MB\",\"list-type\":\"text\",\"multiple\":false,\"regList\":[],\"changeTag\":true,\"proCondition\":false,\"asSummary\":false,\"formId\":\"1678120360447\",\"layout\":\"colFormItem\",\"vModel\":\"field1678120360447\"}]}",
+    "flowSetting": "{\"nodes\":{\"2\":{\"title\":\"开始\",\"id\":\"2\",\"type\":\"start\",\"permission\":[{\"fieldId\":\"field167812025318801\",\"required\":true,\"label\":\"请假类型\",\"formOperate\":2},{\"fieldId\":\"field167812025318811\",\"required\":true,\"label\":\"日期范围\",\"formOperate\":2},{\"fieldId\":\"field1678120297569\",\"required\":true,\"label\":\"请假事由\",\"formOperate\":2},{\"fieldId\":\"field1678120360447\",\"required\":true,\"label\":\"图片\",\"formOperate\":2}]},\"4\":{\"title\":\"主管审批\",\"id\":\"4\",\"type\":\"approve\",\"approve\":{\"participants\":{\"user\":[],\"role\":[],\"org\":[]},\"ouType\":\"0\",\"level\":0,\"isDirectorIn\":false,\"assigneeType\":\"supervisor\",\"formOperates\":[],\"SignType\":\"string\",\"optionalMultiUser\":false,\"optionalRange\":\"ALL\"},\"permission\":[{\"fieldId\":\"field167812025318801\",\"required\":true,\"label\":\"请假类型\",\"formOperate\":1},{\"fieldId\":\"field167812025318811\",\"required\":true,\"label\":\"日期范围\",\"formOperate\":1},{\"fieldId\":\"field1678120297569\",\"required\":true,\"label\":\"请假事由\",\"formOperate\":1},{\"fieldId\":\"field1678120360447\",\"required\":true,\"label\":\"图片\",\"formOperate\":1}]},\"5\":{\"title\":\"结束\",\"id\":\"5\",\"type\":\"end\",\"approve\":{},\"condition\":{},\"permission\":[]},\"6\":{\"title\":\"病假\",\"id\":\"6\",\"type\":\"condition\",\"condition\":{\"root\":true,\"logic\":\"And\",\"filters\":[{\"field\":\"field167812025318801\",\"label\":\"请假类型\",\"operator\":\"Equal\",\"config\":{},\"value\":\"病假\",\"tag\":\"el-select\",\"type\":\"select\",\"options\":[{\"label\":\"病假\",\"value\":\"病假\"},{\"label\":\"事假\",\"value\":\"事假\"},{\"label\":\"婚假\",\"value\":\"婚假\"},{\"label\":\"丧假\",\"value\":\"丧假\"},{\"label\":\"产假\",\"value\":\"产假\"},{\"label\":\"年假\",\"value\":\"年假\"}]}]}},\"7\":{\"title\":\"\",\"id\":\"7\",\"type\":\"condition\",\"approve\":{},\"condition\":{},\"permission\":[]},\"8\":{\"title\":\"部门经理审批\",\"id\":\"8\",\"type\":\"approve\",\"approve\":{\"participants\":{\"user\":[],\"role\":[],\"org\":[]},\"ouType\":\"0\",\"level\":0,\"isDirectorIn\":false,\"assigneeType\":\"director\",\"formOperates\":[],\"SignType\":\"string\",\"optionalMultiUser\":false,\"optionalRange\":\"ALL\"},\"permission\":[{\"fieldId\":\"field167812025318801\",\"required\":true,\"label\":\"请假类型\",\"formOperate\":1},{\"fieldId\":\"field167812025318811\",\"required\":true,\"label\":\"日期范围\",\"formOperate\":1},{\"fieldId\":\"field1678120297569\",\"required\":true,\"label\":\"请假事由\",\"formOperate\":1},{\"fieldId\":\"field1678120360447\",\"required\":true,\"label\":\"图片\",\"formOperate\":1}]},\"9\":{\"title\":\"其他\",\"id\":\"9\",\"type\":\"condition\",\"condition\":{\"isDefault\":true}},\"10\":{\"title\":\"\",\"id\":\"10\",\"type\":\"condition\",\"approve\":{},\"condition\":{},\"permission\":[]}},\"lines\":[{\"id\":\"6\",\"fromId\":\"2\",\"toId\":\"4\"},{\"id\":\"9\",\"fromId\":\"2\",\"toId\":\"8\"},{\"id\":\"7\",\"fromId\":\"4\",\"toId\":\"8\"},{\"id\":\"10\",\"fromId\":\"8\",\"toId\":\"5\"}],\"startActivityId\":\"2\",\"chartData\":\"<mxGraphModel grid=\\\"1\\\" gridSize=\\\"10\\\" guides=\\\"1\\\" tooltips=\\\"1\\\" connect=\\\"1\\\" arrows=\\\"1\\\" fold=\\\"1\\\" page=\\\"1\\\" pageScale=\\\"1\\\" pageWidth=\\\"827\\\" pageHeight=\\\"1169\\\"><root><mxCell id=\\\"0\\\"/><mxCell id=\\\"1\\\" parent=\\\"0\\\"/><mxCell id=\\\"6\\\" value=\\\"病假\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" parent=\\\"1\\\" source=\\\"2\\\" target=\\\"4\\\" edge=\\\"1\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"><Array as=\\\"points\\\"><mxPoint x=\\\"210\\\" y=\\\"180\\\"/><mxPoint x=\\\"210\\\" y=\\\"270\\\"/></Array></mxGeometry></mxCell><mxCell id=\\\"9\\\" value=\\\"其他\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" parent=\\\"1\\\" source=\\\"2\\\" target=\\\"8\\\" edge=\\\"1\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"2\\\" value=\\\"开始\\\" style=\\\"image;;type=start;html=1;image=/images/bpm/ailicloud/start.svg;strokeWidth=2\\\" parent=\\\"1\\\" vertex=\\\"1\\\"><mxGeometry x=\\\"90\\\" y=\\\"140\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"7\\\" value=\\\"\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" parent=\\\"1\\\" source=\\\"4\\\" target=\\\"8\\\" edge=\\\"1\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"><Array as=\\\"points\\\"><mxPoint x=\\\"430\\\" y=\\\"270\\\"/><mxPoint x=\\\"430\\\" y=\\\"180\\\"/></Array></mxGeometry></mxCell><mxCell id=\\\"4\\\" value=\\\"主管审批\\\" style=\\\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2;strokeColor=#7F00FF;\\\" parent=\\\"1\\\" vertex=\\\"1\\\"><mxGeometry x=\\\"280\\\" y=\\\"230\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"5\\\" value=\\\"结束\\\" style=\\\"image;;type=end;html=1;image=/images/bpm/ailicloud/end.svg;strokeWidth=2\\\" parent=\\\"1\\\" vertex=\\\"1\\\"><mxGeometry x=\\\"600\\\" y=\\\"140\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"10\\\" value=\\\"\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" parent=\\\"1\\\" source=\\\"8\\\" target=\\\"5\\\" edge=\\\"1\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"8\\\" value=\\\"部门经理审批\\\" style=\\\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2\\\" parent=\\\"1\\\" vertex=\\\"1\\\"><mxGeometry x=\\\"460\\\" y=\\\"140\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell></root></mxGraphModel>\"}",
+    "state": 2,
+    "version": 3
+  },
+  {
+    "id": 395521186693189,
+    "name": "请假",
+    "icon": "ele-Basketball",
+    "groupId": 3,
+    "remark": "适用于请假申请，精确扣减出勤时间，并同步考勤报表",
+    "fs": {
+      "startActivityId": "2",
+      "chartData": "<mxGraphModel grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\"><root><mxCell id=\"0\"/><mxCell id=\"1\" parent=\"0\"/><mxCell id=\"6\" value=\"病假\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\" parent=\"1\" source=\"2\" target=\"4\" edge=\"1\"><mxGeometry relative=\"1\" as=\"geometry\"><Array as=\"points\"><mxPoint x=\"210\" y=\"180\"/><mxPoint x=\"210\" y=\"270\"/></Array></mxGeometry></mxCell><mxCell id=\"9\" value=\"其他\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\" parent=\"1\" source=\"2\" target=\"8\" edge=\"1\"><mxGeometry relative=\"1\" as=\"geometry\"/></mxCell><mxCell id=\"2\" value=\"开始\" style=\"image;;type=start;html=1;image=/images/bpm/ailicloud/start.svg;strokeWidth=2\" parent=\"1\" vertex=\"1\"><mxGeometry x=\"90\" y=\"140\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell><mxCell id=\"7\" value=\"\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\" parent=\"1\" source=\"4\" target=\"8\" edge=\"1\"><mxGeometry relative=\"1\" as=\"geometry\"><Array as=\"points\"><mxPoint x=\"430\" y=\"270\"/><mxPoint x=\"430\" y=\"180\"/></Array></mxGeometry></mxCell><mxCell id=\"4\" value=\"主管审批\" style=\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2;strokeColor=#7F00FF;\" parent=\"1\" vertex=\"1\"><mxGeometry x=\"280\" y=\"230\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell><mxCell id=\"5\" value=\"结束\" style=\"image;;type=end;html=1;image=/images/bpm/ailicloud/end.svg;strokeWidth=2\" parent=\"1\" vertex=\"1\"><mxGeometry x=\"600\" y=\"140\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell><mxCell id=\"10\" value=\"\" style=\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\" parent=\"1\" source=\"8\" target=\"5\" edge=\"1\"><mxGeometry relative=\"1\" as=\"geometry\"/></mxCell><mxCell id=\"8\" value=\"部门经理审批\" style=\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2\" parent=\"1\" vertex=\"1\"><mxGeometry x=\"460\" y=\"140\" width=\"80\" height=\"80\" as=\"geometry\"/></mxCell></root></mxGraphModel>",
+      "nodes": {
+        "2": {
+          "permission": [
+            {
+              "fieldId": "field167812025318801",
+              "formOperate": 2
+            },
+            {
+              "fieldId": "field167812025318811",
+              "formOperate": 2
+            },
+            {
+              "fieldId": "field1678120297569",
+              "formOperate": 2
+            },
+            {
+              "fieldId": "field1678120360447",
+              "formOperate": 2
+            }
+          ],
+          "id": "2",
+          "title": "开始",
+          "type": "Start"
+        },
+        "4": {
+          "permission": [
+            {
+              "fieldId": "field167812025318801",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field167812025318811",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120297569",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120360447",
+              "formOperate": 1
+            }
+          ],
+          "id": "4",
+          "title": "主管审批",
+          "approve": {
+            "participants": {
+              "user": [],
+              "role": [],
+              "org": []
+            },
+            "assigneeType": "supervisor",
+            "signType": "string"
+          },
+          "type": "Approve"
+        },
+        "5": {
+          "permission": [],
+          "id": "5",
+          "title": "结束",
+          "approve": {},
+          "condition": {},
+          "type": "End"
+        },
+        "6": {
+          "id": "6",
+          "title": "病假",
+          "condition": {
+            "filters": [
+              {
+                "field": "field167812025318801",
+                "operator": 6,
+                "value": "病假"
+              }
+            ]
+          },
+          "type": "Condition"
+        },
+        "7": {
+          "permission": [],
+          "id": "7",
+          "title": "",
+          "approve": {},
+          "condition": {},
+          "type": "Condition"
+        },
+        "8": {
+          "permission": [
+            {
+              "fieldId": "field167812025318801",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field167812025318811",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120297569",
+              "formOperate": 1
+            },
+            {
+              "fieldId": "field1678120360447",
+              "formOperate": 1
+            }
+          ],
+          "id": "8",
+          "title": "部门经理审批",
+          "approve": {
+            "participants": {
+              "user": [],
+              "role": [],
+              "org": []
+            },
+            "assigneeType": "director",
+            "signType": "string"
+          },
+          "type": "Approve"
+        },
+        "9": {
+          "id": "9",
+          "title": "其他",
+          "condition": {
+            "isDefault": true
+          },
+          "type": "Condition"
+        },
+        "10": {
+          "permission": [],
+          "id": "10",
+          "title": "",
+          "approve": {},
+          "condition": {},
+          "type": "Condition"
+        }
+      },
+      "lines": [
+        {
+          "id": "6",
+          "fromId": "2",
+          "toId": "4"
+        },
+        {
+          "id": "9",
+          "fromId": "2",
+          "toId": "8"
+        },
+        {
+          "id": "7",
+          "fromId": "4",
+          "toId": "8"
+        },
+        {
+          "id": "10",
+          "fromId": "8",
+          "toId": "5"
+        }
+      ]
+    },
+    "advancedContext": "{\"autoRepeat\":true,\"myAuditAutoPass\":true,\"approve\":{\"remarkTip\":\"\",\"remarkRequired\":false,\"notVisibleForSponsor\":false}}",
+    "advanced": {
+      "autoRepeat": true,
+      "myAuditAutoPass": true,
+      "approve": {
+        "remarkTip": ""
+      }
+    },
+    "basicContext": "{\"name\":\"请假\",\"icon\":\"ele-Basketball\",\"groupId\":\"3\",\"remark\":\"适用于请假申请，精确扣减出勤时间，并同步考勤报表\",\"range\":0,\"initiators\":{}}",
+    "formSetting": "{\"formRef\":\"elForm\",\"size\":\"small\",\"labelPosition\":\"right\",\"labelWidth\":100,\"gutter\":15,\"disabled\":false,\"span\":24,\"formBtns\":true,\"model\":{\"field1678120360447\":[],\"field1678727077034\":false,\"field167812025318811\":[\"\",\"\"]},\"mode\":\"designer\",\"activeId\":\"1678120360447\",\"formItems\":[{\"label\":\"请假类型\",\"dataType\":\"select\",\"showLabel\":true,\"tag\":\"el-select\",\"tagIcon\":\"select\",\"placeholder\":\"请选择请假类型\",\"style\":{\"width\":\"100%\"},\"span\":24,\"labelWidth\":null,\"clearable\":true,\"disabled\":false,\"required\":true,\"filterable\":false,\"multiple\":false,\"options\":[{\"label\":\"病假\",\"value\":\"病假\"},{\"label\":\"事假\",\"value\":\"事假\"},{\"label\":\"婚假\",\"value\":\"婚假\"},{\"label\":\"丧假\",\"value\":\"丧假\"},{\"label\":\"产假\",\"value\":\"产假\"},{\"label\":\"年假\",\"value\":\"年假\"}],\"regList\":[],\"changeTag\":true,\"proCondition\":true,\"cmpType\":\"custom\",\"formId\":\"167812025318801\",\"__ID\":\"1678120253188011678120253189\",\"layout\":\"colFormItem\",\"vModel\":\"field167812025318801\"},{\"label\":\"日期范围\",\"showLabel\":true,\"dataType\":\"range\",\"tag\":\"fc-date-duration\",\"showDuration\":true,\"tagIcon\":\"date-range\",\"defaultValue\":null,\"span\":24,\"labelWidth\":null,\"style\":{\"width\":\"100%\"},\"type\":\"daterange\",\"range-separator\":\"至\",\"start-placeholder\":\"开始日期\",\"end-placeholder\":\"结束日期\",\"disabled\":false,\"clearable\":true,\"required\":true,\"format\":\"YYYY-MM-DD\",\"value-format\":\"YYYY-MM-DD\",\"readonly\":false,\"regList\":[],\"changeTag\":true,\"proCondition\":true,\"asSummary\":false,\"cmpType\":\"custom\",\"formId\":\"167812025318811\",\"__ID\":\"1678120253188111678120253189\",\"layout\":\"colFormItem\",\"vModel\":\"field167812025318811\"},{\"label\":\"请假事由\",\"type\":\"string\",\"showLabel\":true,\"tag\":\"el-input\",\"tagIcon\":\"textarea\",\"dataType\":\"textarea\",\"placeholder\":\"请输入请假事由\",\"span\":24,\"labelWidth\":null,\"autosize\":{\"minRows\":4,\"maxRows\":9},\"style\":{\"width\":\"100%\"},\"maxlength\":\"500\",\"show-word-limit\":true,\"readonly\":false,\"disabled\":false,\"required\":true,\"regList\":[],\"changeTag\":true,\"proCondition\":false,\"asSummary\":false,\"formId\":\"1678120297569\",\"layout\":\"colFormItem\",\"vModel\":\"field1678120297569\"},{\"label\":\"图片\",\"showLabel\":true,\"tag\":\"el-upload\",\"tagIcon\":\"upload\",\"action\":\"htts://192.168.1.71:8000/api/admin/file/upload-file\",\"defaultValue\":[],\"labelWidth\":null,\"disabled\":false,\"required\":true,\"accept\":\"\",\"name\":\"file\",\"auto-upload\":true,\"showTip\":false,\"buttonText\":\"点击上传附件\",\"fileSize\":20,\"sizeUnit\":\"MB\",\"list-type\":\"text\",\"multiple\":false,\"regList\":[],\"changeTag\":true,\"proCondition\":false,\"asSummary\":false,\"formId\":\"1678120360447\",\"layout\":\"colFormItem\",\"vModel\":\"field1678120360447\"},{\"label\":\"开关\",\"showLabel\":true,\"dataType\":\"bool\",\"tag\":\"el-switch\",\"tagIcon\":\"switch\",\"defaultValue\":false,\"span\":24,\"labelWidth\":null,\"style\":{},\"disabled\":false,\"required\":true,\"active-text\":\"\",\"inactive-text\":\"\",\"active-color\":null,\"inactive-color\":null,\"active-value\":true,\"inactive-value\":false,\"regList\":[],\"changeTag\":true,\"proCondition\":false,\"asSummary\":false,\"formId\":\"1678727077034\",\"layout\":\"colFormItem\",\"vModel\":\"field1678727077034\"}]}",
+    "flowSetting": "{\"nodes\":{\"2\":{\"title\":\"开始\",\"id\":\"2\",\"type\":\"start\",\"permission\":[{\"fieldId\":\"field167812025318801\",\"required\":true,\"label\":\"请假类型\",\"formOperate\":2},{\"fieldId\":\"field167812025318811\",\"required\":true,\"label\":\"日期范围\",\"formOperate\":2},{\"fieldId\":\"field1678120297569\",\"required\":true,\"label\":\"请假事由\",\"formOperate\":2},{\"fieldId\":\"field1678120360447\",\"required\":true,\"label\":\"图片\",\"formOperate\":2}]},\"4\":{\"title\":\"主管审批\",\"id\":\"4\",\"type\":\"approve\",\"approve\":{\"participants\":{\"user\":[],\"role\":[],\"org\":[]},\"ouType\":\"0\",\"level\":0,\"isDirectorIn\":false,\"assigneeType\":\"supervisor\",\"formOperates\":[],\"SignType\":\"string\",\"optionalMultiUser\":false,\"optionalRange\":\"ALL\"},\"permission\":[{\"fieldId\":\"field167812025318801\",\"required\":true,\"label\":\"请假类型\",\"formOperate\":1},{\"fieldId\":\"field167812025318811\",\"required\":true,\"label\":\"日期范围\",\"formOperate\":1},{\"fieldId\":\"field1678120297569\",\"required\":true,\"label\":\"请假事由\",\"formOperate\":1},{\"fieldId\":\"field1678120360447\",\"required\":true,\"label\":\"图片\",\"formOperate\":1}]},\"5\":{\"title\":\"结束\",\"id\":\"5\",\"type\":\"end\",\"approve\":{},\"condition\":{},\"permission\":[]},\"6\":{\"title\":\"病假\",\"id\":\"6\",\"type\":\"condition\",\"condition\":{\"root\":true,\"logic\":\"And\",\"filters\":[{\"field\":\"field167812025318801\",\"label\":\"请假类型\",\"operator\":\"Equal\",\"config\":{},\"value\":\"病假\",\"tag\":\"el-select\",\"type\":\"select\",\"options\":[{\"label\":\"病假\",\"value\":\"病假\"},{\"label\":\"事假\",\"value\":\"事假\"},{\"label\":\"婚假\",\"value\":\"婚假\"},{\"label\":\"丧假\",\"value\":\"丧假\"},{\"label\":\"产假\",\"value\":\"产假\"},{\"label\":\"年假\",\"value\":\"年假\"}]}]}},\"7\":{\"title\":\"\",\"id\":\"7\",\"type\":\"condition\",\"approve\":{},\"condition\":{},\"permission\":[]},\"8\":{\"title\":\"部门经理审批\",\"id\":\"8\",\"type\":\"approve\",\"approve\":{\"participants\":{\"user\":[],\"role\":[],\"org\":[]},\"ouType\":\"0\",\"level\":0,\"isDirectorIn\":false,\"assigneeType\":\"director\",\"formOperates\":[],\"SignType\":\"string\",\"optionalMultiUser\":false,\"optionalRange\":\"ALL\"},\"permission\":[{\"fieldId\":\"field167812025318801\",\"required\":true,\"label\":\"请假类型\",\"formOperate\":1},{\"fieldId\":\"field167812025318811\",\"required\":true,\"label\":\"日期范围\",\"formOperate\":1},{\"fieldId\":\"field1678120297569\",\"required\":true,\"label\":\"请假事由\",\"formOperate\":1},{\"fieldId\":\"field1678120360447\",\"required\":true,\"label\":\"图片\",\"formOperate\":1}]},\"9\":{\"title\":\"其他\",\"id\":\"9\",\"type\":\"condition\",\"condition\":{\"isDefault\":true}},\"10\":{\"title\":\"\",\"id\":\"10\",\"type\":\"condition\",\"approve\":{},\"condition\":{},\"permission\":[]}},\"lines\":[{\"id\":\"6\",\"fromId\":\"2\",\"toId\":\"4\"},{\"id\":\"9\",\"fromId\":\"2\",\"toId\":\"8\"},{\"id\":\"7\",\"fromId\":\"4\",\"toId\":\"8\"},{\"id\":\"10\",\"fromId\":\"8\",\"toId\":\"5\"}],\"startActivityId\":\"2\",\"chartData\":\"<mxGraphModel grid=\\\"1\\\" gridSize=\\\"10\\\" guides=\\\"1\\\" tooltips=\\\"1\\\" connect=\\\"1\\\" arrows=\\\"1\\\" fold=\\\"1\\\" page=\\\"1\\\" pageScale=\\\"1\\\" pageWidth=\\\"827\\\" pageHeight=\\\"1169\\\"><root><mxCell id=\\\"0\\\"/><mxCell id=\\\"1\\\" parent=\\\"0\\\"/><mxCell id=\\\"6\\\" value=\\\"病假\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" parent=\\\"1\\\" source=\\\"2\\\" target=\\\"4\\\" edge=\\\"1\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"><Array as=\\\"points\\\"><mxPoint x=\\\"210\\\" y=\\\"180\\\"/><mxPoint x=\\\"210\\\" y=\\\"270\\\"/></Array></mxGeometry></mxCell><mxCell id=\\\"9\\\" value=\\\"其他\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" parent=\\\"1\\\" source=\\\"2\\\" target=\\\"8\\\" edge=\\\"1\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"2\\\" value=\\\"开始\\\" style=\\\"image;;type=start;html=1;image=/images/bpm/ailicloud/start.svg;strokeWidth=2\\\" parent=\\\"1\\\" vertex=\\\"1\\\"><mxGeometry x=\\\"90\\\" y=\\\"140\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"7\\\" value=\\\"\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" parent=\\\"1\\\" source=\\\"4\\\" target=\\\"8\\\" edge=\\\"1\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"><Array as=\\\"points\\\"><mxPoint x=\\\"430\\\" y=\\\"270\\\"/><mxPoint x=\\\"430\\\" y=\\\"180\\\"/></Array></mxGeometry></mxCell><mxCell id=\\\"4\\\" value=\\\"主管审批\\\" style=\\\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2;strokeColor=#7F00FF;\\\" parent=\\\"1\\\" vertex=\\\"1\\\"><mxGeometry x=\\\"280\\\" y=\\\"230\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"5\\\" value=\\\"结束\\\" style=\\\"image;;type=end;html=1;image=/images/bpm/ailicloud/end.svg;strokeWidth=2\\\" parent=\\\"1\\\" vertex=\\\"1\\\"><mxGeometry x=\\\"600\\\" y=\\\"140\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"10\\\" value=\\\"\\\" style=\\\"edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7F00FF;\\\" parent=\\\"1\\\" source=\\\"8\\\" target=\\\"5\\\" edge=\\\"1\\\"><mxGeometry relative=\\\"1\\\" as=\\\"geometry\\\"/></mxCell><mxCell id=\\\"8\\\" value=\\\"部门经理审批\\\" style=\\\"image;;type=approve;html=1;image=/images/bpm/ailicloud/approve.svg;strokeWidth=2\\\" parent=\\\"1\\\" vertex=\\\"1\\\"><mxGeometry x=\\\"460\\\" y=\\\"140\\\" width=\\\"80\\\" height=\\\"80\\\" as=\\\"geometry\\\"/></mxCell></root></mxGraphModel>\"}",
+    "state": 1,
+    "version": 4
+  }
+]

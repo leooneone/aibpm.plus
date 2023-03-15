@@ -1,20 +1,82 @@
 [
   {
-    "id": 187395320303685,
-    "dictionaryTypeId": 187395320434757,
-    "name": "男",
-    "code": "male",
+    "id": 391439692701765,
+    "dictionaryTypeId": 391439329738821,
+    "name": "工单管理",
+    "code": "1",
     "value": "1",
-    "description": "",
     "enabled": true
   },
   {
-    "id": 187395320369221,
-    "dictionaryTypeId": 187395320434757,
-    "name": "女",
-    "code": "female",
+    "id": 391439854682181,
+    "dictionaryTypeId": 391439329738821,
+    "name": "行政管理",
+    "code": "2",
     "value": "2",
-    "description": "",
+    "enabled": true
+  },
+  {
+    "id": 391439902044229,
+    "dictionaryTypeId": 391439329738821,
+    "name": "人事管理",
+    "code": "3",
+    "value": "3",
+    "enabled": true
+  },
+  {
+    "id": 391439941390405,
+    "dictionaryTypeId": 391439329738821,
+    "name": "财务管理",
+    "code": "4",
+    "value": "4",
+    "enabled": true
+  },
+  {
+    "id": 391440217915461,
+    "dictionaryTypeId": 391439329738821,
+    "name": "测试分组",
+    "code": "5",
+    "value": "5",
+    "enabled": true
+  },
+  {
+    "id": 391440929288261,
+    "dictionaryTypeId": 391440894779461,
+    "name": "部门",
+    "code": "0",
+    "value": "0",
+    "enabled": true
+  },
+  {
+    "id": 391440966430789,
+    "dictionaryTypeId": 391440894779461,
+    "name": "公司",
+    "code": "1",
+    "value": "1",
+    "enabled": true
+  },
+  {
+    "id": 391441007575109,
+    "dictionaryTypeId": 391440894779461,
+    "name": "集团",
+    "code": "3",
+    "value": "3",
+    "enabled": true
+  },
+  {
+    "id": 391441039323205,
+    "dictionaryTypeId": 391440894779461,
+    "name": "组",
+    "code": "-1",
+    "value": "-1",
+    "enabled": true
+  },
+  {
+    "id": 391441081266245,
+    "dictionaryTypeId": 391440894779461,
+    "name": "区域",
+    "code": "2",
+    "value": "2",
     "enabled": true
   }
 ]

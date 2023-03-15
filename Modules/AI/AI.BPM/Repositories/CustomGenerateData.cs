@@ -34,7 +34,7 @@ public class CustomGenerateData : GenerateData, IGenerateData
         //admin
         #region 数据字典
 
-        var tempalte = db.Queryable<WorkflowTemplate>().ToListIgnore(a => new
+        var tempalte = db.Queryable<WorkflowTemplateEntity>().ToListIgnore(a => new
         {
             a.CreatedTime,
             a.CreatedUserId,
@@ -53,7 +53,7 @@ public class CustomGenerateData : GenerateData, IGenerateData
 
         var isTenant = appConfig.Tenant;
 
-        SaveDataToJsonFile<WorkflowTemplate>(tempalte, isTenant);
+        SaveDataToJsonFile<WorkflowTemplateEntity>(tempalte, isTenant,"InitData/BPM");
          
 
         #endregion

@@ -107,7 +107,9 @@ namespace AI.BPM.Domain.WorkflowTemplate
          
 
         public FlowSetting fs { get {
+                if(!string.IsNullOrEmpty(this.FlowSetting))
                 return Newtonsoft.Json.JsonConvert.DeserializeObject<FlowSetting>(this.FlowSetting);
+                return default(FlowSetting);
             } }
         /* [Column(DbType = "text")]
          public string ActivitiesContext { get; set; }

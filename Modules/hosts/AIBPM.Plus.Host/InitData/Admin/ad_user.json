@@ -3,11 +3,91 @@
     "id": 161223411986501,
     "userName": "admin",
     "password": "96E79218965EB72C92A549DD5A330112",
-    "name": "管理员",
+    "name": "admin",
     "mobile": "13122223333",
     "email": "xiaoxue@zhontai.com",
     "orgId": 189097691009093,
-    "nickName": "小雪转中雪",
+    "managerUserId": 391450720129093,
+    "nickName": "AILICLOUD",
+    "avatar": "161223411986501/393420650491973.png",
     "type": 100
+  },
+  {
+    "id": 386321605353541,
+    "userName": "leo",
+    "password": "96E79218965EB72C92A549DD5A330112",
+    "name": "leo",
+    "mobile": "19999999999",
+    "orgId": 391447829155909,
+    "type": 1
+  },
+  {
+    "id": 391449091633221,
+    "userName": "philip",
+    "password": "96E79218965EB72C92A549DD5A330112",
+    "name": "王飞力(Philip)",
+    "mobile": "19999999998",
+    "orgId": 391447829155909,
+    "managerUserId": 386321605353541,
+    "type": 1
+  },
+  {
+    "id": 391449683779653,
+    "userName": "shally",
+    "password": "96E79218965EB72C92A549DD5A330112",
+    "name": "李夏莉(Shally)",
+    "mobile": "19999999997",
+    "orgId": 391447913197637,
+    "managerUserId": 386321605353541,
+    "type": 1
+  },
+  {
+    "id": 391449929683013,
+    "userName": "jessica",
+    "password": "96E79218965EB72C92A549DD5A330112",
+    "name": "刘杰西(Jessica)",
+    "mobile": "19999999996",
+    "orgId": 391448102109253,
+    "managerUserId": 386321605353541,
+    "type": 1
+  },
+  {
+    "id": 391450167926853,
+    "userName": "susan",
+    "password": "698D51A19D8A121CE581499D7B701668",
+    "name": "苏珊珊(Susan)",
+    "mobile": "19999999995",
+    "orgId": 391447752503365,
+    "type": 1
+  },
+  {
+    "id": 391450500943941,
+    "userName": "Sheldon",
+    "password": "96E79218965EB72C92A549DD5A330112",
+    "name": "谢多多(Sheldon)",
+    "mobile": "19999999991",
+    "orgId": 391448493031493,
+    "managerUserId": 386321605353541,
+    "type": 1
+  },
+  {
+    "id": 391450720129093,
+    "userName": "fred",
+    "password": "96E79218965EB72C92A549DD5A330112",
+    "name": "李福来(Fred)",
+    "mobile": "19999999992",
+    "orgId": 391448493031493,
+    "managerUserId": 391450500943941,
+    "type": 1
+  },
+  {
+    "id": 391451290554437,
+    "userName": "mark",
+    "password": "96E79218965EB72C92A549DD5A330112",
+    "name": "马克勤(Mark)",
+    "mobile": "19999999993",
+    "orgId": 391448408477765,
+    "managerUserId": 386321605353541,
+    "type": 1
   }
 ]

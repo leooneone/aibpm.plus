@@ -1,7 +1,7 @@
 [
   {
     "id": 373083895201861,
-    "label": "AILICLOUD",
+    "label": "中台Admin",
     "path": "admin",
     "description": "",
     "enabled": true,
@@ -173,7 +173,7 @@
       {
         "id": 161227167719494,
         "parentId": 373083895201861,
-        "label": "数据字典服务",
+        "label": "字典服务",
         "path": "dictionary",
         "description": "",
         "enabled": true,
@@ -181,7 +181,7 @@
           {
             "id": 161227168137285,
             "parentId": 161227167719494,
-            "label": "查询",
+            "label": "查询数据字典",
             "path": "/api/admin/dictionary/get",
             "httpMethods": "get",
             "description": "",
@@ -190,7 +190,7 @@
           {
             "id": 161227168137286,
             "parentId": 161227167719494,
-            "label": "查询分页",
+            "label": "查询数据字典列表",
             "path": "/api/admin/dictionary/get-page",
             "httpMethods": "post",
             "description": "",
@@ -247,6 +247,14 @@
             "label": "批量彻底删除",
             "path": "/api/admin/dictionary/batch-delete",
             "httpMethods": "put",
+            "description": ""
+          },
+          {
+            "id": 386325881413701,
+            "parentId": 161227167719494,
+            "label": "获取指定名称的数据字典列表",
+            "path": "/api/admin/dictionary/get-list",
+            "httpMethods": "get",
             "description": "",
             "enabled": true
           }
@@ -1201,7 +1209,7 @@
       {
         "id": 174219034718279,
         "parentId": 373083895201861,
-        "label": "数据字典类型服务",
+        "label": "字典类型服务",
         "path": "dictionary-type",
         "description": "",
         "enabled": true,
@@ -1209,7 +1217,7 @@
           {
             "id": 174219034734661,
             "parentId": 174219034718279,
-            "label": "查询",
+            "label": "查询字典类型",
             "path": "/api/admin/dictionary-type/get",
             "httpMethods": "get",
             "description": "",
@@ -1218,7 +1226,7 @@
           {
             "id": 174219034734662,
             "parentId": 174219034718279,
-            "label": "查询分页",
+            "label": "查询字典类型列表",
             "path": "/api/admin/dictionary-type/get-page",
             "httpMethods": "post",
             "description": "",
@@ -1275,8 +1283,7 @@
             "label": "批量彻底删除",
             "path": "/api/admin/dictionary-type/batch-delete",
             "httpMethods": "put",
-            "description": "",
-            "enabled": true
+            "description": ""
           }
         ]
       },
@@ -1422,6 +1429,951 @@
             "label": "删除",
             "path": "/api/admin/file/delete",
             "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 386325885366341,
+    "label": "工作流",
+    "path": "bpm",
+    "description": "",
+    "enabled": true,
+    "childs": [
+      {
+        "id": 386325885374533,
+        "parentId": 386325885366341,
+        "label": "活動(節點）服务",
+        "path": "activity",
+        "description": "",
+        "enabled": true,
+        "childs": [
+          {
+            "id": 386325885399112,
+            "parentId": 386325885374533,
+            "label": "查找Activity",
+            "path": "/api/bpm/activity/get-activity",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399113,
+            "parentId": 386325885374533,
+            "label": "",
+            "path": "/api/bpm/activity/get-permission-form-data",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399114,
+            "parentId": 386325885374533,
+            "label": "",
+            "path": "/api/bpm/activity/get-start-activity",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399115,
+            "parentId": 386325885374533,
+            "label": "",
+            "path": "/api/bpm/activity/find-previous-activity",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399116,
+            "parentId": 386325885374533,
+            "label": "查找当前节点的后续活动节点",
+            "path": "/api/bpm/activity/find-next-activity",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": 386325885374534,
+        "parentId": 386325885366341,
+        "label": "实例服务",
+        "path": "instance",
+        "description": "",
+        "enabled": true,
+        "childs": [
+          {
+            "id": 386325885395020,
+            "parentId": 386325885374534,
+            "label": "获取流程实例",
+            "path": "/api/bpm/instance/get",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395021,
+            "parentId": 386325885374534,
+            "label": "流程实例分页查询",
+            "path": "/api/bpm/instance/page",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395022,
+            "parentId": 386325885374534,
+            "label": "根据模板ID 创建并启动流程",
+            "path": "/api/bpm/instance/start",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395023,
+            "parentId": 386325885374534,
+            "label": "新增实例",
+            "path": "/api/bpm/instance/add",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395024,
+            "parentId": 386325885374534,
+            "label": "更新流程实例",
+            "path": "/api/bpm/instance/update",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399109,
+            "parentId": 386325885374534,
+            "label": "删除实例",
+            "path": "/api/bpm/instance/delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399110,
+            "parentId": 386325885374534,
+            "label": "软删除实例",
+            "path": "/api/bpm/instance/soft-delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399111,
+            "parentId": 386325885374534,
+            "label": "批量删除流程实例",
+            "path": "/api/bpm/instance/batch-soft-delete",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": 386325885374535,
+        "parentId": 386325885366341,
+        "label": "组织架构服务",
+        "path": "organization",
+        "description": "",
+        "enabled": true,
+        "childs": [
+          {
+            "id": 386325885399117,
+            "parentId": 386325885374535,
+            "label": "",
+            "path": "/api/bpm/organization/get-employees-by-role",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399118,
+            "parentId": 386325885374535,
+            "label": "",
+            "path": "/api/bpm/organization/get-employees-by-ou",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399119,
+            "parentId": 386325885374535,
+            "label": "",
+            "path": "/api/bpm/organization/get-director-by-ou-type",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399120,
+            "parentId": 386325885374535,
+            "label": "",
+            "path": "/api/bpm/organization/get-supervisors",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399121,
+            "parentId": 386325885374535,
+            "label": "根据公司DAAL权限 获取审批人",
+            "path": "/api/bpm/organization/get-daal-approvers",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885399122,
+            "parentId": 386325885374535,
+            "label": "",
+            "path": "/api/bpm/organization/get-supervisors-by-unit-type",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": 386325885374536,
+        "parentId": 386325885366341,
+        "label": "工作項服务",
+        "path": "work-item",
+        "description": "",
+        "enabled": true,
+        "childs": [
+          {
+            "id": 386325885386833,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/activate",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386834,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/suspend",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386835,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/cancel",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386836,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/resume",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386837,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/adustify",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390917,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/urge",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390918,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/get",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390919,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/page",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390920,
+            "parentId": 386325885374536,
+            "label": "根据工作项ID 启动流程",
+            "path": "/api/bpm/work-item/start",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390921,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/get-instance",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390922,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/submit",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390923,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/add-work-item",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390924,
+            "parentId": 386325885374536,
+            "label": "完成工作项",
+            "path": "/api/bpm/work-item/finish-work-item",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390925,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/cancel-work-item",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390926,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/add",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390927,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/update",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390928,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390929,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/soft-delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390930,
+            "parentId": 386325885374536,
+            "label": "",
+            "path": "/api/bpm/work-item/batch-soft-delete",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": 386325885374537,
+        "parentId": 386325885366341,
+        "label": "工作流服务",
+        "path": "workflow",
+        "description": "",
+        "enabled": true,
+        "childs": [
+          {
+            "id": 386325885386830,
+            "parentId": 386325885374537,
+            "label": "",
+            "path": "/api/bpm/workflow/open",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386831,
+            "parentId": 386325885374537,
+            "label": "提交表单",
+            "path": "/api/bpm/workflow/submit",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386832,
+            "parentId": 386325885374537,
+            "label": "流程明细",
+            "path": "/api/bpm/workflow/get-detail",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": 386325885374538,
+        "parentId": 386325885366341,
+        "label": "模板服务",
+        "path": "workflow-template",
+        "description": "",
+        "enabled": true,
+        "childs": [
+          {
+            "id": 386325885390931,
+            "parentId": 386325885374538,
+            "label": "获取表单数据",
+            "path": "/api/bpm/workflow-template/get-form-data",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885390932,
+            "parentId": 386325885374538,
+            "label": "根据版本号获取",
+            "path": "/api/bpm/workflow-template/get",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395013,
+            "parentId": 386325885374538,
+            "label": "",
+            "path": "/api/bpm/workflow-template/list-published",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395014,
+            "parentId": 386325885374538,
+            "label": "查询模板列表",
+            "path": "/api/bpm/workflow-template/get-page",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395015,
+            "parentId": 386325885374538,
+            "label": "",
+            "path": "/api/bpm/workflow-template/add",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395016,
+            "parentId": 386325885374538,
+            "label": "",
+            "path": "/api/bpm/workflow-template/update",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395017,
+            "parentId": 386325885374538,
+            "label": "",
+            "path": "/api/bpm/workflow-template/delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395018,
+            "parentId": 386325885374538,
+            "label": "",
+            "path": "/api/bpm/workflow-template/soft-delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885395019,
+            "parentId": 386325885374538,
+            "label": "",
+            "path": "/api/bpm/workflow-template/batch-soft-delete",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": 386325885374539,
+        "parentId": 386325885366341,
+        "label": "员工服务",
+        "path": "my-user",
+        "description": "",
+        "enabled": true,
+        "childs": [
+          {
+            "id": 386325885382734,
+            "parentId": 386325885374539,
+            "label": "",
+            "path": "/api/bpm/my-user/get-user",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382735,
+            "parentId": 386325885374539,
+            "label": "查询用户",
+            "path": "/api/bpm/my-user/get",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382736,
+            "parentId": 386325885374539,
+            "label": "查询分页",
+            "path": "/api/bpm/my-user/get-page",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382737,
+            "parentId": 386325885374539,
+            "label": "查询用户基本信息",
+            "path": "/api/bpm/my-user/get-basic",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382738,
+            "parentId": 386325885374539,
+            "label": "查询用户权限信息",
+            "path": "/api/bpm/my-user/get-permissions",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382739,
+            "parentId": 386325885374539,
+            "label": "新增用户",
+            "path": "/api/bpm/my-user/add",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382740,
+            "parentId": 386325885374539,
+            "label": "新增会员",
+            "path": "/api/bpm/my-user/add-member",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382741,
+            "parentId": 386325885374539,
+            "label": "修改会员",
+            "path": "/api/bpm/my-user/update-member",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382742,
+            "parentId": 386325885374539,
+            "label": "修改用户",
+            "path": "/api/bpm/my-user/update",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386821,
+            "parentId": 386325885374539,
+            "label": "更新用户基本信息",
+            "path": "/api/bpm/my-user/update-basic",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386822,
+            "parentId": 386325885374539,
+            "label": "修改用户密码",
+            "path": "/api/bpm/my-user/change-password",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386823,
+            "parentId": 386325885374539,
+            "label": "重置密码",
+            "path": "/api/bpm/my-user/reset-password",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386824,
+            "parentId": 386325885374539,
+            "label": "设置主管",
+            "path": "/api/bpm/my-user/set-manager",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386825,
+            "parentId": 386325885374539,
+            "label": "彻底删除用户",
+            "path": "/api/bpm/my-user/delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386826,
+            "parentId": 386325885374539,
+            "label": "批量彻底删除用户",
+            "path": "/api/bpm/my-user/batch-delete",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386827,
+            "parentId": 386325885374539,
+            "label": "删除用户",
+            "path": "/api/bpm/my-user/soft-delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386828,
+            "parentId": 386325885374539,
+            "label": "批量删除用户",
+            "path": "/api/bpm/my-user/batch-soft-delete",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885386829,
+            "parentId": 386325885374539,
+            "label": "上传头像",
+            "path": "/api/bpm/my-user/avatar-upload",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": 386325885374540,
+        "parentId": 386325885366341,
+        "label": "角色服务",
+        "path": "my-role",
+        "description": "",
+        "enabled": true,
+        "childs": [
+          {
+            "id": 386325885378639,
+            "parentId": 386325885374540,
+            "label": "查询指定角色的子列表",
+            "path": "/api/bpm/my-role/get-list-by-parent-id",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378640,
+            "parentId": 386325885374540,
+            "label": "",
+            "path": "/api/bpm/my-role/join-employees",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378641,
+            "parentId": 386325885374540,
+            "label": "",
+            "path": "/api/bpm/my-role/get-employee-ids",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378642,
+            "parentId": 386325885374540,
+            "label": "",
+            "path": "/api/bpm/my-role/get-employees",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378643,
+            "parentId": 386325885374540,
+            "label": "查询",
+            "path": "/api/bpm/my-role/get",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378644,
+            "parentId": 386325885374540,
+            "label": "查询列表",
+            "path": "/api/bpm/my-role/get-list",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378645,
+            "parentId": 386325885374540,
+            "label": "查询分页",
+            "path": "/api/bpm/my-role/get-page",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378646,
+            "parentId": 386325885374540,
+            "label": "查询角色用户列表",
+            "path": "/api/bpm/my-role/get-role-user-list",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382725,
+            "parentId": 386325885374540,
+            "label": "新增角色用户",
+            "path": "/api/bpm/my-role/add-role-user",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382726,
+            "parentId": 386325885374540,
+            "label": "移除角色用户",
+            "path": "/api/bpm/my-role/remove-role-user",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382727,
+            "parentId": 386325885374540,
+            "label": "添加",
+            "path": "/api/bpm/my-role/add",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382728,
+            "parentId": 386325885374540,
+            "label": "修改",
+            "path": "/api/bpm/my-role/update",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382729,
+            "parentId": 386325885374540,
+            "label": "彻底删除",
+            "path": "/api/bpm/my-role/delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382730,
+            "parentId": 386325885374540,
+            "label": "批量彻底删除",
+            "path": "/api/bpm/my-role/batch-delete",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382731,
+            "parentId": 386325885374540,
+            "label": "删除",
+            "path": "/api/bpm/my-role/soft-delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382732,
+            "parentId": 386325885374540,
+            "label": "批量删除",
+            "path": "/api/bpm/my-role/batch-soft-delete",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885382733,
+            "parentId": 386325885374540,
+            "label": "设置数据权限",
+            "path": "/api/bpm/my-role/set-data-scope",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          }
+        ]
+      },
+      {
+        "id": 386325885378629,
+        "parentId": 386325885366341,
+        "label": "组织单元服务",
+        "path": "my-org",
+        "description": "",
+        "enabled": true,
+        "childs": [
+          {
+            "id": 386325885378630,
+            "parentId": 386325885378629,
+            "label": "关联组织与员工",
+            "path": "/api/bpm/my-org/join-employees",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378631,
+            "parentId": 386325885378629,
+            "label": "",
+            "path": "/api/bpm/my-org/remove-employees",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378632,
+            "parentId": 386325885378629,
+            "label": "",
+            "path": "/api/bpm/my-org/get-employees",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378633,
+            "parentId": 386325885378629,
+            "label": "查询",
+            "path": "/api/bpm/my-org/get",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378634,
+            "parentId": 386325885378629,
+            "label": "查询列表",
+            "path": "/api/bpm/my-org/get-list",
+            "httpMethods": "get",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378635,
+            "parentId": 386325885378629,
+            "label": "新增",
+            "path": "/api/bpm/my-org/add",
+            "httpMethods": "post",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378636,
+            "parentId": 386325885378629,
+            "label": "修改",
+            "path": "/api/bpm/my-org/update",
+            "httpMethods": "put",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378637,
+            "parentId": 386325885378629,
+            "label": "彻底删除",
+            "path": "/api/bpm/my-org/delete",
+            "httpMethods": "delete",
+            "description": "",
+            "enabled": true
+          },
+          {
+            "id": 386325885378638,
+            "parentId": 386325885378629,
+            "label": "删除",
+            "path": "/api/bpm/my-org/soft-delete",
+            "httpMethods": "delete",
             "description": "",
             "enabled": true
           }
