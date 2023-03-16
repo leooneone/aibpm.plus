@@ -222,12 +222,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             return employees;
         }
 
-        public virtual async Task<WorkItemEntity> AddCurrentWorkItem(ActivityModel activity, InstanceEntity instance, WorkflowTemplateEntity tpl, string previousActivityId, Dictionary<string, List<Participant>> optionalParticipants)
-        {
-
-            var res = new WorkItemEntity();
-            return res;
-        }
+    
         /// <summary>
         /// 添加工作项
         /// </summary>

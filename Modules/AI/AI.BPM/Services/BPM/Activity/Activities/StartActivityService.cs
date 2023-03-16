@@ -142,7 +142,14 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         }
 
 
-    
+        /// <summary>
+        /// 添加当前工作项
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <param name="tpl"></param>
+        /// <param name="activity"></param>
+        /// <param name="isSaveOnly"></param>
+        /// <returns></returns>
         async Task<WorkItemEntity> AddCurrentWorkItem(InstanceEntity instance, WorkflowTemplateEntity tpl, ActivityModel activity,bool isSaveOnly)
         {
             if (activity == null)

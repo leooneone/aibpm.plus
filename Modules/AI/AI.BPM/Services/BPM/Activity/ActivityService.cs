@@ -66,12 +66,7 @@ namespace AI.BPM.Services.Activity
             
         }
 
-
-
-
-
-
-
+         
         /// <summary>
         /// 查找Activity
         /// </summary>
@@ -137,6 +132,12 @@ namespace AI.BPM.Services.Activity
             return currentFields;
 
         }
+        /// <summary>
+        /// 获取表单权限
+        /// </summary>
+        /// <param name="permission"></param>
+        /// <param name="formData"></param>
+        /// <returns></returns>
         public string GetPermissionFormData(List<FieldPermission> permission, string formData)
         {
 
@@ -148,7 +149,7 @@ namespace AI.BPM.Services.Activity
         }
 
         /// <summary>
-        /// 設置權限
+        /// 设置权限
         /// </summary>
         /// <param name="properties"></param>
         /// <param name="fields"></param>

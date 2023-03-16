@@ -1273,7 +1273,7 @@
         "path": "help/aibpm",
         "icon": "ele-Promotion",
         "isKeepAlive": true,
-        "link": "https://doc.bpm.ailicloud.com",
+        "link": "https://doc.aibpm.ailicloud.com",
         "enabled": true,
         "childs": []
       }
