@@ -47,6 +47,7 @@ using AI.Core.Extensions;
 using System.Text.RegularExpressions;
 using AI.BPM.Services.BPM.Activity.Activities;
 using Ubiety.Dns.Core.Records;
+using FreeSql;
 
 namespace AI.BPM.Services.WorkItem
 {
@@ -61,9 +62,11 @@ namespace AI.BPM.Services.WorkItem
         /// 0. REST
         /// 1.激活 2.取消 3.挂起 4.恢復 5.調整、完成   其他：咨詢、轉發、協助、催辦
         private  IWorkItemRepository _workItemRepository => LazyGetRequiredService<IWorkItemRepository>();
+        private IUrgeRepository _urgeRepository => LazyGetRequiredService<IUrgeRepository>();
         private  IWorkflowTemplateRepository _workflowTemplateRepository => LazyGetRequiredService<IWorkflowTemplateRepository>();
  
         private  IInstanceService _InstanceService => LazyGetRequiredService<IInstanceService>();
+        private IInstanceRepository _InstanceRepository => LazyGetRequiredService<IInstanceRepository>();
 
         private  IActivityService _activityService => LazyGetRequiredService<IActivityService>(); 
 
@@ -115,6 +118,20 @@ namespace AI.BPM.Services.WorkItem
         {
 
         }
+        public async Task CancelInstance(long instanceId)
+        { 
+
+          var isUpdate=  await _workItemRepository.Select.ToUpdate()
+                .Set(t => t.State, ActivityState.Canceled)
+                .Where(w => w.InstanceId == instanceId && (w.State == ActivityState.ToDo || w.State == ActivityState.Waiting)).ExecuteAffrowsAsync();
+
+            await _InstanceRepository.Select.ToUpdate().Set(ins => ins.State, InstanceState.Canceled).Where(ins => ins.Id == instanceId).ExecuteAffrowsAsync();
+            
+                     
+        }
+
+
+
         /// <summary>
         /// 恢复工作项
         /// </summary>
@@ -122,7 +139,7 @@ namespace AI.BPM.Services.WorkItem
         /// <returns></returns>
         public async Task ResumeAsync(long itemId)
         {
-
+           
         }
         /// <summary>
         /// 调整工作项
@@ -139,8 +156,21 @@ namespace AI.BPM.Services.WorkItem
         /// <param name="itemId"></param>
         /// <returns></returns>
 
-        public async Task UrgeAsync(long itemId)
+        public async Task UrgeAsync(long instanceId,string message)
         {
+            var lst = new List<UrgeEntity>();
+            var items = await _workItemRepository.Select.Where(w => w.InstanceId == instanceId && w.State == ActivityState.ToDo ).ToListAsync();
+            items.ForEach(item => {
+                var ent = new UrgeEntity
+                {
+                    WorkItemId = item.Id,
+                    Message= message
+                } ;
+
+
+        });
+           
+            await _urgeRepository.InsertAsync(lst);
 
         }
         /// <summary>

@@ -24,7 +24,7 @@ namespace AI.Core.Model.BPM
         /// <summary>
         /// 活动Id
         /// </summary>
-        public long ActivityId { get; set; }
+        public long WorkItemId { get; set; }
 
          
         /// <summary>
@@ -34,6 +34,8 @@ namespace AI.Core.Model.BPM
         [Column(StringLength = 256)]
         public string Message { get; set; }
           
+
+        public bool IsRead { get; set; }
          
             
     }
