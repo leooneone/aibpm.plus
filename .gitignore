@@ -8,8 +8,6 @@
 *.suo
 *.user
 *.userosscache
-*.sln.docstates
-
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -398,4 +396,3 @@ FodyWeavers.xsd
 *.sln.iml
 
 **/wwwroot/upload
-/AIBPM.Plus.sln
