@@ -58,7 +58,7 @@ namespace AI.BPM.Services.WorkItem
         Task CancelAsync(long itemId);
         Task ResumeAsync(long itemId);
         Task AdustifyAsync(long itemId);
-        Task UrgeAsync(long itemId);
+        Task UrgeAsync(long instanceId, string message);
         /* Task ConsultAsync(long itemId);
          Task ForwardAsync(long itemId);
          Task AssistAsync(long itemId);*/
