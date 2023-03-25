@@ -26,6 +26,9 @@ using System.Linq;
 using ZhonTai.Admin.Domain.Role;
 using Newtonsoft.Json;
 using AI.BPM.Services.Organization.X;
+using AI.Core.Helpers;
+using System.Text;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AI.BPM.Services.WorkflowTemplate
 {
@@ -215,6 +218,29 @@ namespace AI.BPM.Services.WorkflowTemplate
                 await _workflowTemplateRepository.Select.ToUpdate()
                     .Set(t => t.State, TemplateState.Suspend)
                     .Where(t => t.Name == input.BasicSetting.Name && t.State == TemplateState.Published && t.Version < ent.Version).ExecuteAffrowsAsync();
+
+            ///编译生成DLL 方便后续使用强类型调用
+            var code = new StringBuilder();
+
+            code.AppendLine("namespace AI.BPM.Templates");
+            code.AppendLine("{");
+            code.AppendLine($"[Table(\"ai_{ent.Name}_{ent.Version}\")]");
+            code.AppendLine($"public class {ent.Name}_{ent.Version}  : EntityTenant");
+            code.AppendLine("{");
+
+        
+            var formItems = new List<FormItem>();
+            for (var k = 0; k < formItems.Count; k++) { 
+                var item =formItems[k];
+              //  code.AppendLine($"[]");
+                code.AppendLine($"public ${item.TypeCode.ToString()} ${item.Code}"+ @"{get;set;}");
+            }
+            
+
+            code.AppendLine("}");
+            code.AppendLine("}");
+           // CompilerHelper.CompileCode(code.ToString(),$"templates/{ent.Code}.{ent.Version}.dll");
+             
             if (isUpdate)
             {
 
