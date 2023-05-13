@@ -211,7 +211,8 @@ namespace AI.BPM.Services.WorkflowTemplate
 
             ent.BasicContext = input.BasicContext;
             ent.AdvancedContext = input.AdvancedContext;
-
+            if (string.IsNullOrEmpty(ent.Code))
+                ent.Code = Guid.NewGuid().ToString();
             ent.State = input.IsPublish ? TemplateState.Published : TemplateState.Draft;
             //旧版设置为挂起状态
             if (input.IsPublish)//&&!isUpdate)

@@ -170,6 +170,8 @@ namespace AI.BPM.Services.Activity
                 //field.ContainsKey("formId") 
                 //1只讀 2 可編輯 3 隱藏
                 var formId = field.Value<string>("vModel");
+                if (formId == null)
+                    continue;
                 if (permissions.ContainsKey(formId))
                 {
                     if (permissions[formId] == 1)
