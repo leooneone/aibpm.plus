@@ -414,7 +414,7 @@ namespace AI.BPM.Services.WorkItem
        /// <param name="srv"></param>
        /// <param name="activityInput"></param>
        /// <returns></returns>
-        public async Task GoNext(DefaultActivityService srv, ActivityOutput activityInput)
+          async Task GoNext(DefaultActivityService srv, ActivityOutput activityInput)
         {
             var previousActivityId = activityInput.CurrentActivity.Id;
             var nextActivities = await srv.AddNextActivitiesAsync(activityInput);

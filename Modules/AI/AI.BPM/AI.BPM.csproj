@@ -9,6 +9,7 @@
     <Authors>Leo</Authors>
     <Company>AiliCloud</Company>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
 	<ItemGroup>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +7,8 @@ using System.CodeDom.Compiler;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text; 
 using Microsoft.CSharp;
 using System.Runtime.Serialization;
-
 namespace AI.Core.Helpers
 {
     /// <summary>
@@ -123,7 +121,7 @@ namespace AI.Core.Helpers
 
 
                 // 创建编译器实例并编译代码
-                CSharpCodeProvider csProvider = new CSharpCodeProvider();
+                 csProvider = new CSharpCodeProvider();
                 CompilerResults cr = csProvider.CompileAssemblyFromSource(cp, code);
 
                 // 检查编译结果
@@ -167,7 +165,7 @@ namespace AI.Core.Helpers
                     RetryFile.WriteAllText(filePath, code);
                 }
                 catch
-                {  /* 输出最近一次运行时运行的代码，方便调试程序，忽略写文件出现的异常。 */
+                {  *//* 输出最近一次运行时运行的代码，方便调试程序，忽略写文件出现的异常。 *//*
                 }
             }
 
@@ -184,8 +182,9 @@ namespace AI.Core.Helpers
                     RetryFile.WriteAllText(filePath, errorText);
                 }
                 catch
-                {  /* 输出最近一次运行时运行的异常，方便调试程序，忽略写文件出现的异常。 */
+                {  *//* 输出最近一次运行时运行的异常，方便调试程序，忽略写文件出现的异常。 *//*
                 }
             }
         } 
 }
+*/

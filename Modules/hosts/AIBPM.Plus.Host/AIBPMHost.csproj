@@ -5,6 +5,7 @@
 		<IsPackable>true</IsPackable>
 		<Company>AIliCloud</Company>
 		<Authors>Leo</Authors>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -30,8 +31,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Modules\AI\AI.BPM\AI.BPM.csproj" />
-		<ProjectReference Include="..\..\..\src\platform\ZhonTai.ApiUI\ZhonTai.ApiUI.csproj" /> 
+		<ProjectReference Include="..\..\..\src\platform\ZhonTai.ApiUI\ZhonTai.ApiUI.csproj" />
+		<ProjectReference Include="..\..\AI\AI.BPM\AI.BPM.csproj" /> 
 	</ItemGroup>
 
 	<ItemGroup>
