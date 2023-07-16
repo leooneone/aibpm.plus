@@ -418,27 +418,27 @@ namespace AI.BPM.Services.WorkItem
         {
             var previousActivityId = activityInput.CurrentActivity.Id;
             var nextActivities = await srv.AddNextActivitiesAsync(activityInput);
-
-            nextActivities.ForEach(async nextActivity =>
+            for (var k = 0; k < nextActivities.Count; k++)
             {
+                var nextActivity = nextActivities[k];
                 //切换当前活动节点
                 activityInput.CurrentActivity = nextActivity;
                 var nextSrv = GetService(nextActivity.Type);
 
-           
-                var res = await nextSrv.WhatsNext( activityInput, previousActivityId);
+
+                var res = await nextSrv.WhatsNext(activityInput, previousActivityId);
                 if (res.IsFindNext)
                 {
-                     
+
                     await GoNext(nextSrv, activityInput);
                 }
-                if(res.IsAddTodo)
+                if (res.IsAddTodo)
                 {
-                   
                     await nextSrv?.AddNextWorkItems(activityInput, previousActivityId);
                 }
 
-            });
+            }
+             
         }
         /// <summary>
         /// 工作项提交
