@@ -63,7 +63,16 @@ namespace AI.BPM.Domain.Activity
            public int FormId { get; set; }
     }
 
-    
+    public enum WhenNullParticipant
+    {
+        //直接通过
+        Pass = 0,
+        /// <summary>
+        /// 转给流程管理员
+        /// </summary>
+        ToAdmin = 1
+    }
+
     public class Approve {
         /// <summary>
         /// 组织类型，当选项为director 时有效
@@ -74,6 +83,13 @@ namespace AI.BPM.Domain.Activity
         /// 例如部门内部逐级主管审批 但是不包含部门负责人(经理可能会单独设置一个审批节点）
         /// </summary>
         public bool IsDirectorIn { get; set; } = false;
+
+
+
+        /// <summary>
+        /// 当找不到对应节点参与人的时候的处理方法
+        /// </summary>
+        public WhenNullParticipant WhenNullParticipant { get; set; }
         /// <summary>
         /// 節點參與人
         /// </summary>

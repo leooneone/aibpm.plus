@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ZhonTai.DynamicApi": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:60642;http://localhost:60649"
+    }
+  }
+}

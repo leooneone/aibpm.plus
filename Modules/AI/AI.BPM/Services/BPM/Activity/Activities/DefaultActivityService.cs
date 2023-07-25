@@ -26,6 +26,7 @@ using ZhonTai.Admin.Services;
 using AI.BPM.Services.Organization.X;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Diagnostics;
+using AI.BPM.Services.BPMSetting;
 
 namespace AI.BPM.Services.BPM.Activity.Activities
 {
@@ -50,6 +51,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         protected IActivityService _activityService => LazyGetRequiredService<IActivityService>();
         protected IOrganizationService _orgService => LazyGetRequiredService<IOrganizationService>();
         protected IWorkItemRepository _workItemRepository => LazyGetRequiredService<IWorkItemRepository>();
+        protected IBPMSettingService _bpmSettingService => LazyGetRequiredService<IBPMSettingService>();
         /// <summary>
         /// 工作项提交
         /// </summary>
@@ -297,44 +299,59 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         {
 
             var list = new List<EmployeeSelectDto>();
-            participants.ToList().ForEach(v =>
+            var particpantsList = participants.ToList();
+            for (var m = 0; m < particpantsList.Count; m++)
+             
+            
             {
+                var v = particpantsList[m];
                 if (v.Key == "user")
                 {
-                    v.Value.ForEach(async h =>
+
+                    v.Value.ForEach( h =>
                     {//直接賦值即可
                         list.Add(new EmployeeSelectDto { Id = h.Id, Name = h.Name, Type = h.Type });
                     });
                 }
                 else if (v.Key == "role")
                 {
-
-                    v.Value.ForEach(async h =>
+                    for (var k = 0; k < v.Value.Count; k++)
                     {
-                        //根據崗位查找員工
-                        var employees = await _orgService.GetEmployeesByRoleAsync(h.Id);
+                        var employees = await _orgService.GetEmployeesByRoleAsync(v.Value[k].Id);
 
                         list.AddRange(employees);
-                    });
+                    }
+                    
                 }
                 else if (v.Key == "org")
                 {
-                    v.Value.ForEach(async h =>
+
+                    for (var k = 0; k < v.Value.Count; k++)
                     {
-                        var employees = await _orgService.GetEmployeesByOUAsync(h.Id);
+                        var employees = await _orgService.GetEmployeesByOUAsync(v.Value[k].Id);
+
                         list.AddRange(employees);
-                    });
+                    }
+ 
                 }
 
 
-            }
-            );
+            } 
             return list;
         }
 
         #endregion
         #region 工作项通用操作
+        /// <summary>
+        /// 获取流程配置
+        /// </summary>
+        /// <returns></returns>
+        protected async Task<BPMSettingEntity> GetSetting()
+        {
 
+            var setting = await _bpmSettingService.GetAsync();
+            return setting;
+        }
         /// <summary>
         /// 获取流程所有工作项节点
         /// </summary>

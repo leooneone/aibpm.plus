@@ -41,12 +41,14 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             var instance = activityInput.Instance;
             var items = await _workItemRepository.Select.Where(w => w.InstanceId == instance.Id && (w.State == ActivityState.ToDo || w.State == ActivityState.Waiting)).ToListAsync();
             //关闭所有未完成工作项
-            items.ForEach(async item =>
+            for(var k=0; k < items.Count;k++)
+            
             {
+                var item = items[k];
                 //不需要取消傳閱
                 if (item.Type != ActivityType.Copy)
                     await CancelWorkItem(item.Id, "流程结束，工作项取消");
-            });
+            }
 
 
             instance.FinishedTime = DateTime.Now;

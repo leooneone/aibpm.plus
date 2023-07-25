@@ -94,44 +94,52 @@ public class OrganizationService : BaseService, IOrganizationService, IDynamicAp
     /// <returns></returns>
     [NonAction]
     [NonDynamicApi]
-    public  async Task<List<EmployeeSelectDto>> GetParticipants(Dictionary<string, List<Participant>> participants)
+
+    public async Task<List<EmployeeSelectDto>> GetParticipants(Dictionary<string, List<Participant>> participants)
     {
 
         var list = new List<EmployeeSelectDto>();
-        participants.ToList().ForEach(v =>
+        var particpantsList = participants.ToList();
+        for (var m = 0; m < particpantsList.Count; m++)
+
+
         {
+            var v = particpantsList[m];
             if (v.Key == "user")
             {
-                v.Value.ForEach(async h =>
+
+                v.Value.ForEach(h =>
                 {//直接賦值即可
                     list.Add(new EmployeeSelectDto { Id = h.Id, Name = h.Name, Type = h.Type });
                 });
             }
             else if (v.Key == "role")
             {
-
-                v.Value.ForEach(async h =>
+                for (var k = 0; k < v.Value.Count; k++)
                 {
-                    //根據崗位查找員工
-                    var employees = await GetEmployeesByRoleAsync(h.Id);
+                    var employees = await GetEmployeesByRoleAsync(v.Value[k].Id);
 
                     list.AddRange(employees);
-                });
+                }
+
             }
             else if (v.Key == "org")
             {
-                v.Value.ForEach(async h =>
+
+                for (var k = 0; k < v.Value.Count; k++)
                 {
-                    var employees = await GetEmployeesByOUAsync(h.Id);
+                    var employees = await GetEmployeesByOUAsync(v.Value[k].Id);
+
                     list.AddRange(employees);
-                });
+                }
+
             }
 
 
         }
-        );
         return list;
     }
+     
     /// <summary>
     /// 主属组织单元的领导
     /// </summary>

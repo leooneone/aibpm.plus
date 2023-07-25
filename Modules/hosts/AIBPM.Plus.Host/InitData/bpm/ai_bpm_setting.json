@@ -1,0 +1,20 @@
+[
+  {
+    "adminId": 391449091633221,
+    "referenceNoSetting": {
+      "format": "{DateFormat}{No}",
+      "dateFormat": "YYYY",
+      "length": 12,
+      "type": 1
+    }
+  },
+  {
+    "id": 442750068891717,
+    "adminId": 391450500943941,
+    "referenceNoSetting": {
+      "format": "{DateFormat}{No}",
+      "dateFormat": "YYYY",
+      "length": 12
+    }
+  }
+]

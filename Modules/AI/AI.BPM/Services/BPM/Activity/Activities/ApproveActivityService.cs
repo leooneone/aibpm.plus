@@ -96,10 +96,12 @@ namespace AI.BPM.Services.BPM.Activity.Activities
                 (w.State == ActivityState.Waiting || w.State == ActivityState.ToDo)).ToListAsync();
                 //await _workItemRepository.Select.Where(w => w.InstanceId == instance.Id && w.ActivityId == workItem.ActivityId && w.Id != workItem.Id && (w.State == ActivityState.Waiting || w.State == ActivityState.ToDo)).ToListAsync();
                 //关闭所有未完成工作项
-                items.ForEach(async item =>
+                for (var k = 0; k < items.Count; k++)
                 {
-                    await CancelWorkItem(item.Id, "其他审批人已拒绝，工作项取消");
-                });
+
+                    await CancelWorkItem(items[k].Id, "其他审批人已拒绝，工作项取消");
+                }
+               
                 //自动驳回到开始节点
                 // AddStartWorkItem(activity, workItem.ActivityId, activityInput);
 
@@ -124,10 +126,12 @@ namespace AI.BPM.Services.BPM.Activity.Activities
 
                     var items = await _workItemRepository.Select.Where(w => w.InstanceId == instance.Id && w.GroupId == workItem.GroupId && w.Id != workItem.Id && (w.State == ActivityState.Waiting || w.State == ActivityState.ToDo)).ToListAsync();
                     //关闭所有未完成工作项
-                    items.ForEach(async item =>
+                   
+                    for (var k = 0; k < items.Count; k++)
                     {
-                        await CancelWorkItem(item.Id, "其他审批人已处理，工作项取消");
-                    });
+
+                        await CancelWorkItem(items[k].Id, "其他审批人已拒绝，工作项取消");
+                    }
                     IsFindNext = true;
                 }
                 else
@@ -282,10 +286,10 @@ namespace AI.BPM.Services.BPM.Activity.Activities
                     { //管理员id
                     };
                 }
-            if (employees.Count == 0)
+          /*  if (employees.Count == 0)
             {//无人处理，转给管理员
                 employees.Add(0);
-            }
+            }*/
             return employees;
         }
 
@@ -346,6 +350,24 @@ namespace AI.BPM.Services.BPM.Activity.Activities
                 throw ResultOutput.Exception("未找到活动节点");
             var employees = await GetParticipants(activityInput);
             var list = new List<WorkItemEntity>();
+
+
+
+            if (employees.Count == 0)
+            {
+                if (activity.Approve.WhenNullParticipant == WhenNullParticipant.ToAdmin)
+                {
+                    var setting = await base.GetSetting();
+                    employees.Add(setting.AdminId);
+                }
+                else
+                        if (activity.Approve.WhenNullParticipant == WhenNullParticipant.Pass)
+                {
+                    ///直接返回 继续后续流转；
+                    return list;
+                }
+            }
+
             var idx = 0;
             var now = DateTime.Now;
 

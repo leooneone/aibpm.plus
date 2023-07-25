@@ -94,8 +94,10 @@ namespace AI.BPM.Services.WorkflowTemplate
             }*/
 
             var res = new List<WorkflowTemplateEntity>();
-            list.ForEach(async tpl =>
+            for(var k= 0; k < list.Count;k++)
+             
             {
+                var tpl= list[k];
                 var setting = JsonConvert.DeserializeObject<AI.Core.Model.BPM.BaseSetting>(tpl.BasicContext);
 
                 if (setting != null)
@@ -110,7 +112,7 @@ namespace AI.BPM.Services.WorkflowTemplate
                     }
 
                 }
-            });
+            }
 
             return Mapper.Map<List<WorkflowTemplateListOutput>>(res);
         }

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ZhonTai.ApiUI": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:60654;http://localhost:60655"
+    }
+  }
+}

@@ -465,6 +465,7 @@ public class DbHelper
 
             var fsql = freeSqlBuilder.Build();
 
+            fsql.UseJsonMap();
             //生成数据
             if (dbConfig.GenerateData && !dbConfig.CreateDb && !dbConfig.SyncData)
             {

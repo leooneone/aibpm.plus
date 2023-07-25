@@ -85,9 +85,14 @@ namespace AI.BPM.Services.Instance
         {
             var query = _instanceRepository.Select;
 
+            
             if (input.Filter.IsHandled)
                 query.InnerJoin<WorkItemEntity>((ins, w) => w.InstanceId == ins.Id && w.ExecutorId == User.Id);
-
+            else
+            {
+                ///这里需要根据数据权限进行查询，自行处理，暂时示例仅允许查看自己的
+                query.Where(ins => ins.InitiatorId == User.Id);
+            }
             var list = await query.WhereIf(input.Filter?.State != null, i => i.State == input.Filter.State)
              .WhereDynamicFilter(input.DynamicFilter)
 
