@@ -148,11 +148,8 @@ namespace AI.BPM.Services.Activity
             return AiliCloud.Helpers.JsonHelper.Serialize(FormData);
         }
 
-        /// <summary>
-        /// 设置权限
-        /// </summary>
-        /// <param name="properties"></param>
-        /// <param name="fields"></param>
+
+
         void SetPermission(List<FieldPermission> fieldPermissions, List<JObject> formItems)
         {
             var permissions = new Dictionary<string, int>();
@@ -162,6 +159,14 @@ namespace AI.BPM.Services.Activity
                 var permission = fieldPermissions[k];
                 permissions[permission.FieldId] = permission.FormOperate;
             }
+            var lst = formItems.Select(a => a as JToken).ToList();
+            SetItemPermission(permissions, lst);
+        }
+
+
+        void SetItemPermission(Dictionary<string, int> permissions, IList<JToken> formItems)
+        {
+
             ///根據權限設置表單控件
             for (var k = 0; k < formItems.Count; k++)
             {
@@ -170,6 +175,12 @@ namespace AI.BPM.Services.Activity
                 //field.ContainsKey("formId") 
                 //1只讀 2 可編輯 3 隱藏
                 var formId = field.Value<string>("vModel");
+                var lst = field.Value<IList<JToken>>("children");
+                if (lst != null)
+                {
+                    SetItemPermission(permissions, lst);
+
+                }
                 if (formId == null)
                     continue;
                 if (permissions.ContainsKey(formId))
@@ -195,6 +206,7 @@ namespace AI.BPM.Services.Activity
                     field["disabled"] = true;
 
                 }
+
 
             }
         }
