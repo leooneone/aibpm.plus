@@ -20,6 +20,7 @@ using AI.BPM.Services.Instance;
 using AI.BPM.Services.WorkflowTemplate;
 using AI.BPM.Services.WorkItem;
 using AI.Core.Repository.BPM;
+using AI.Core.Managers;
 using System.Collections.Concurrent;
 using ZhonTai.Admin.Domain.Role;
 using ZhonTai.Admin.Services;
@@ -35,7 +36,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <param name="input"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public override async Task<(bool IsFindNext, bool IsAddTodo)> WhatsNext( ActivityOutput activityInput, string previousActvitiyId)
+        public override async Task<(bool IsFindNext, bool IsAddTodo)> WhatsNext( ActivityInput activityInput, string previousActvitiyId)
         { 
             ///结束时
             var instance = activityInput.Instance;
@@ -54,11 +55,13 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             instance.FinishedTime = DateTime.Now;
             instance.State = InstanceState.Finished;
 
-            //如需要，可在此处根据表单数据将数据
+            //如需要，可在此处根据表单数据将数据关联到自己的业务表
 
             await _instanceRepository.UpdateAsync(instance);
+          
+           var workItem= await AddEndWorkItem(activityInput,previousActvitiyId);
+          //  await FinishWorkItem(workItem.Id, "", ApprovalResult.NA);
             Console.WriteLine("流程结束");
-            await AddEndWorkItem(activityInput,previousActvitiyId);
             return (IsFindNext: false, IsAddTodo: false);
         }
 
@@ -75,7 +78,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
         [Transaction]
-        async Task<WorkItemEntity> AddEndWorkItem(ActivityOutput activityInput, string previousActivityId)
+        async Task<WorkItemEntity> AddEndWorkItem(ActivityInput  activityInput, string previousActivityId)
         {
             var instance = activityInput.Instance;
             var tpl = activityInput.Template;
@@ -102,9 +105,9 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             item.ParticipantId = 0;
             item.State = ActivityState.Finished;
             item.FinishTime = DateTime.Now;
-
+            
             var res = await _workItemRepository.InsertAsync(item);
-
+           
             return res;
         }
     }

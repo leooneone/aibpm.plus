@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="copy .\bin\debug\net7.0\AI.MyAddInDemo.dll  ..\..\hosts\AIBPM.Plus.Host\addins\AI.MyAddInDemo.dll " />
+	</Target>
+
+  
+
+	<ItemGroup>
+	  <ProjectReference Include="..\AI.AddIn\AI.AddIn.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -22,7 +22,7 @@ namespace AI.Core.Model.BPM
 
         public int GroupId { get; set; }
 
-        public WorkflowTemplate Template { get; set; }
+        public WorkflowTemplateEntity Template { get; set; }
         public int Priority { get; set; }
 
         /// <summary>

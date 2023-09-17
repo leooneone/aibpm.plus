@@ -27,10 +27,16 @@ using AI.BPM.Services.Organization.X;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Diagnostics;
 using AI.BPM.Services.BPMSetting;
+using FreeScheduler;
+using AI.Core.Managers;
 
 namespace AI.BPM.Services.BPM.Activity.Activities
 {
-    public class ActivityOutput
+    /// <summary>
+    /// 纯粹偷懒
+    /// </summary>
+    public class    ActivityOutput: ActivityInput { }
+    public class ActivityInput
     {
 
         public InstanceEntity Instance { get; set; }
@@ -128,7 +134,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
                 if (await CanContinue(activityOutput, workItem, input))
                 {
 
-                    return activityOutput;
+                    return activityOutput  ;
                  //   return await AddNextActivitiesAsync(tpl, workItem.ActivityId, formModel, instance, input.OptionalParticipants);
 
                 }
@@ -149,7 +155,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// 是否进入下一个活动
         /// </summary>
         /// <returns></returns>
-        public virtual async Task<bool> CanContinue(ActivityOutput activityInput , WorkItemEntity workItem, InstanceDataInput input)
+        public virtual async Task<bool> CanContinue(ActivityInput  activityInput , WorkItemEntity workItem, InstanceDataInput input)
         {
             //Task.FromResult(true)
             return true;
@@ -158,11 +164,10 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <summary>
         /// 是否继续通过并继续查找后续
         /// </summary>
-        /// <param name="activity"></param>
         /// <param name="output"></param>
         /// <param name="previousActvitiyId"></param>
         /// <returns></returns>
-        public virtual async Task<(bool IsFindNext, bool IsAddTodo)> WhatsNext(ActivityOutput output, string previousActvitiyId)
+        public virtual async Task<(bool IsFindNext, bool IsAddTodo)> WhatsNext(ActivityInput  output, string previousActvitiyId)
         { 
             return (IsFindNext: false, IsAddTodo: true);
             ///如果满足所有条件，则通过并查找后续 活动
@@ -175,14 +180,9 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <summary>
         /// 添加后续活动节点
         /// </summary>
-        /// <param name="tpl"></param>
-        /// <param name="activityId"></param>
-        /// <param name="formModel"></param>
-        /// <param name="instance"></param>
-        /// <param name="optionalParticipants"></param>
+        /// <param name="input"></param>
         /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-        public virtual async Task<List<ActivityModel>> AddNextActivitiesAsync(ActivityOutput input)
+        public virtual async Task<List<ActivityModel>> AddNextActivitiesAsync(ActivityInput  input)
         {
             List<ActivityModel> nextActivities = new List<ActivityModel>();
             _activityService.FindNextActivity(input.Template, input.CurrentActivity.Id, nextActivities, input.FormModel);
@@ -214,7 +214,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <param name="instance"></param>
         /// <param name="activity"></param>
         /// <returns></returns>
-        public virtual async Task<List<long>> GetParticipants(ActivityOutput acitivityInput)
+        public virtual async Task<List<long>> GetParticipants(ActivityInput  acitivityInput)
         {
 
             //0表示找不到或者不需要處理人
@@ -224,16 +224,15 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             return employees;
         }
 
-    
+
         /// <summary>
         /// 添加工作项
         /// </summary>
-        /// <param name="instance"></param>
-        /// <param name="templateId"></param>
-        /// <param name="activity"></param>
+        /// <param name="activityInput"></param>
+        /// <param name="previousActivityId"></param>
         /// <returns></returns>
 
-        public virtual async Task<List<WorkItemEntity>> AddNextWorkItems(ActivityOutput activityInput,  string previousActivityId)
+        public virtual async Task<List<WorkItemEntity>> AddNextWorkItems(ActivityInput  activityInput,  string previousActivityId)
         {
 
             var activity = activityInput.CurrentActivity;
@@ -250,9 +249,9 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             var groupId = AiliCould.Core.Helpers.UUIDHelper.GetUUID();
 
 
-            var items = await GetWorkItems(activityInput.Instance.Id);
+            //var items = await GetWorkItems(activityInput.Instance.Id);
             //提取发起人和者审批人
-            items = items.Where(item => item.Type == ActivityType.Approve && item.State == ActivityState.Finished).ToList();
+            //items = items.Where(item => item.Type == ActivityType.Approve && item.State == ActivityState.Finished).ToList();
 
             employees.ForEach(employeeId =>
             {
@@ -272,8 +271,8 @@ namespace AI.BPM.Services.BPM.Activity.Activities
                 item.index = ++idx;
                 item.Total = employees.Count;
                 item.ParticipantId = employeeId;
-
-                item.State = ActivityState.ToDo; 
+                ActiveWorkItem(item, activity);
+             
 
                 list.Add(item);
             });
@@ -287,13 +286,13 @@ namespace AI.BPM.Services.BPM.Activity.Activities
 
 
         #region 活动通用操作
-        
+
 
 
         /// <summary>
         /// 获取配置的参与人
         /// </summary>
-        /// <param name="humans"></param> 
+        /// <param name="participants"></param>
         /// <returns></returns>
         protected async Task<List<EmployeeSelectDto>> GetParticipants(Dictionary<string, List<Participant>> participants)
         {
@@ -310,7 +309,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
 
                     v.Value.ForEach( h =>
                     {//直接賦值即可
-                        list.Add(new EmployeeSelectDto { Id = h.Id, Name = h.Name, Type = h.Type });
+                        list.Add(new EmployeeSelectDto { Id = h.Id, Name = h.Name/*, Type = h.Type*/ });
                     });
                 }
                 else if (v.Key == "role")
@@ -352,6 +351,17 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             var setting = await _bpmSettingService.GetAsync();
             return setting;
         }
+        /// <summary>
+        /// 激活工作项
+        /// </summary>
+        /// <param name="wi"></param>
+        /// <param name="activity"></param>
+        protected void  ActiveWorkItem(WorkItemEntity wi, ActivityModel activity)
+        {
+            wi.State = ActivityState.ToDo;
+            OnActivityStart(activity);
+        }
+
         /// <summary>
         /// 获取流程所有工作项节点
         /// </summary>
@@ -403,13 +413,52 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             /// 
         }
         /// <summary>
-        /// 完成工作项
+        /// 活动开始时
         /// </summary>
-        /// <param name="itemId"></param>
-        /// <param name="comment"></param>
-        /// <param name="approvalResult"></param>
+        /// <param name="currentActivity"></param>
         /// <returns></returns>
-        protected async Task FinishWorkItem(long itemId, string comment, ApprovalResult approvalResult, long nextWorkItemId = 0)
+        public async Task OnActivityStart(ActivityModel currentActivity)
+        {
+            var bizName = currentActivity.Operation?.BeforeActivity;
+            if (!string.IsNullOrEmpty(bizName))
+            {
+                var biz = MyAddInManager.Instance.GetBiz(bizName);
+                //if (biz != null)
+                biz?.Run();
+
+            }
+
+        }
+
+        /// <summary>
+        /// 活动结束后
+        /// </summary>
+        /// <param name="currentActivity"></param>
+        /// <returns></returns>
+
+        public async Task OnActivityFinished(ActivityModel currentActivity) {
+            
+            //var workItem = await _workItemRepository.GetAsync(itemId);
+           // var tpl = await _workflowTemplateRepository.GetAsync(workItem.WorkflowTemplateId);
+            //var currentActivity = _activityService.GetActivity(tpl, workItem.ActivityId);
+            var bizName = currentActivity.Operation?.AfterActivity;
+            if (!string.IsNullOrEmpty(bizName))
+            {
+                var biz = MyAddInManager.Instance.GetBiz(bizName);
+                //if (biz != null)
+                biz?.Run();
+
+            }
+        }
+
+            /// <summary>
+            /// 完成工作项
+            /// </summary>
+            /// <param name="itemId"></param>
+            /// <param name="comment"></param>
+            /// <param name="approvalResult"></param>
+            /// <returns></returns>
+            protected async Task FinishWorkItem(long itemId, string comment, ApprovalResult approvalResult, long nextWorkItemId = 0)
         {
             if (!(itemId > 0))
             {

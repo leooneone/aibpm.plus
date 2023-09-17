@@ -27,6 +27,9 @@ using System.Diagnostics;
 
 namespace AI.BPM.Services.BPM.Activity.Activities
 {
+    /// <summary>
+    /// 审批活动
+    /// </summary>
     public class ApproveActivityService : DefaultActivityService
     {
         public override async Task<ActivityOutput> Submit(InstanceDataInput input)
@@ -64,7 +67,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// 是否可以通过，查找后续活动节点
         /// </summary>
         /// <returns></returns>
-        public override async Task<bool> CanContinue(ActivityOutput activityInput, WorkItemEntity workItem, InstanceDataInput input)
+        public override async Task<bool> CanContinue(ActivityInput  activityInput, WorkItemEntity workItem, InstanceDataInput input)
         {
 
             return await ProcessSignWorkItem(activityInput, workItem, input.ApprovalResult);
@@ -80,7 +83,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <param name="workItem"></param>
         /// <param name="approvalResult"></param>
         /// <returns></returns>
-        async Task<bool> ProcessSignWorkItem(ActivityOutput activityInput, WorkItemEntity workItem, ApprovalResult approvalResult)
+        async Task<bool> ProcessSignWorkItem(ActivityInput  activityInput, WorkItemEntity workItem, ApprovalResult approvalResult)
         {
             ///是否查找后续节点   
             bool IsFindNext = false;
@@ -143,8 +146,9 @@ namespace AI.BPM.Services.BPM.Activity.Activities
                         IsFindNext = true;
                     else
                     {
-                        //激活後續工作
-                        nextWorkItem.State = ActivityState.ToDo;
+                       
+                        //nextWorkItem.State = ActivityState.ToDo;
+                        ActiveWorkItem(nextWorkItem, currentActivity);
                         await _workItemRepository.UpdateAsync(nextWorkItem);
                     }
 
@@ -186,7 +190,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <param name="instance"></param>
         /// <param name="activity"></param>
         /// <returns></returns>
-        public override async Task<List<long>> GetParticipants(ActivityOutput acitivityInput)
+        public override async Task<List<long>> GetParticipants(ActivityInput  acitivityInput)
         {
             var activity = acitivityInput.CurrentActivity;
             var instance = acitivityInput.Instance;
@@ -297,7 +301,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
 
 
 
-        public virtual async Task<WorkItemEntity> AddReturnWorkItem(ActivityOutput activityInput, string PreviousActivityId)
+        public virtual async Task<WorkItemEntity> AddReturnWorkItem(ActivityInput  activityInput, string PreviousActivityId)
         {
             ActivityModel activity = activityInput.CurrentActivity;
             var instance = activityInput.Instance;
@@ -325,8 +329,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             item.index = 1;
             item.Total = 1;
             item.ParticipantId = instance.InitiatorId;
-
-            item.State = ActivityState.ToDo;
+            ActiveWorkItem(item, activity); 
 
 
             var res = await _workItemRepository.InsertAsync(item);
@@ -341,7 +344,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <param name="activity"></param>
         /// <returns></returns>
 
-        public override async Task<List<WorkItemEntity>> AddNextWorkItems(ActivityOutput activityInput, string PreviousActivityId)
+        public override async Task<List<WorkItemEntity>> AddNextWorkItems(ActivityInput  activityInput, string PreviousActivityId)
         {
             ActivityModel activity = activityInput.CurrentActivity;
             var instance = activityInput.Instance;
@@ -401,12 +404,12 @@ namespace AI.BPM.Services.BPM.Activity.Activities
                 if (activity?.Approve?.SignType == "string")
                 {
                     if (idx == 1)
-                        item.State = ActivityState.ToDo;
+                        ActiveWorkItem(item, activity);
                     else
                         item.State = ActivityState.Waiting;
                 }
                 else
-                    item.State = ActivityState.ToDo;
+                    ActiveWorkItem(item, activity); 
 
 
 

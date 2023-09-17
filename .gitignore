@@ -396,3 +396,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 **/wwwroot/upload
+/testtask/testtask.csproj
+*.dll

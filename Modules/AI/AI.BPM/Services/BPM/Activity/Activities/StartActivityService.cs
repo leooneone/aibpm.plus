@@ -175,10 +175,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             item.Total = 1;
             //发起人是用户自己
             item.ParticipantId = User.Id;
-
-          
-              item.State = ActivityState.ToDo;
-
+            ActiveWorkItem(item, activity); 
 
             var res = await _workItemRepository.InsertAsync(item);
 

@@ -26,6 +26,9 @@ using ZhonTai.Admin.Services;
 
 namespace AI.BPM.Services.BPM.Activity.Activities
 {
+    /// <summary>
+    /// 并行网关
+    /// </summary>
     public class ParallelGatewayActivityService : DefaultActivityService
     {
         /// <summary>
@@ -41,7 +44,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
 
         }
         
-        public  override async Task<( bool IsFindNext, bool IsAddTodo)> WhatsNext( ActivityOutput activityInput,string previousActvitiyId) {
+        public  override async Task<( bool IsFindNext, bool IsAddTodo)> WhatsNext(ActivityInput  activityInput,string previousActvitiyId) {
 
             var IsFindNext = await ProcessParallelWorkItem(activityInput, previousActvitiyId);
 
@@ -101,7 +104,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <param name="optionalParticipants"></param>
         /// <returns></returns>
         [Transaction]
-        async Task<bool> ProcessParallelWorkItem( ActivityOutput activityInput,string preActvitiyId)
+        async Task<bool> ProcessParallelWorkItem(ActivityInput activityInput,string preActvitiyId)
         {
             ///是否查找后续节点   
             bool IsFindNext = false;
@@ -139,7 +142,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <param name="instance"></param>
         /// <param name="activity"></param>
         /// <returns></returns>
-        public override async Task<List<long>> GetParticipants(ActivityOutput activityInput)
+        public override async Task<List<long>> GetParticipants(ActivityInput  activityInput)
         {
             var instance= activityInput.Instance;
             var activity = activityInput.CurrentActivity;
@@ -262,7 +265,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         /// <param name="activity"></param>
         /// <returns></returns>
 
-        public override async Task<List<WorkItemEntity>> AddNextWorkItems(ActivityOutput activityInput,string previousActivityId)
+        public override async Task<List<WorkItemEntity>> AddNextWorkItems(ActivityInput  activityInput,string previousActivityId)
         {
             var activity = activityInput.CurrentActivity;
             if (activity == null)

@@ -26,6 +26,9 @@ using ZhonTai.Admin.Services;
 
 namespace AI.BPM.Services.BPM.Activity.Activities
 {
+    /// <summary>
+    /// 默认就是排他网关，继承即可
+    /// </summary>
     public class ExclusiveGatewayActivityService : DefaultActivityService
     {
       

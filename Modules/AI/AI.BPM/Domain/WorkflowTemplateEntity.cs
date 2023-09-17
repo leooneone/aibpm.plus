@@ -20,9 +20,7 @@ namespace AI.BPM.Domain.WorkflowTemplate
      public string FromId { get; set; }
         public string ToId { get; set; }
     }
-    public class WorkflowTemplate : WorkflowTemplateEntity { 
-    
-    }
+  
 
     public enum TemplateState{
         /// <summary>

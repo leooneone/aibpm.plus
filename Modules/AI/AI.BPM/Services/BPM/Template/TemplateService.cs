@@ -27,6 +27,7 @@ using ZhonTai.Admin.Domain.Role;
 using Newtonsoft.Json;
 using AI.BPM.Services.Organization.X;
 using AI.Core.Helpers;
+using AI.Core.Managers;
 using System.Text;
 using System.Security.Cryptography.X509Certificates;
 
@@ -60,18 +61,25 @@ namespace AI.BPM.Services.WorkflowTemplate
 
             return dto;
         }
-
-
-
-
         /// <summary>
-        /// 获取流程模板
+        /// 获取可用业务列表
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="version"></param>
         /// <returns></returns>
 
-        public async Task<TemplateGetOutput> GetAsync(long id)
+        public async Task<IList<string>> GetListAsync(long id)
+        {
+            return  await Task.FromResult(   MyAddInManager.Instance.GetBizList());
+        }
+
+            /// <summary>
+            /// 获取流程模板
+            /// </summary>
+            /// <param name="id"></param>
+            /// <param name="version"></param>
+            /// <returns></returns>
+
+            public async Task<TemplateGetOutput> GetAsync(long id)
         { 
             var ent = await _workflowTemplateRepository.Select
           .WhereDynamic(id)

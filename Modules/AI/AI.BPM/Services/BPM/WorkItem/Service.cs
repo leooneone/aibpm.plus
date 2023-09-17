@@ -48,6 +48,7 @@ using System.Text.RegularExpressions;
 using AI.BPM.Services.BPM.Activity.Activities;
 using Ubiety.Dns.Core.Records;
 using FreeSql;
+using AI.Core.Managers;
 
 namespace AI.BPM.Services.WorkItem
 {
@@ -414,7 +415,7 @@ namespace AI.BPM.Services.WorkItem
        /// <param name="srv"></param>
        /// <param name="activityInput"></param>
        /// <returns></returns>
-          async Task GoNext(DefaultActivityService srv, ActivityOutput activityInput)
+          async Task GoNext(DefaultActivityService srv, ActivityInput activityInput)
         {
             var previousActivityId = activityInput.CurrentActivity.Id;
             var nextActivities = await srv.AddNextActivitiesAsync(activityInput);
@@ -431,12 +432,14 @@ namespace AI.BPM.Services.WorkItem
                 {
 
                     await GoNext(nextSrv, activityInput);
+
                 }
                 if (res.IsAddTodo)
                 {
                     await nextSrv?.AddNextWorkItems(activityInput, previousActivityId);
                 }
 
+                await srv.OnActivityFinished(activityInput.CurrentActivity);
             }
              
         }

@@ -27,6 +27,9 @@ using System.Diagnostics;
 
 namespace AI.BPM.Services.BPM.Activity.Activities
 {
+    /// <summary>
+    /// 除了没有审批意见外，其他和审批功能基本一致
+    /// </summary>
     public class DealActivityService : ApproveActivityService
     {
          

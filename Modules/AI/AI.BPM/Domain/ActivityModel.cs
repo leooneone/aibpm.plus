@@ -72,7 +72,17 @@ namespace AI.BPM.Domain.Activity
         /// </summary>
         ToAdmin = 1
     }
-
+    public class Operation
+    {
+        /// <summary>
+        /// 活动开始前任务 插件调用形式
+        /// </summary>
+        public string BeforeActivity { get; set; }
+        /// <summary>
+        /// 活动结束后任务
+        /// </summary>
+        public string AfterActivity { get; set; }
+    }
     public class Approve {
         /// <summary>
         /// 组织类型，当选项为director 时有效
@@ -140,7 +150,7 @@ namespace AI.BPM.Domain.Activity
         public List<ActivityModel> ConditionNodes { get; set; }
 
         public ActivityModel ChildNode { get; set; }  
-
+        public Operation Operation { get; set; }   
         public Approve Approve { get; set; }
 
         public List<FieldPermission> Permission;

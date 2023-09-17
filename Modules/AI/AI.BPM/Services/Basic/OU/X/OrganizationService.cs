@@ -110,7 +110,7 @@ public class OrganizationService : BaseService, IOrganizationService, IDynamicAp
 
                 v.Value.ForEach(h =>
                 {//直接賦值即可
-                    list.Add(new EmployeeSelectDto { Id = h.Id, Name = h.Name, Type = h.Type });
+                    list.Add(new EmployeeSelectDto { Id = h.Id, Name = h.Name/*, Type = h.Type*/ });
                 });
             }
             else if (v.Key == "role")
