@@ -371,7 +371,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
         {
 
             ///获取该实例所有工作节点
-            var items = await _workItemRepository.Where(i => i.InstanceId == instanceId).ToListAsync(
+            var items = await _workItemRepository.Where(i => i.InstanceId == instanceId).OrderBy(w=>w.StartTime).ToListAsync(
                 r => new WorkItemOutput
                 {
                     Type = r.Type,
@@ -467,7 +467,7 @@ namespace AI.BPM.Services.BPM.Activity.Activities
             var workItem = await _workItemRepository.GetAsync(itemId);
             //更新處理人
             workItem.ExecutorId = User.Id;
-            workItem.State = ActivityState.Finished;
+            workItem.State = approvalResult== ApprovalResult.False?ActivityState.Reject: ActivityState.Finished;
             workItem.FinishTime = DateTime.Now;
             workItem.Comment = comment;
             workItem.ApprovalResult = approvalResult;

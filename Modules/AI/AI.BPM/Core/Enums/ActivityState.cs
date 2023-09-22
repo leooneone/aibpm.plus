@@ -14,10 +14,10 @@ namespace AI.BPM.Core.Enums
     public enum ActivityState : int
     {
         /// <summary>
-        /// 等待
+        /// 草稿
         /// </summary>
-        [Description("等待")]
-        Waiting = 1<<7 | DisplayType.Info,
+        [Description("草稿")]
+        Draft = 1 << 7 | DisplayType.Warning,
         /// <summary>
         /// 運行中
         /// </summary>
@@ -28,6 +28,7 @@ namespace AI.BPM.Core.Enums
         /// </summary>
         [Description("待阅")]
         UnRead = 3 << 7 | DisplayType.Default,
+
         /// <summary>
         /// 已完成
         /// </summary>
@@ -39,19 +40,25 @@ namespace AI.BPM.Core.Enums
         [Description("已取消")]
         Canceled = 5 << 7 | DisplayType.Danger,
         /// <summary>
-        /// 草稿
+        /// 已取消
         /// </summary>
-        [Description("草稿")]
-        Draft = 6 << 7 | DisplayType.Warning,
+        [Description("已拒绝")]
+        Reject = 6 << 7 | DisplayType.Danger,
+
+        /// <summary>
+        /// 等待
+        /// </summary>
+        [Description("等待")]
+        Waiting = 7 << 7 | DisplayType.Info,
         /// <summary>
         /// 未知
         /// </summary>
         [Description("超时")]
-        Timeout = 7 << 7 | DisplayType.Danger,
+        Timeout = 8 << 7 | DisplayType.Danger,
         /// <summary>
         /// 未知
         /// </summary>
         [Description("跳过")]
-        Skiped = 8 << 7 | DisplayType.Warning,
+        Skiped = 9 << 7 | DisplayType.Warning,
     }
 }

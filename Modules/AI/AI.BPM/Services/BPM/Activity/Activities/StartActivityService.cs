@@ -57,9 +57,9 @@ namespace AI.BPM.Services.BPM.Activity.Activities
                     {//后续考虑委托办理和管理员权限可以代为操作
                         //throw ResultOutput.Exception("您不是该节点审批人，无权进行此操作！");
                     }
-                    if (workItem.State == ActivityState.Finished)
+                    if (workItem.State > ActivityState.UnRead)
                     {
-                        throw ResultOutput.Exception("该工作项已完成。");
+                        throw ResultOutput.Exception("该工作项当前不可操作。");
                     }
                     tpl = await _workflowTemplateRepository.GetAsync(workItem.WorkflowTemplateId);
                     instance = await _instanceRepository.GetAsync(workItem.InstanceId);

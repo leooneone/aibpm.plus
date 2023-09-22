@@ -16,9 +16,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="addins\**" />
 	  <Compile Remove="wwwroot\**" />
+	  <Content Remove="addins\**" />
 	  <Content Remove="wwwroot\**" />
+	  <EmbeddedResource Remove="addins\**" />
 	  <EmbeddedResource Remove="wwwroot\**" />
+	  <None Remove="addins\**" />
 	  <None Remove="wwwroot\**" />
 	</ItemGroup>
 
