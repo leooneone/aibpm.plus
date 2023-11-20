@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyModel;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
@@ -53,6 +52,14 @@ using ZhonTai.Admin.Core.Dto;
 using ZhonTai.DynamicApi.Attributes;
 using System.Text.RegularExpressions;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Text.Json.Serialization;
+using FreeRedis;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Caching.Distributed;
+using ZhonTai.Admin.Core.Captcha;
+using NLog;
+using Microsoft.Extensions.Logging;
 
 namespace ZhonTai.Admin.Core;
 
@@ -78,83 +85,120 @@ public class HostApp
     /// <param name="args"></param>
     public void Run(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
-
-        //使用NLog日志
-        builder.Host.UseNLog();
-
-        var services = builder.Services;
-        var env = builder.Environment;
-        var configuration = builder.Configuration;
-
-        var configHelper = new ConfigHelper();
-        var appConfig = ConfigHelper.Get<AppConfig>("appconfig", env.EnvironmentName) ?? new AppConfig();
-
-        //添加配置
-        builder.Configuration.AddJsonFile("./Configs/ratelimitconfig.json", optional: true, reloadOnChange: true);
-        if (env.EnvironmentName.NotNull())
+        var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+        try
         {
-            builder.Configuration.AddJsonFile($"./Configs/ratelimitconfig.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+            //应用程序启动
+            logger.Info("Application startup");
+
+            var builder = WebApplication.CreateBuilder(args);
+            _hostAppOptions?.ConfigurePreWebApplicationBuilder?.Invoke(builder);
+
+            builder.ConfigureApplication();
+            //清空日志供应程序，避免.net自带日志输出到命令台
+            builder.Logging.ClearProviders();
+            //使用NLog日志
+            builder.Host.UseNLog();
+
+            var services = builder.Services;
+            var env = builder.Environment;
+            var configuration = builder.Configuration;
+
+            var configHelper = new ConfigHelper();
+            var appConfig = ConfigHelper.Get<AppConfig>("appconfig", env.EnvironmentName) ?? new AppConfig();
+
+            //添加配置
+            configuration.AddJsonFile("./Configs/ratelimitconfig.json", optional: true, reloadOnChange: true);
+            if (env.EnvironmentName.NotNull())
+            {
+                configuration.AddJsonFile($"./Configs/ratelimitconfig.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+            }
+            configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            if (env.EnvironmentName.NotNull())
+            {
+                configuration.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+            }
+
+            var oSSConfigRoot = ConfigHelper.Load("ossconfig", env.EnvironmentName, true);
+            services.Configure<OSSConfig>(oSSConfigRoot);
+
+            //应用配置
+            services.AddSingleton(appConfig);
+
+            var hostAppContext = new HostAppContext()
+            {
+                Services = services,
+                Environment = env,
+                Configuration = configuration
+            };
+
+            //使用Autofac容器
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+            //配置Autofac容器
+            builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+            {
+                // 控制器注入
+                builder.RegisterModule(new ControllerModule());
+
+                // 单例注入
+                builder.RegisterModule(new SingleInstanceModule(appConfig));
+
+                // 模块注入
+                builder.RegisterModule(new RegisterModule(appConfig));
+
+                _hostAppOptions?.ConfigureAutofacContainer?.Invoke(builder, hostAppContext);
+            });
+
+            //配置Kestrel服务器
+            builder.WebHost.ConfigureKestrel((context, options) =>
+            {
+                //设置应用服务器Kestrel请求体最大为100MB
+                options.Limits.MaxRequestBodySize = appConfig.MaxRequestBodySize;
+            });
+
+            //访问地址
+            if(appConfig.Urls?.Length > 0)
+            {
+                builder.WebHost.UseUrls(appConfig.Urls);
+            }
+
+            //配置服务
+            ConfigureServices(services, env, configuration, configHelper, appConfig);
+
+            _hostAppOptions?.ConfigureWebApplicationBuilder?.Invoke(builder);
+
+            var app = builder.Build();
+
+            app.ConfigureApplication();
+
+            app.Lifetime.ApplicationStarted.Register(() =>
+            {
+                AppInfo.IsRun = true;
+            });
+
+            app.Lifetime.ApplicationStopped.Register(() =>
+            {
+                AppInfo.IsRun = false;
+            });
+
+            //配置中间件
+            ConfigureMiddleware(app, env, configuration, appConfig);
+
+            app.Run();
+
+            //应用程序停止
+            logger.Info("Application shutdown");
         }
-        builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-        if (env.EnvironmentName.NotNull())
+        catch (Exception exception)
         {
-            builder.Configuration.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+            //应用程序异常
+            logger.Error(exception, "Application stopped because of exception");
+            throw;
         }
-
-        //应用配置
-        services.AddSingleton(appConfig);
-
-        //使用Autofac容器
-        builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-        //配置Autofac容器
-        builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+        finally
         {
-            // 控制器注入
-            builder.RegisterModule(new ControllerModule());
-
-            // 单例注入
-            builder.RegisterModule(new SingleInstanceModule(appConfig));
-
-            // 模块注入
-            builder.RegisterModule(new RegisterModule(appConfig));
-        });
-
-        //配置Kestrel服务器
-        builder.WebHost.ConfigureKestrel((context, options) =>
-        {
-            //设置应用服务器Kestrel请求体最大为100MB
-            options.Limits.MaxRequestBodySize = 1024 * 1024 * 100;
-        });
-
-        //访问地址
-        builder.WebHost.UseUrls(appConfig.Urls);
-
-        //配置服务
-        ConfigureServices(services, env, configuration, configHelper, appConfig);
-
-        var app = builder.Build();
-
-        //配置中间件
-        ConfigureMiddleware(app, env, configuration, appConfig);
-
-        app.Run();
-    }
-
-    /// <summary>
-    /// 实体类型重命名
-    /// </summary>
-    /// <param name="modelType"></param>
-    /// <returns></returns>
-    private string DefaultSchemaIdSelector(Type modelType)
-    {
-        if (!modelType.IsConstructedGenericType) return modelType.Name.Replace("[]", "Array");
-
-        var prefix = modelType.GetGenericArguments()
-            .Select(DefaultSchemaIdSelector)
-            .Aggregate((previous, current) => previous + current);
-
-        return modelType.Name.Split('`').First() + prefix;
+            LogManager.Shutdown();
+        }
     }
 
     /// <summary>
@@ -175,6 +219,9 @@ public class HostApp
         };
 
         _hostAppOptions?.ConfigurePreServices?.Invoke(hostAppContext);
+
+        //健康检查
+        services.AddHealthChecks();
 
         //雪花漂移算法
         var idGeneratorOptions = new IdGeneratorOptions(1) { WorkerIdBitLength = 6 };
@@ -206,13 +253,7 @@ public class HostApp
         services.Configure<UploadConfig>(uploadConfig);
 
         //程序集
-        Assembly[] assemblies = null;
-        if(appConfig.AssemblyNames?.Length > 0)
-        {
-            assemblies = DependencyContext.Default.RuntimeLibraries
-            .Where(a => appConfig.AssemblyNames.Contains(a.Name))
-            .Select(o => Assembly.Load(new AssemblyName(o.Name))).ToArray();
-        }
+        Assembly[] assemblies = AssemblyHelper.GetAssemblyList(appConfig.AssemblyNames);
 
         #region Mapster 映射配置
         services.AddScoped<IMapper>(sp => new Mapper());
@@ -225,8 +266,12 @@ public class HostApp
         #region Cors 跨域
         services.AddCors(options =>
         {
+            //指定跨域访问时预检等待时间
+            var preflightMaxAge = appConfig.PreflightMaxAge > 0 ? new TimeSpan(0, 0, appConfig.PreflightMaxAge) : new TimeSpan(0, 30, 0);
             options.AddPolicy(AdminConsts.RequestPolicyName, policy =>
             {
+                policy.SetPreflightMaxAge(preflightMaxAge);
+
                 var hasOrigins = appConfig.CorUrls?.Length > 0;
                 if (hasOrigins)
                 {
@@ -244,6 +289,8 @@ public class HostApp
                 {
                     policy.AllowCredentials();
                 }
+
+                policy.WithExposedHeaders("Content-Disposition");
             });
 
             //允许任何源访问Api策略，使用时在控制器或者接口上增加特性[EnableCors(AdminConsts.AllowAnyPolicyName)]
@@ -263,33 +310,22 @@ public class HostApp
         var jwtConfig = ConfigHelper.Get<JwtConfig>("jwtconfig", env.EnvironmentName);
         services.TryAddSingleton(jwtConfig);
 
-        if (appConfig.IdentityServer.Enable)
+        services.AddAuthentication(options =>
         {
-            //is4
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = nameof(ResponseAuthenticationHandler); //401
-                options.DefaultForbidScheme = nameof(ResponseAuthenticationHandler);    //403
-            })
-            .AddJwtBearer(options =>
+            options.DefaultScheme = appConfig.IdentityServer.Enable ? IdentityServerAuthenticationDefaults.AuthenticationScheme : JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = nameof(ResponseAuthenticationHandler); //401
+            options.DefaultForbidScheme = nameof(ResponseAuthenticationHandler);    //403
+        })
+        .AddJwtBearer(options =>
+        {
+            //ids4
+            if (appConfig.IdentityServer.Enable)
             {
                 options.Authority = appConfig.IdentityServer.Url;
-                options.RequireHttpsMetadata = false;
-                options.Audience = "admin.server.api";
-            })
-            .AddScheme<AuthenticationSchemeOptions, ResponseAuthenticationHandler>(nameof(ResponseAuthenticationHandler), o => { });
-        }
-        else
-        {
-            //jwt
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = nameof(ResponseAuthenticationHandler); //401
-                options.DefaultForbidScheme = nameof(ResponseAuthenticationHandler);    //403
-            })
-            .AddJwtBearer(options =>
+                options.RequireHttpsMetadata = appConfig.IdentityServer.RequireHttpsMetadata;
+                options.Audience = appConfig.IdentityServer.Audience;
+            }
+            else
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -302,9 +338,9 @@ public class HostApp
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.SecurityKey)),
                     ClockSkew = TimeSpan.Zero
                 };
-            })
-            .AddScheme<AuthenticationSchemeOptions, ResponseAuthenticationHandler>(nameof(ResponseAuthenticationHandler), o => { });
-        }
+            }
+        })
+        .AddScheme<AuthenticationSchemeOptions, ResponseAuthenticationHandler>(nameof(ResponseAuthenticationHandler), o => { });
 
         #endregion 身份认证授权
 
@@ -333,6 +369,56 @@ public class HostApp
                 });
 
                 options.ResolveConflictingActions(apiDescription => apiDescription.First());
+
+                string DefaultSchemaIdSelector(Type modelType)
+                {
+                    var modelName = modelType.Name;
+                    if (appConfig.Swagger.EnableSchemaIdNamespace)
+                    {
+                        var nameSpaceList = appConfig.Swagger.AssemblyNameList;
+                        if (nameSpaceList?.Length > 0)
+                        {
+                            var nameSpace = modelType.Namespace;
+                            if(nameSpaceList.Where(a => nameSpace.Contains(a)).Any())
+                            {
+                                modelName = modelType.FullName;
+                            }
+                        }
+                        else
+                        {
+                            modelName = modelType.FullName;
+                        }
+                    }
+
+                    if (modelType.IsConstructedGenericType)
+                    {
+                        var prefix = modelType.GetGenericArguments()
+                        .Select(DefaultSchemaIdSelector)
+                        .Aggregate((previous, current) => previous + current);
+
+                        modelName = modelName.Split('`').First() + prefix;
+                    }
+                    else
+                    {
+                        modelName = modelName.Replace("[]", "Array");
+                    }
+
+                    if (modelType.IsDefined(typeof(SchemaIdAttribute)))
+                    {
+                        var swaggerSchemaIdAttribute = modelType.GetCustomAttribute<SchemaIdAttribute>(false);
+                        if (swaggerSchemaIdAttribute.SchemaId.NotNull())
+                        {
+                            return swaggerSchemaIdAttribute.SchemaId;
+                        }
+                        else
+                        {
+                            return swaggerSchemaIdAttribute.Prefix + modelName + swaggerSchemaIdAttribute.Suffix;
+                        }
+                    }
+
+                    return modelName;
+                }
+
                 options.CustomSchemaIds(modelType => DefaultSchemaIdSelector(modelType));
 
                 //支持多分组
@@ -436,7 +522,8 @@ public class HostApp
                         {
                             Implicit = new OpenApiOAuthFlow
                             {
-                                AuthorizationUrl = new Uri($"{appConfig.IdentityServer.Url}/connect/authorize"),
+                                AuthorizationUrl = new Uri($"{appConfig.IdentityServer.Url}/connect/authorize", UriKind.Absolute),
+                                TokenUrl = new Uri($"{appConfig.IdentityServer.Url}/connect/token", UriKind.Absolute),
                                 Scopes = new Dictionary<string, string>
                                 {
                                     { "admin.server.api", "admin后端api" }
@@ -480,10 +567,7 @@ public class HostApp
 
         #region 操作日志
 
-        if (appConfig.Log.Operation)
-        {
-            services.AddScoped<ILogHandler, LogHandler>();
-        }
+        services.AddScoped<ILogHandler, LogHandler>();
 
         #endregion 操作日志
 
@@ -502,10 +586,8 @@ public class HostApp
             {
                 options.Filters.Add<FormatResultFilter>(20);
             }
-            if (appConfig.Log.Operation)
-            {
-                options.Filters.Add<ControllerLogFilter>(10);
-            }
+
+            options.Filters.Add<ControllerLogFilter>(10);
 
             //禁止去除ActionAsync后缀
             //options.SuppressAsyncSuffixInActionNames = false;
@@ -541,10 +623,14 @@ public class HostApp
             //使用驼峰 首字母小写
             options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             //设置时间格式
-            options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss.FFFFFFFK";
         })
         .AddControllersAsServices();
 
+        if (appConfig.Swagger.EnableJsonStringEnumConverter)
+            mvcBuilder.AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+
+        _hostAppOptions?.ConfigureMvcBuilder?.Invoke(mvcBuilder, hostAppContext);
         #endregion 控制器
 
         services.AddHttpClient();
@@ -552,18 +638,30 @@ public class HostApp
         _hostAppOptions?.ConfigureServices?.Invoke(hostAppContext);
 
         #region 缓存
+        //添加内存缓存
+        services.AddMemoryCache();
 
         var cacheConfig = ConfigHelper.Get<CacheConfig>("cacheconfig", env.EnvironmentName);
         if (cacheConfig.Type == CacheType.Redis)
         {
-            var csredis = new CSRedis.CSRedisClient(cacheConfig.Redis.ConnectionString);
-            RedisHelper.Initialization(csredis);
+            //FreeRedis客户端
+            var redis = new RedisClient(cacheConfig.Redis.ConnectionString)
+            {
+                Serialize = JsonConvert.SerializeObject,
+                Deserialize = JsonConvert.DeserializeObject
+            };
+            services.AddSingleton(redis);
+            //Redis缓存
             services.AddSingleton<ICacheTool, RedisCacheTool>();
+            //分布式Redis缓存
+            services.AddSingleton<IDistributedCache>(new DistributedCache(redis));
         }
         else
         {
-            services.AddMemoryCache();
+            //内存缓存
             services.AddSingleton<ICacheTool, MemoryCacheTool>();
+            //分布式内存缓存
+            services.AddDistributedMemoryCache();
         }
 
         #endregion 缓存
@@ -589,16 +687,21 @@ public class HostApp
         //动态api
         services.AddDynamicApi(options =>
         {
-            Assembly[] assemblies = DependencyContext.Default.RuntimeLibraries
-            .Where(a => a.Name.EndsWith("Service"))
-            .Select(o => Assembly.Load(new AssemblyName(o.Name))).ToArray();
-            options.AddAssemblyOptions(assemblies);
-
             options.FormatResult = appConfig.DynamicApi.FormatResult;
             options.FormatResultType = typeof(ResultOutput<>);
 
             _hostAppOptions?.ConfigureDynamicApi?.Invoke(options);
         });
+
+        //oss文件上传
+        services.AddOSS();
+
+        //滑块验证码
+        services.AddSlideCaptcha(configuration, options =>
+        {
+            options.StoreageKeyPrefix = CacheKeys.Captcha;
+        });
+        services.AddScoped<ISlideCaptcha, SlideCaptcha>();
 
         _hostAppOptions?.ConfigurePostServices?.Invoke(hostAppContext);
     }
@@ -646,7 +749,7 @@ public class HostApp
 
         //跨域
         app.UseCors(AdminConsts.RequestPolicyName);
-        
+
         //认证
         app.UseAuthentication();
 
@@ -654,7 +757,7 @@ public class HostApp
         app.UseAuthorization();
 
         //登录用户初始化数据权限
-        if (appConfig.Validate.Permission)
+        if (appConfig.Validate.DataPermission)
         {
             app.Use(async (ctx, next) =>
             {
@@ -672,8 +775,6 @@ public class HostApp
         //配置端点
         app.MapControllers();
 
-
-        
         _hostAppOptions?.ConfigureMiddleware?.Invoke(hostAppMiddlewareContext);
 
         #region Swagger Api文档
@@ -707,6 +808,16 @@ public class HostApp
             });
         }
         #endregion Swagger Api文档
+
+        //使用健康检查
+        if(appConfig.HealthChecks.Enable)
+        {
+            app.MapHealthChecks(appConfig.HealthChecks.Path, new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+        }
 
         _hostAppOptions?.ConfigurePostMiddleware?.Invoke(hostAppMiddlewareContext);
     }

@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 using ZhonTai.Admin.Core.Db;
-using ZhonTai.Admin.Domain.DictionaryType;
-using ZhonTai.Admin.Domain.Dictionary;
+using ZhonTai.Admin.Domain.DictType;
+using ZhonTai.Admin.Domain.Dict;
 using ZhonTai.Admin.Domain.Api;
 using ZhonTai.Admin.Domain.Permission;
 using ZhonTai.Admin.Domain.User;
@@ -22,6 +22,7 @@ using ZhonTai.Admin.Core.Db.Data;
 using FreeSql;
 using ZhonTai.Admin.Domain.UserOrg;
 using AI.BPM.Domain.WorkflowTemplate;
+using AI.Core.Model.BPM;
 
 namespace ZhonTai.Admin.Repositories;
 
@@ -43,6 +44,7 @@ public class CustomGenerateData : GenerateData, IGenerateData
             a.ModifiedUserId,
             a.ModifiedUserName
         });
+        var setting = db.Queryable<BPMSettingEntity>().ToList();
 
         #endregion
         #endregion
@@ -54,7 +56,8 @@ public class CustomGenerateData : GenerateData, IGenerateData
         var isTenant = appConfig.Tenant;
 
         SaveDataToJsonFile<WorkflowTemplateEntity>(tempalte, isTenant,"InitData/BPM");
-         
+        SaveDataToJsonFile<BPMSettingEntity>(setting, isTenant, "InitData/BPM");
+
 
         #endregion
     }

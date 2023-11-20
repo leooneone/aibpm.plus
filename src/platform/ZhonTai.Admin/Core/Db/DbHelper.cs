@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -28,7 +27,9 @@ public class DbHelper
     /// <summary>
     /// 偏移时间
     /// </summary>
-    public static TimeSpan TimeOffset;
+    private static TimeSpan timeOffset;
+
+    public static TimeSpan TimeOffset { get => timeOffset; set => timeOffset = value; }
 
     /// <summary>
     /// 创建数据库
@@ -48,7 +49,7 @@ public class DbHelper
 
         try
         {
-            Console.WriteLine($"{Environment.NewLine} create database started");
+            Console.WriteLine($"{Environment.NewLine}create database started");
             var filePath = Path.Combine(AppContext.BaseDirectory, "Configs/createdbsql.txt").ToPath();
             if (File.Exists(filePath))
             {
@@ -60,11 +61,11 @@ public class DbHelper
             }
 
             await db.Ado.ExecuteNonQueryAsync(dbConfig.CreateDbSql);
-            Console.WriteLine(" create database succeed");
+            Console.WriteLine("create database succeed");
         }
         catch (Exception e)
         {
-            Console.WriteLine($" create database failed.\n {e.Message}");
+            Console.WriteLine($"create database failed.\n {e.Message}");
         }
     }
 
@@ -75,19 +76,16 @@ public class DbHelper
     /// <returns></returns>
     public static Type[] GetEntityTypes(string[] assemblyNames)
     {
-        if(!(assemblyNames?.Length > 0))
+        if (!(assemblyNames?.Length > 0))
         {
             return null;
         }
 
-        Assembly[]  assemblies = DependencyContext.Default.RuntimeLibraries
-            .Where(a => assemblyNames.Contains(a.Name))
-            .Select(o => Assembly.Load(new AssemblyName(o.Name))).ToArray();
-
         var entityTypes = new List<Type>();
 
-        foreach (var assembly in assemblies)
+        foreach (var assemblyName in assemblyNames)
         {
+            var assembly = Assembly.Load(assemblyName);
             foreach (Type type in assembly.GetExportedTypes())
             {
                 foreach (Attribute attribute in type.GetCustomAttributes())
@@ -173,7 +171,7 @@ public class DbHelper
             return;
         }
 
-        if (e.AuditValueType == AuditValueType.Insert || e.AuditValueType == AuditValueType.InsertOrUpdate)
+        if (e.AuditValueType is AuditValueType.Insert or AuditValueType.InsertOrUpdate)
         {
             switch (e.Property.Name)
             {
@@ -207,7 +205,8 @@ public class DbHelper
 
             }
         }
-        else if (e.AuditValueType == AuditValueType.Update || e.AuditValueType == AuditValueType.InsertOrUpdate)
+
+        if (e.AuditValueType is AuditValueType.Update or AuditValueType.InsertOrUpdate)
         {
             switch (e.Property.Name)
             {
@@ -222,106 +221,50 @@ public class DbHelper
         }
     }
 
+    private static void SyncStructureAfter(object? s, SyncStructureAfterEventArgs e)
+    {
+        if (e.Sql.NotNull())
+        {
+            Console.WriteLine("sync structure sql:\n" + e.Sql);
+        }
+    }
+
     /// <summary>
     /// 同步结构
     /// </summary>
-    public static void SyncStructure(IFreeSql db, string msg = null, DbConfig dbConfig = null, AppConfig appConfig = null)
+    public static void SyncStructure(IFreeSql db, string msg = null, DbConfig dbConfig = null)
     {
         //打印结构比对脚本
         //var dDL = db.CodeFirst.GetComparisonDDLStatements<PermissionEntity>();
-        //Console.WriteLine($"{Environment.NewLine} " + dDL);
+        //Console.WriteLine($"{Environment.NewLine}" + dDL);
 
         //打印结构同步脚本
-        //db.Aop.SyncStructureAfter += (s, e) =>
-        //{
-        //    if (e.Sql.NotNull())
-        //    {
-        //        Console.WriteLine(" sync structure sql:\n" + e.Sql);
-        //    }
-        //};
+        if (dbConfig.SyncStructureSql)
+        {
+            db.Aop.SyncStructureAfter += SyncStructureAfter;
+        }
 
         // 同步结构
         var dbType = dbConfig.Type.ToString();
-        Console.WriteLine($"{Environment.NewLine} {(msg.NotNull() ? msg : $"sync {dbType} structure")} started");
-
-        if (dbConfig.Type == DataType.Oracle)
-        {
-            db.CodeFirst.IsSyncStructureToUpper = true;
-        }
+        Console.WriteLine($"{Environment.NewLine}{(msg.NotNull() ? msg : $"sync {dbType} structure")} started");
 
         //获得指定程序集表实体
         var entityTypes = GetEntityTypes(dbConfig.AssemblyNames);
         db.CodeFirst.SyncStructure(entityTypes);
 
-        Console.WriteLine($" {(msg.NotNull() ? msg : $"sync {dbType} structure")} succeed");
+        if (dbConfig.SyncStructureSql)
+        {
+            db.Aop.SyncStructureAfter -= SyncStructureAfter;
+        }
+
+        Console.WriteLine($"{(msg.NotNull() ? msg : $"sync {dbType} structure")} succeed");
     }
 
-    /// <summary>
-    /// 同步数据审计方法
-    /// </summary>
-    /// <param name="s"></param>
-    /// <param name="e"></param>
-    private static void SyncDataAuditValue(object s, AuditValueEventArgs e)
+    private static void SyncDataCurdBefore(object? s, CurdBeforeEventArgs e)
     {
-        var user = new { Id = 161223411986501, Name = "admin", TenantId = 161223412138053 };
-
-        if (e.Property.GetCustomAttribute<ServerTimeAttribute>(false) != null
-               && (e.Column.CsType == typeof(DateTime) || e.Column.CsType == typeof(DateTime?))
-               && (e.Value == null || (DateTime)e.Value == default || (DateTime?)e.Value == default))
+        if (e.Sql.NotNull())
         {
-            e.Value = DateTime.Now.Subtract(TimeOffset);
-        }
-
-        if (e.Column.CsType == typeof(long)
-        && e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null
-        && (e.Value == null || (long)e.Value == default || (long?)e.Value == default))
-        {
-            e.Value = YitIdHelper.NextId();
-        }
-
-        if (user == null || user.Id <= 0)
-        {
-            return;
-        }
-
-        if (e.AuditValueType == AuditValueType.Insert || e.AuditValueType == AuditValueType.InsertOrUpdate)
-        {
-            switch (e.Property.Name)
-            {
-                case "CreatedUserId":
-                    if (e.Value == null || (long)e.Value == default || (long?)e.Value == default)
-                    {
-                        e.Value = user.Id;
-                    }
-                    break;
-
-                case "CreatedUserName":
-                    if (e.Value == null || ((string)e.Value).IsNull())
-                    {
-                        e.Value = user.Name;
-                    }
-                    break;
-
-                case "TenantId":
-                    if (e.Value == null || (long)e.Value == default || (long?)e.Value == default)
-                    {
-                        e.Value = user.TenantId;
-                    }
-                    break;
-            }
-        }
-        else if (e.AuditValueType == AuditValueType.Update || e.AuditValueType == AuditValueType.InsertOrUpdate)
-        {
-            switch (e.Property.Name)
-            {
-                case "ModifiedUserId":
-                    e.Value = user.Id;
-                    break;
-
-                case "ModifiedUserName":
-                    e.Value = user.Name;
-                    break;
-            }
+            Console.WriteLine($"{e.Sql}{Environment.NewLine}");
         }
     }
 
@@ -334,22 +277,91 @@ public class DbHelper
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
     public static async Task SyncDataAsync(
-        IFreeSql db, 
-        DbConfig dbConfig = null, 
+        IFreeSql db,
+        DbConfig dbConfig = null,
         AppConfig appConfig = null
     )
     {
         try
         {
-            Console.WriteLine($"{Environment.NewLine} sync data started");
+            Console.WriteLine($"{Environment.NewLine}sync data started");
 
             if (dbConfig.AssemblyNames?.Length > 0)
             {
+                var user = dbConfig.SyncDataUser;
+
+                // 同步数据审计方法
+                void SyncDataAuditValue(object s, AuditValueEventArgs e)
+                {
+                    if (e.Property.GetCustomAttribute<ServerTimeAttribute>(false) != null
+                           && (e.Column.CsType == typeof(DateTime) || e.Column.CsType == typeof(DateTime?))
+                           && (e.Value == null || (DateTime)e.Value == default || (DateTime?)e.Value == default))
+                    {
+                        e.Value = DateTime.Now.Subtract(TimeOffset);
+                    }
+
+                    if (e.Column.CsType == typeof(long)
+                    && e.Property.GetCustomAttribute<SnowflakeAttribute>(false) != null
+                    && (e.Value == null || (long)e.Value == default || (long?)e.Value == default))
+                    {
+                        e.Value = YitIdHelper.NextId();
+                    }
+
+                    if (user == null || user.Id <= 0)
+                    {
+                        return;
+                    }
+
+                    if (e.AuditValueType is AuditValueType.Insert or AuditValueType.InsertOrUpdate)
+                    {
+                        switch (e.Property.Name)
+                        {
+                            case "CreatedUserId":
+                                if (e.Value == null || (long)e.Value == default || (long?)e.Value == default)
+                                {
+                                    e.Value = user.Id;
+                                }
+                                break;
+
+                            case "CreatedUserName":
+                                if (e.Value == null || ((string)e.Value).IsNull())
+                                {
+                                    e.Value = user.UserName;
+                                }
+                                break;
+
+                            case "TenantId":
+                                if (e.Value == null || (long)e.Value == default || (long?)e.Value == default)
+                                {
+                                    e.Value = user.TenantId;
+                                }
+                                break;
+                        }
+                    }
+
+                    if (e.AuditValueType is AuditValueType.Update or AuditValueType.InsertOrUpdate)
+                    {
+                        switch (e.Property.Name)
+                        {
+                            case "ModifiedUserId":
+                                e.Value = user.Id;
+                                break;
+
+                            case "ModifiedUserName":
+                                e.Value = user.UserName;
+                                break;
+                        }
+                    }
+                }
+
                 db.Aop.AuditValue += SyncDataAuditValue;
 
-                Assembly[] assemblies = DependencyContext.Default.RuntimeLibraries
-                .Where(a => dbConfig.AssemblyNames.Contains(a.Name))
-                .Select(o => Assembly.Load(new AssemblyName(o.Name))).ToArray();
+                if (dbConfig.SyncDataCurd)
+                {
+                    db.Aop.CurdBefore += SyncDataCurdBefore;
+                }
+
+                Assembly[] assemblies = AssemblyHelper.GetAssemblyList(dbConfig.AssemblyNames);
 
                 List<ISyncData> syncDatas = assemblies.Select(assembly => assembly.GetTypes()
                 .Where(x => typeof(ISyncData).GetTypeInfo().IsAssignableFrom(x.GetTypeInfo()) && x.GetTypeInfo().IsClass && !x.GetTypeInfo().IsAbstract))
@@ -360,14 +372,19 @@ public class DbHelper
                     await syncData.SyncDataAsync(db, dbConfig, appConfig);
                 }
 
+                if (dbConfig.SyncDataCurd)
+                {
+                    db.Aop.CurdBefore -= SyncDataCurdBefore;
+                }
+
                 db.Aop.AuditValue -= SyncDataAuditValue;
             }
 
-            Console.WriteLine($" sync data succeed{Environment.NewLine}");
+            Console.WriteLine($"sync data succeed{Environment.NewLine}");
         }
         catch (Exception ex)
         {
-            throw new Exception($" sync data failed.\n{ex.Message}");
+            throw new Exception($"sync data failed.\n{ex.Message}");
         }
     }
 
@@ -383,13 +400,11 @@ public class DbHelper
     {
         try
         {
-            Console.WriteLine($"{Environment.NewLine} generate data started");
+            Console.WriteLine($"{Environment.NewLine}generate data started");
 
             if (dbConfig.AssemblyNames?.Length > 0)
             {
-                Assembly[] assemblies = DependencyContext.Default.RuntimeLibraries
-               .Where(a => dbConfig.AssemblyNames.Contains(a.Name))
-               .Select(o => Assembly.Load(new AssemblyName(o.Name))).ToArray();
+                Assembly[] assemblies = AssemblyHelper.GetAssemblyList(dbConfig.AssemblyNames);
 
                 List<IGenerateData> generateDatas = assemblies.Select(assembly => assembly.GetTypes()
                 .Where(x => typeof(IGenerateData).GetTypeInfo().IsAssignableFrom(x.GetTypeInfo()) && x.GetTypeInfo().IsClass && !x.GetTypeInfo().IsAbstract))
@@ -401,11 +416,11 @@ public class DbHelper
                 }
             }
 
-            Console.WriteLine($" generate data succeed{Environment.NewLine}");
+            Console.WriteLine($"generate data succeed{Environment.NewLine}");
         }
         catch (Exception ex)
         {
-            throw new Exception($" generate data failed。\n{ex.Message}{Environment.NewLine}");
+            throw new Exception($"generate data failed。\n{ex.Message}{Environment.NewLine}");
         }
     }
 
@@ -426,6 +441,7 @@ public class DbHelper
     )
     {
         //注册数据库
+        var idelTime = dbConfig.IdleTime.HasValue && dbConfig.IdleTime.Value > 0 ? TimeSpan.FromMinutes(dbConfig.IdleTime.Value) : TimeSpan.MaxValue;
         freeSqlCloud.Register(dbConfig.Key, () =>
         {
             //创建数据库
@@ -448,8 +464,6 @@ public class DbHelper
                 freeSqlBuilder.UseSlave(slaveList).UseSlaveWeight(slaveWeightList);
             }
 
-            hostAppOptions?.ConfigureFreeSqlBuilder?.Invoke(freeSqlBuilder);
-
             #region 监听所有命令
 
             if (dbConfig.MonitorCommand)
@@ -463,8 +477,9 @@ public class DbHelper
 
             #endregion 监听所有命令
 
-            var fsql = freeSqlBuilder.Build();
+            hostAppOptions?.ConfigureFreeSqlBuilder?.Invoke(freeSqlBuilder, dbConfig);
 
+            var fsql = freeSqlBuilder.Build();
             fsql.UseJsonMap();
             //生成数据
             if (dbConfig.GenerateData && !dbConfig.CreateDb && !dbConfig.SyncData)
@@ -472,55 +487,17 @@ public class DbHelper
                 GenerateDataAsync(fsql, appConfig, dbConfig).Wait();
             }
 
-            //软删除过滤器
-            fsql.GlobalFilter.ApplyOnly<IDelete>(FilterNames.Delete, a => a.IsDeleted == false);
-
-            //租户过滤器
-            if (appConfig.Tenant)
-            {
-                fsql.GlobalFilter.ApplyOnly<ITenant>(FilterNames.Tenant, a => a.TenantId == user.TenantId);
-            }
-
-            //会员过滤器
-            fsql.GlobalFilter.ApplyOnly<IMember>(FilterNames.Member, a => a.MemberId == user.Id);
-
-            //数据权限过滤器
-            fsql.GlobalFilter.ApplyOnlyIf<IData>(FilterNames.Self,
-                () =>
-                {
-                    if (!(user?.Id > 0))
-                        return false;
-                    var dataPermission = user.DataPermission;
-                    if (user.Type == UserType.DefaultUser && dataPermission != null)
-                        return dataPermission.DataScope != DataScope.All && dataPermission.OrgIds.Count == 0;
-                    return false;
-                },
-                a => a.OwnerId == user.Id
-            );
-            fsql.GlobalFilter.ApplyOnlyIf<IData>(FilterNames.Data,
-                () =>
-                {
-                    if (!(user?.Id > 0))
-                        return false;
-                    var dataPermission = user.DataPermission;
-                    if (user.Type == UserType.DefaultUser && dataPermission != null)
-                        return dataPermission.DataScope != DataScope.All && dataPermission.OrgIds.Count > 0;
-                    return false;
-                },
-                a => a.OwnerId == user.Id || user.DataPermission.OrgIds.Contains(a.OwnerOrgId.Value)
-            );
-
-            //配置实体
-            ConfigEntity(fsql, appConfig, dbConfig);
-
-            hostAppOptions?.ConfigureFreeSql?.Invoke(fsql);
-
             #region 初始化数据库
+
+            if (dbConfig.Type == DataType.Oracle)
+            {
+                fsql.CodeFirst.IsSyncStructureToUpper = true;
+            }
 
             //同步结构
             if (dbConfig.SyncStructure)
             {
-                SyncStructure(fsql, dbConfig: dbConfig, appConfig: appConfig);
+                SyncStructure(fsql, dbConfig: dbConfig);
             }
 
             #region 审计数据
@@ -543,6 +520,57 @@ public class DbHelper
             }
 
             #endregion 初始化数据库
+
+            //软删除过滤器
+            fsql.GlobalFilter.ApplyOnly<IDelete>(FilterNames.Delete, a => a.IsDeleted == false);
+
+            //租户过滤器
+            if (appConfig.Tenant)
+            {
+                fsql.GlobalFilter.ApplyOnly<ITenant>(FilterNames.Tenant, a => a.TenantId == user.TenantId);
+            }
+
+            //会员过滤器
+            fsql.GlobalFilter.ApplyOnlyIf<IMember>(FilterNames.Member,
+                () =>
+                {
+                    if (user?.Id > 0 && user.Type != UserType.Member)
+                    {
+                        return false;
+                    }
+                    return true;
+                },
+                a => a.MemberId == user.Id
+            );
+
+            //数据权限过滤器
+            fsql.GlobalFilter.ApplyOnlyIf<IData>(FilterNames.Self,
+                () =>
+                {
+                    var dataPermission = user.DataPermission;
+                    if (dataPermission != null && (dataPermission.DataScope == DataScope.All || dataPermission.OrgIds.Count > 0))
+                    {
+                        return false;
+                    }
+                    return true;
+                },
+                a => a.OwnerId == user.Id
+            );
+            fsql.GlobalFilter.ApplyOnlyIf<IData>(FilterNames.Data,
+                () =>
+                {
+                    var dataPermission = user.DataPermission;
+                    if (dataPermission == null || (dataPermission != null && (dataPermission.DataScope == DataScope.All || dataPermission.OrgIds.Count == 0)))
+                    {
+                        return false;
+                    }
+                    return true;
+                },
+                a => a.OwnerId == user.Id || user.DataPermission.OrgIds.Contains(a.OwnerOrgId.Value)
+            );
+
+            //配置实体
+            ConfigEntity(fsql, appConfig, dbConfig);
 
             #region 监听Curd操作
 
@@ -567,14 +595,9 @@ public class DbHelper
 
             #endregion 监听Curd操作
 
-            return fsql;
-        });
+            hostAppOptions?.ConfigureFreeSql?.Invoke(fsql, dbConfig);
 
-        //执行注册数据库
-        var fsql = freeSqlCloud.Use(dbConfig.Key);
-        if (dbConfig.SyncStructure)
-        {
-            var _ = fsql.CodeFirst;
-        }
+            return fsql;
+        }, idelTime);
     }
 }

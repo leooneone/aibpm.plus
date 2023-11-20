@@ -39,9 +39,9 @@ namespace AI.BPM.Services.Organization.X;
 [DynamicApi(Area = BPMConstants.AreaName)]
 public class OrganizationService : BaseService, IOrganizationService, IDynamicApi
 { 
-    private readonly IMyUserService _employeeSerice;
-    private readonly IMyOrgService _ouService;
-    private readonly IMyRoleService _roleService;
+    private   IMyUserService _employeeSerice => LazyGetRequiredService<IMyUserService>();
+    private   IMyOrgService _ouService => LazyGetRequiredService<IMyOrgService>();
+    private   IMyRoleService _roleService => LazyGetRequiredService<IMyRoleService>();
 
     private AppConfig _appConfig => LazyGetRequiredService<AppConfig>();
     private IUserRepository _userRepository => LazyGetRequiredService<IUserRepository>();
@@ -55,15 +55,7 @@ public class OrganizationService : BaseService, IOrganizationService, IDynamicAp
 
 
 
-    public OrganizationService(
-        IMyUserService employeeSerice, IMyOrgService OUService
-        , IMyRoleService roleService
-    )
-    {
-        _employeeSerice = employeeSerice;
-        _ouService = OUService; 
-        _roleService = roleService;
-    }
+   
     /// <summary>
     /// 根据角色查找员工
     /// </summary>

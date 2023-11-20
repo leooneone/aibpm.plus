@@ -89,6 +89,26 @@ public class AppConfig
     /// 动态Api配置
     /// </summary>
     public DynamicApiConfig DynamicApi { get; set; } = new DynamicApiConfig();
+
+    /// <summary>
+    /// 实现标准标识密码哈希
+    /// </summary>
+    public bool PasswordHasher { get; set; } = false;
+
+    /// <summary>
+    /// 最大请求大小
+    /// </summary>
+    public long MaxRequestBodySize { get; set; } = 104857600;
+
+    /// <summary>
+    /// 健康检查配置
+    /// </summary>
+    public HealthChecksConfig HealthChecks { get; set; } = new HealthChecksConfig();
+
+    /// <summary>
+    /// 指定跨域访问时预检等待时间，以秒为单位，默认30分钟
+    /// </summary>
+    public int PreflightMaxAge { get; set; }
 }
 
 /// <summary>
@@ -110,6 +130,21 @@ public class SwaggerConfig
     /// 启用接口排序文档过滤器
     /// </summary>
     public bool EnableOrderTagsDocumentFilter { get; set; } = true;
+
+    /// <summary>
+    /// 启用枚举属性名
+    /// </summary>
+    public bool EnableJsonStringEnumConverter { get; set; } = false;
+
+    /// <summary>
+    /// 启用SchemaId命名空间
+    /// </summary>
+    public bool EnableSchemaIdNamespace { get; set; } = false;
+
+    /// <summary>
+    /// 程序集列表
+    /// </summary>
+    public string[] AssemblyNameList { get; set; }
 
     private string _RoutePrefix = "swagger";
     /// <summary>
@@ -178,6 +213,16 @@ public class IdentityServer
     /// 地址
     /// </summary>
     public string Url { get; set; } = "https://localhost:5000";
+
+    /// <summary>
+    /// 启用Https
+    /// </summary>
+    public bool RequireHttpsMetadata { get; set; } = false;
+
+    /// <summary>
+    /// 受众
+    /// </summary>
+    public string Audience { get; set; } = "admin.server.api";
 }
 
 /// <summary>
@@ -213,11 +258,15 @@ public class ValidateConfig
     public bool Login { get; set; } = true;
 
     /// <summary>
-    /// 权限
+    /// 接口权限
     /// </summary>
     public bool Permission { get; set; } = true;
-}
 
+    /// <summary>
+    /// 数据权限
+    /// </summary>
+    public bool DataPermission { get; set; } = true;
+}
 
 /// <summary>
 /// 验证码配置
@@ -270,6 +319,22 @@ public class DynamicApiConfig
     /// 结果格式化
     /// </summary>
     public bool FormatResult { get; set; } = true;
+}
+
+/// <summary>
+/// 健康检查配置
+/// </summary>
+public class HealthChecksConfig
+{
+    /// <summary>
+    /// 启用
+    /// </summary>
+    public bool Enable { get; set; } = true;
+
+    /// <summary>
+    /// 访问路径
+    /// </summary>
+    public string Path { get; set; } = "/health";
 }
 
 /// <summary>

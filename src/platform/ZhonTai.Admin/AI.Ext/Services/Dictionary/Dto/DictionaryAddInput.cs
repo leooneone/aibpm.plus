@@ -8,7 +8,7 @@ public class DictionaryAddInput
     /// <summary>
     /// 字典类型Id
     /// </summary>
-    public long DictionaryTypeId { get; set; }
+    public long DictTypeId { get; set; }
 
     /// <summary>
     /// 字典名称

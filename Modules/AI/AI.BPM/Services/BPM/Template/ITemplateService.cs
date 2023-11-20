@@ -24,7 +24,7 @@ namespace AI.BPM.Services.WorkflowTemplate
         
         Task<PageOutput<WorkflowTemplateListOutput>> GetPageAsync(PageInput<TemplateGetPageDto> input);
 
-
+        Task<IList<string>> GetBizListAsync(long id);
         Task SaveAsync(WorkflowTemplateUpdateInput input);
 
      //   Task UpdateAsync(WorkflowTemplateUpdateInput input);

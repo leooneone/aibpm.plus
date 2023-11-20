@@ -19,17 +19,17 @@ namespace AiliCould.Core.BPM.Helper
         /// </summary>
         ByTemplate
     }
+     
     public class ReferenceNoSetting
     {
         public string Format { get; set; } = "{DateFormat}{No}";
-        public string DateFormat { get; set; } = "YYYY";
+        public string DateFormat { get; set; } = "yyyyMMdd";
 
         public int Length { get; set; } = 10;
 
-        public ReferenceNoType Type { get; set; }
+        public ReferenceNoType Type { get; set; } = ReferenceNoType.Global;
 
     }
-
 
     public class ReferenceNoHelper
     {

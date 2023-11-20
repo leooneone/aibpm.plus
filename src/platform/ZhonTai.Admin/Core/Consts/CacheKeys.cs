@@ -32,4 +32,18 @@ public static partial class CacheKeys
     /// </summary>
     [Description("数据权限")]
     public const string DataPermission = "admin:user:data:permission:";
+
+    /// <summary>
+    /// 短信验证码 admin:sms:code:guid
+    /// </summary>
+    [Description("短信验证码")]
+    public const string SmsCode = "admin:sms:code:";
+
+    /// <summary>
+    /// 获取短信验证码缓存键
+    /// </summary>
+    /// <param name="mobile">手机号</param>
+    /// <param name="code">唯一码</param>
+    /// <returns></returns>
+    public static string GetSmsCodeKey(string mobile, string code) => $"{SmsCode}{mobile}:{code}";
 }

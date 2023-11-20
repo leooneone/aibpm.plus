@@ -1,16 +1,20 @@
 [
   {
     "id": 161223412138053,
-    "name": "AILICLOUD",
-    "code": "AI",
-    "realName": "Leo",
-    "phone": "19999999999",
-    "email": "leo.one.tt@gmail.com",
     "userId": 161223411986501,
+    "orgId": 189097691009093,
     "tenantType": 1,
     "dbKey": "masterdb",
+    "dbType": null,
     "connectionString": "",
     "enabled": true,
-    "description": ""
+    "description": "",
+    "isDeleted": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": 161223411986501,
+    "modifiedUserName": "admin",
+    "modifiedTime": "2023-11-13T01:13:39"
   }
 ]

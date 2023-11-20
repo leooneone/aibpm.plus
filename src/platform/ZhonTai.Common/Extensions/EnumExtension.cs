@@ -11,8 +11,15 @@ public static class EnumExtension
     public static string ToDescription(this Enum item)
     {
         string name = item.ToString();
-        var desc = item.GetType().GetField(name)?.GetCustomAttribute<DescriptionAttribute>();
+        var desc = item.GetType().GetField(name)?.GetCustomAttribute<DescriptionAttribute>(false);
         return desc?.Description ?? name;
+    }
+
+    public static string ToNameWithDescription(this Enum item)
+    {
+        string name = item.ToString();
+        var desc = item.GetType().GetField(name)?.GetCustomAttribute<DescriptionAttribute>(false);
+        return $"{name}{(desc == null || desc.Description.IsNull() ? "" : $"({desc?.Description})")}";
     }
 
     public static long ToInt64(this Enum item)

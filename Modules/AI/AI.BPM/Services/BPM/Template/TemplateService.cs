@@ -67,7 +67,7 @@ namespace AI.BPM.Services.WorkflowTemplate
         /// <param name="id"></param>
         /// <returns></returns>
 
-        public async Task<IList<string>> GetListAsync(long id)
+        public async Task<IList<string>> GetBizListAsync(long id)
         {
             return  await Task.FromResult(   MyAddInManager.Instance.GetBizList());
         }
@@ -231,7 +231,7 @@ namespace AI.BPM.Services.WorkflowTemplate
                     .Where(t => t.Name == input.BasicSetting.Name && t.State == TemplateState.Published && t.Version < ent.Version).ExecuteAffrowsAsync();
 
             ///编译生成DLL 方便后续使用强类型调用
-            var code = new StringBuilder();
+         /*   var code = new StringBuilder();
 
             code.AppendLine("namespace AI.BPM.Templates");
             code.AppendLine("{");
@@ -249,7 +249,7 @@ namespace AI.BPM.Services.WorkflowTemplate
             
 
             code.AppendLine("}");
-            code.AppendLine("}");
+            code.AppendLine("}");*/
            // CompilerHelper.CompileCode(code.ToString(),$"templates/{ent.Code}.{ent.Version}.dll");
              
             if (isUpdate)

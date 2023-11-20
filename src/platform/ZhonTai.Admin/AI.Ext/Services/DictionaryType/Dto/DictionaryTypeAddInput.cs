@@ -1,4 +1,4 @@
-﻿namespace ZhonTai.Admin.Services.DictionaryType.Dto;
+﻿namespace ZhonTai.Admin.Services.DictType.Dto;
 
 /// <summary>
 /// 添加

@@ -13,7 +13,7 @@ using ZhonTai.Admin.Domain.Org;
 using ZhonTai.Admin.Domain.Role;
 using NetTopologySuite.Algorithm;
 using ZhonTai.DynamicApi.Attributes;
- 
+ /*
 namespace AI.BPM.Services.Organization.Employee
 {
 
@@ -29,13 +29,12 @@ namespace AI.BPM.Services.Organization.Employee
         private IRoleOrgRepository _roleOrgRepository => LazyGetRequiredService<IRoleOrgRepository>();
         private IUserOrgRepository _userOrgRepository => LazyGetRequiredService<IUserOrgRepository>();
 
-
-
-        public MyUserService(
-             
-        )
-        { 
+        public MyUserService() { 
+        
+        
         }
+
+       
 
 
         /// <summary>
@@ -58,4 +57,4 @@ namespace AI.BPM.Services.Organization.Employee
 
 
     }
-}
+}*/

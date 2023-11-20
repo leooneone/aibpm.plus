@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using ZhonTai.Admin.Domain.PermissionApi;
 using ZhonTai.Admin.Domain.Permission;
 using ZhonTai.Admin.Core.Entities;
+using ZhonTai.Admin.Core.Attributes;
 
 namespace ZhonTai.Admin.Domain.Api;
 
@@ -11,7 +12,7 @@ namespace ZhonTai.Admin.Domain.Api;
 /// 接口管理
 /// </summary>
 [Table(Name = "ad_api")]
-[Index("idx_{tablename}_01", nameof(Path), true)]
+[Index("idx_{tablename}_01", nameof(ParentId) + "," + nameof(Path), true)]
 public partial class ApiEntity : EntityBase
 {
     /// <summary>
@@ -62,6 +63,7 @@ public partial class ApiEntity : EntityBase
     [Navigate(nameof(ParentId))]
     public List<ApiEntity> Childs { get; set; }
 
+    [NotGen]
     [Navigate(ManyToMany = typeof(PermissionApiEntity))]
     public ICollection<PermissionEntity> Permissions { get; set; }
 }

@@ -5,7 +5,6 @@ using System.Text;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.IdentityModel.Tokens;
@@ -21,7 +20,6 @@ using ZhonTai.Admin.Domain.Tenant;
 using ZhonTai.Admin.Services.Auth.Dto;
 using ZhonTai.Admin.Domain.RolePermission;
 using ZhonTai.Admin.Domain.UserRole;
-using ZhonTai.Admin.Tools.Captcha;
 using ZhonTai.Admin.Services.LoginLog.Dto;
 using ZhonTai.Admin.Services.LoginLog;
 using ZhonTai.Admin.Services.User;
@@ -31,6 +29,14 @@ using ZhonTai.DynamicApi;
 using ZhonTai.DynamicApi.Attributes;
 using FreeSql;
 using ZhonTai.Admin.Domain.TenantPermission;
+using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+using ZhonTai.Admin.Core.Captcha;
+using Newtonsoft.Json;
+using Lazy.SlideCaptcha.Core.Validator;
+using static Lazy.SlideCaptcha.Core.ValidateResult;
+using ZhonTai.Admin.Domain.PkgPermission;
+using ZhonTai.Admin.Domain.TenantPkg;
 
 namespace ZhonTai.Admin.Services.Auth;
 
@@ -45,15 +51,15 @@ public class AuthService : BaseService, IAuthService, IDynamicApi
     private readonly IPermissionRepository _permissionRepository;
     private readonly IUserRepository _userRepository;
     private readonly ITenantRepository _tenantRepository;
-    private readonly ICaptchaTool _captchaTool;
+    private IPasswordHasher<UserEntity> _passwordHasher => LazyGetRequiredService<IPasswordHasher<UserEntity>>();
+    private ISlideCaptcha _captcha => LazyGetRequiredService<ISlideCaptcha>();
 
     public AuthService(
         AppConfig appConfig,
         JwtConfig jwtConfig,
         IUserRepository userRepository,
         IPermissionRepository permissionRepository,
-        ITenantRepository tenantRepository,
-        ICaptchaTool captchaTool
+        ITenantRepository tenantRepository
     )
     {
         _appConfig = appConfig;
@@ -61,7 +67,6 @@ public class AuthService : BaseService, IAuthService, IDynamicApi
         _userRepository = userRepository;
         _permissionRepository = permissionRepository;
         _tenantRepository = tenantRepository;
-        _captchaTool = captchaTool;
     }
 
     /// <summary>
@@ -69,23 +74,33 @@ public class AuthService : BaseService, IAuthService, IDynamicApi
     /// </summary>
     /// <param name="user">用户信息</param>
     /// <returns></returns>
-    private string GetToken(AuthLoginOutput user)
+    [NonAction]
+    public string GetToken(AuthLoginOutput user)
     {
         if (user == null)
         {
             return string.Empty;
         }
 
-        var token = LazyGetRequiredService<IUserToken>().Create(new[]
-        {
+        var claims = new List<Claim>()
+       {
             new Claim(ClaimAttributes.UserId, user.Id.ToString(), ClaimValueTypes.Integer64),
             new Claim(ClaimAttributes.UserName, user.UserName),
             new Claim(ClaimAttributes.Name, user.Name),
             new Claim(ClaimAttributes.UserType, user.Type.ToInt().ToString(), ClaimValueTypes.Integer32),
-            new Claim(ClaimAttributes.TenantId, user.TenantId.ToString(), ClaimValueTypes.Integer64),
-            new Claim(ClaimAttributes.TenantType, user.TenantType.ToInt().ToString(), ClaimValueTypes.Integer32),
-            new Claim(ClaimAttributes.DbKey, user.DbKey??"")
-        });
+        };
+
+        if (_appConfig.Tenant)
+        {
+            claims.AddRange(new []
+            {
+                new Claim(ClaimAttributes.TenantId, user.TenantId.ToString(), ClaimValueTypes.Integer64),
+                new Claim(ClaimAttributes.TenantType, user.Tenant?.TenantType.ToInt().ToString(), ClaimValueTypes.Integer32),
+                new Claim(ClaimAttributes.DbKey, user.Tenant?.DbKey ?? "")
+            });
+        }
+
+        var token = LazyGetRequiredService<IUserToken>().Create(claims.ToArray());
 
         return token;
     }
@@ -105,6 +120,134 @@ public class AuthService : BaseService, IAuthService, IDynamicApi
         var encyptKey = StringHelper.GenerateRandom(8);
         await Cache.SetAsync(key, encyptKey, TimeSpan.FromMinutes(5));
         return new AuthGetPasswordEncryptKeyOutput { Key = guid, EncyptKey = encyptKey };
+    }
+
+    /// <summary>
+    /// 查询用户个人信息
+    /// </summary>
+    /// <returns></returns>
+    [Login]
+    public async Task<AuthUserProfileDto> GetUserProfileAsync()
+    {
+        if (!(User?.Id > 0))
+        {
+            throw ResultOutput.Exception("未登录");
+        }
+
+        using (_userRepository.DataFilter.Disable(FilterNames.Self, FilterNames.Data))
+        {
+            var profile = await _userRepository.GetAsync<AuthUserProfileDto>(User.Id);
+
+            return profile;
+        }
+    }
+   
+    /// <summary>
+    /// 查询用户菜单列表
+    /// </summary>
+    /// <returns></returns>
+    [Login]
+    public async Task<List<AuthUserMenuDto>> GetUserMenusAsync()
+    {
+        if (!(User?.Id > 0))
+        {
+            throw ResultOutput.Exception("未登录");
+        }
+
+        using (_userRepository.DataFilter.Disable(FilterNames.Self, FilterNames.Data))
+        {
+            var menuSelect = _permissionRepository.Select;
+
+            if (!User.PlatformAdmin)
+            {
+                var db = _permissionRepository.Orm;
+                if (User.TenantAdmin)
+                {
+                    menuSelect = menuSelect.Where(a =>
+                       db.Select<TenantPermissionEntity>()
+                       .Where(b => b.PermissionId == a.Id && b.TenantId == User.TenantId)
+                       .Any()
+                       ||
+                       db.Select<TenantPkgEntity, PkgPermissionEntity>()
+                       .Where((b, c) => b.PkgId == c.PkgId && b.TenantId == User.TenantId && c.PermissionId == a.Id)
+                       .Any()
+                   );
+                }
+                else
+                {
+                    menuSelect = menuSelect.Where(a =>
+                       db.Select<RolePermissionEntity>()
+                       .InnerJoin<UserRoleEntity>((b, c) => b.RoleId == c.RoleId && c.UserId == User.Id)
+                       .Where(b => b.PermissionId == a.Id)
+                       .Any()
+                   );
+                }
+
+                menuSelect = menuSelect.AsTreeCte(up: true);
+            }
+
+            var menuList = await menuSelect
+                .Where(a => new[] { PermissionType.Group, PermissionType.Menu }.Contains(a.Type))
+                .ToListAsync(a => new AuthUserMenuDto { ViewPath = a.View.Path });
+
+            return menuList.DistinctBy(a => a.Id).OrderBy(a => a.ParentId).ThenBy(a => a.Sort).ToList();
+
+        }
+    }
+
+    /// <summary>
+    /// 查询用户权限列表
+    /// </summary>
+    /// <returns></returns>
+    [Login]
+    public async Task<AuthGetUserPermissionsOutput> GetUserPermissionsAsync()
+    {
+        if (!(User?.Id > 0))
+        {
+            throw ResultOutput.Exception("未登录");
+        }
+
+        using (_userRepository.DataFilter.Disable(FilterNames.Self, FilterNames.Data))
+        {
+            var authGetUserPermissionsOutput = new AuthGetUserPermissionsOutput
+            {
+                //用户信息
+                User = await _userRepository.GetAsync<AuthUserProfileDto>(User.Id)
+            };
+
+            var dotSelect = _permissionRepository.Select.Where(a => a.Type == PermissionType.Dot);
+
+            if (!User.PlatformAdmin)
+            {
+                var db = _permissionRepository.Orm;
+                if (User.TenantAdmin)
+                {
+                    dotSelect = dotSelect.Where(a =>
+                       db.Select<TenantPermissionEntity>()
+                       .Where(b => b.PermissionId == a.Id && b.TenantId == User.TenantId)
+                       .Any()
+                       ||
+                       db.Select<TenantPkgEntity, PkgPermissionEntity>()
+                       .Where((b, c) => b.PkgId == c.PkgId && b.TenantId == User.TenantId && c.PermissionId == a.Id)
+                       .Any()
+                    );
+                }
+                else
+                {
+                    dotSelect = dotSelect.Where(a =>
+                        db.Select<RolePermissionEntity>()
+                        .InnerJoin<UserRoleEntity>((b, c) => b.RoleId == c.RoleId && c.UserId == User.Id)
+                        .Where(b => b.PermissionId == a.Id)
+                        .Any()
+                    );
+                }
+            }
+
+            //用户权限点
+            authGetUserPermissionsOutput.Permissions = await dotSelect.ToListAsync(a => a.Code);
+
+            return authGetUserPermissionsOutput;
+        }
     }
 
     /// <summary>
@@ -139,11 +282,19 @@ public class AuthService : BaseService, IAuthService, IDynamicApi
                        db.Select<TenantPermissionEntity>()
                        .Where(b => b.PermissionId == a.Id && b.TenantId == User.TenantId)
                        .Any()
+                       ||
+                       db.Select<TenantPkgEntity, PkgPermissionEntity>()
+                       .Where((b, c) => b.PkgId == c.PkgId && b.TenantId == User.TenantId && c.PermissionId == a.Id)
+                       .Any()
                    );
 
                     dotSelect = dotSelect.Where(a =>
                        db.Select<TenantPermissionEntity>()
                        .Where(b => b.PermissionId == a.Id && b.TenantId == User.TenantId)
+                       .Any()
+                       ||
+                       db.Select<TenantPkgEntity, PkgPermissionEntity>()
+                       .Where((b, c) => b.PkgId == c.PkgId && b.TenantId == User.TenantId && c.PermissionId == a.Id)
                        .Any()
                     );
                 }
@@ -193,19 +344,20 @@ public class AuthService : BaseService, IAuthService, IDynamicApi
     {
         using (_userRepository.DataFilter.DisableAll())
         {
-            var sw = new Stopwatch();
-            sw.Start();
+            var stopwatch = Stopwatch.StartNew();
 
             #region 验证码校验
 
             if (_appConfig.VarifyCode.Enable)
             {
-                input.Captcha.DeleteCache = true;
-                input.Captcha.CaptchaKey = CacheKeys.Captcha;
-                var isOk = await _captchaTool.CheckAsync(input.Captcha);
-                if (!isOk)
+                if(input.CaptchaId.IsNull() || input.CaptchaData.IsNull())
                 {
-                    throw ResultOutput.Exception("安全验证不通过，请重新登录");
+                    throw ResultOutput.Exception("请完成安全验证");
+                }
+                var validateResult = _captcha.Validate(input.CaptchaId, JsonConvert.DeserializeObject<SlideTrack>(input.CaptchaData));
+                if (validateResult.Result != ValidateResultType.Success)
+                {
+                    throw ResultOutput.Exception($"安全{validateResult.Message}，请重新登录");
                 }
             }
 
@@ -229,24 +381,37 @@ public class AuthService : BaseService, IAuthService, IDynamicApi
                 }
                 else
                 {
-                    throw ResultOutput.Exception("解密失败！");
+                    throw ResultOutput.Exception("解密失败");
                 }
             }
 
             #endregion
 
             #region 登录
-            var password = MD5Encrypt.Encrypt32(input.Password);
-            var user = await _userRepository.Select.Where(a => a.UserName == input.UserName && a.Password == password).ToOneAsync();
-
-            if (!(user?.Id > 0))
+            var user = await _userRepository.Select.Where(a => a.UserName == input.UserName).ToOneAsync();
+            var valid = user?.Id > 0;
+            if(valid)
+            {
+                if (user.PasswordEncryptType == PasswordEncryptType.PasswordHasher)
+                {
+                    var passwordVerificationResult = _passwordHasher.VerifyHashedPassword(user, user.Password, input.Password);
+                    valid = passwordVerificationResult == PasswordVerificationResult.Success || passwordVerificationResult == PasswordVerificationResult.SuccessRehashNeeded;
+                }
+                else
+                {
+                    var password = MD5Encrypt.Encrypt32(input.Password);
+                    valid = user.Password == password;
+                }
+            }
+            
+            if(!valid)
             {
                 throw ResultOutput.Exception("用户名或密码错误");
             }
 
-            if (user.Status == UserStatus.Disabled)
+            if (!user.Enabled)
             {
-                throw ResultOutput.Exception("禁止登录，请联系管理员");
+                throw ResultOutput.Exception("账号已停用，禁止登录");
             }
             #endregion
 
@@ -254,14 +419,17 @@ public class AuthService : BaseService, IAuthService, IDynamicApi
             var authLoginOutput = Mapper.Map<AuthLoginOutput>(user);
             if (_appConfig.Tenant)
             {
-                var tenant = await _tenantRepository.Select.WhereDynamic(user.TenantId).ToOneAsync(a => new { a.TenantType, a.DbKey });
-                authLoginOutput.TenantType = tenant.TenantType;
-                authLoginOutput.DbKey = tenant.DbKey;
+                var tenant = await _tenantRepository.Select.WhereDynamic(user.TenantId).ToOneAsync<AuthLoginTenantDto>();
+                if (!(tenant != null && tenant.Enabled))
+                {
+                    throw ResultOutput.Exception("企业已停用，禁止登录");
+                }
+                authLoginOutput.Tenant = tenant;
             }
             string token = GetToken(authLoginOutput);
             #endregion
 
-            sw.Stop();
+            stopwatch.Stop();
 
             #region 添加登录日志
 
@@ -269,10 +437,92 @@ public class AuthService : BaseService, IAuthService, IDynamicApi
             {
                 TenantId = authLoginOutput.TenantId,
                 Name = authLoginOutput.Name,
-                ElapsedMilliseconds = sw.ElapsedMilliseconds,
+                ElapsedMilliseconds = stopwatch.ElapsedMilliseconds,
                 Status = true,
                 CreatedUserId = authLoginOutput.Id,
-                CreatedUserName = input.UserName,
+                CreatedUserName = user.UserName,
+            };
+
+            await LazyGetRequiredService<ILoginLogService>().AddAsync(loginLogAddInput);
+
+            #endregion 添加登录日志
+
+            return new { token };
+        }
+    }
+
+    /// <summary>
+    /// 手机号登录
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    [HttpPost]
+    [AllowAnonymous]
+    [NoOprationLog]
+    public async Task<dynamic> MobileLoginAsync(AuthMobileLoginInput input)
+    {
+        using (_userRepository.DataFilter.DisableAll())
+        {
+            var stopwatch = Stopwatch.StartNew();
+
+            #region 短信验证码验证
+            if (input.CodeId.IsNull() || input.Code.IsNull())
+            {
+                throw ResultOutput.Exception("验证码错误");
+            }
+            var codeKey = CacheKeys.GetSmsCodeKey(input.Mobile, input.CodeId);
+            var code = await Cache.GetAsync(codeKey);
+            if (code.IsNull())
+            {
+                throw ResultOutput.Exception("验证码错误");
+            }
+            await Cache.DelAsync(codeKey);
+            if (code != input.Code)
+            {
+                throw ResultOutput.Exception("验证码错误");
+            }
+
+            #endregion
+
+            #region 登录
+            var user = await _userRepository.Select.Where(a => a.Mobile == input.Mobile).ToOneAsync();
+            if (!(user?.Id > 0))
+            {
+                throw ResultOutput.Exception("账号不存在");
+            }
+
+            if (!user.Enabled)
+            {
+                throw ResultOutput.Exception("账号已停用，禁止登录");
+            }
+            #endregion
+
+            #region 获得token
+            var authLoginOutput = Mapper.Map<AuthLoginOutput>(user);
+            if (_appConfig.Tenant)
+            {
+                var tenant = await _tenantRepository.Select.WhereDynamic(user.TenantId).ToOneAsync<AuthLoginTenantDto>();
+                if (!(tenant != null && tenant.Enabled))
+                {
+                    throw ResultOutput.Exception("企业已停用，禁止登录");
+                }
+                authLoginOutput.Tenant = tenant;
+            }
+            string token = GetToken(authLoginOutput);
+            #endregion
+
+            stopwatch.Stop();
+
+            #region 添加登录日志
+
+            var loginLogAddInput = new LoginLogAddInput
+            {
+                TenantId = authLoginOutput.TenantId,
+                Name = authLoginOutput.Name,
+                ElapsedMilliseconds = stopwatch.ElapsedMilliseconds,
+                Status = true,
+                CreatedUserId = authLoginOutput.Id,
+                CreatedUserName = user.UserName,
             };
 
             await LazyGetRequiredService<ILoginLogService>().AddAsync(loginLogAddInput);
@@ -321,40 +571,37 @@ public class AuthService : BaseService, IAuthService, IDynamicApi
             throw ResultOutput.Exception("验签失败");
         }
 
-        var output = await LazyGetRequiredService<IUserService>().GetLoginUserAsync(userId.ToLong());
-        string newToken = GetToken(output);
+        var user = await LazyGetRequiredService<IUserService>().GetLoginUserAsync(userId.ToLong());
+        if(!(user?.Id > 0))
+        {
+            throw ResultOutput.Exception("账号不存在");
+        }
+        if (!user.Enabled)
+        {
+            throw ResultOutput.Exception("账号已停用，禁止登录");
+        }
+
+        if (_appConfig.Tenant)
+        {
+            if (!(user.Tenant != null && user.Tenant.Enabled))
+            {
+                throw ResultOutput.Exception("企业已停用，禁止登录");
+            }
+        }
+
+        string newToken = GetToken(user);
         return new { token = newToken };
     }
 
     /// <summary>
-    /// 获取验证数据
+    /// 是否开启验证码
     /// </summary>
     /// <returns></returns>
     [HttpGet]
     [AllowAnonymous]
     [NoOprationLog]
-    [EnableCors(AdminConsts.AllowAnyPolicyName)]
-    public async Task<CaptchaOutput> GetCaptcha()
+    public bool IsCaptcha()
     {
-        var data = await _captchaTool.GetAsync(CacheKeys.Captcha);
-        return data;
-    }
-
-    /// <summary>
-    /// 检查验证数据
-    /// </summary>
-    /// <returns></returns>
-    [HttpGet]
-    [AllowAnonymous]
-    [NoOprationLog]
-    [EnableCors(AdminConsts.AllowAnyPolicyName)]
-    public async Task CheckCaptcha([FromQuery] CaptchaInput input)
-    {
-        input.CaptchaKey = CacheKeys.Captcha;
-        var check = await _captchaTool.CheckAsync(input);
-        if (!check)
-        {
-            throw ResultOutput.Exception("安全验证不通过");
-        }
+        return _appConfig.VarifyCode.Enable;
     }
 }

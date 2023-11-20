@@ -8,6 +8,11 @@ namespace ZhonTai.Admin.Services.Tenant.Dto;
 public class TenantAddInput
 {
     /// <summary>
+    /// 租户Id
+    /// </summary>
+    public virtual long Id { get; set; }
+
+    /// <summary>
     /// 企业名称
     /// </summary>
     [Required(ErrorMessage = "请输入企业名称")]
@@ -20,15 +25,30 @@ public class TenantAddInput
     public string Code { get; set; }
 
     /// <summary>
+    /// 套餐Ids
+    /// </summary>
+    public virtual long[] PkgIds { get; set; }
+
+    /// <summary>
     /// 姓名
     /// </summary>
     [Required(ErrorMessage = "请输入姓名")]
     public string RealName { get; set; }
 
     /// <summary>
+    /// 账号
+    /// </summary>
+    [Required(ErrorMessage = "请输入账号")]
+    public string UserName { get; set; }
+
+    /// <summary>
+    /// 密码
+    /// </summary>
+    public string Password { get; set; }
+
+    /// <summary>
     /// 手机号码
     /// </summary>
-    [Required(ErrorMessage = "请输入手机号码")]
     public string Phone { get; set; }
 
     /// <summary>

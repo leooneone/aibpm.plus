@@ -80,10 +80,169 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="T:ZhonTai.Admin.Core.Helpers.UserHelper">
+            <summary>
+            用户帮助类
+            </summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.Helpers.UserHelper.CheckPassword(System.String)">
+            <summary>
+            检查密码
+            </summary>
+            <param name="password"></param>
+        </member>
         <member name="T:ZhonTai.Admin.Core.Middlewares.ExceptionMiddleware">
             <summary>
             异常中间件
             </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Core.AppInfo">
+            <summary>
+            应用全局信息
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.AppInfo.IsRun">
+            <summary>
+            应用是否运行
+            </summary>
+        </member>
+        <member name="F:ZhonTai.Admin.Core.AppInfo.EffectiveAssemblies">
+            <summary>
+            有效程序集
+            </summary>
+        </member>
+        <member name="F:ZhonTai.Admin.Core.AppInfo.EffectiveTypes">
+            <summary>
+            有效程序集类型
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.AppInfo.ServiceProvider">
+            <summary>
+            服务提供程序
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.AppInfo.WebHostEnvironment">
+            <summary>
+            Web主机环境
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.AppInfo.HostEnvironment">
+            <summary>
+            泛型主机环境
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.AppInfo.Configuration">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.AppInfo.HttpContext">
+            <summary>
+            请求上下文
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.AppInfo.User">
+            <summary>
+            用户
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.AppInfo.Log">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetServiceProvider(System.Type,System.Boolean)">
+            <summary>
+            获得服务提供程序
+            </summary>
+            <param name="serviceType"></param>
+            <param name="isBuild"></param>
+            <returns></returns>
+            <exception cref="T:System.ApplicationException"></exception>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetService``1(System.Boolean)">
+            <summary>
+            获得请求生存周期的服务
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <param name="isBuild"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetService``1(System.IServiceProvider,System.Boolean)">
+            <summary>
+            获得请求生存周期的服务
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <param name="serviceProvider"></param>
+            <param name="isBuild"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetService(System.Type,System.IServiceProvider,System.Boolean)">
+            <summary>
+            获得服务
+            </summary>
+            <param name="type"></param>
+            <param name="serviceProvider"></param>
+            <param name="isBuild"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetRequiredService``1(System.Boolean)">
+            <summary>
+            获得服务
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <param name="isBuild"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetRequiredService``1(System.IServiceProvider,System.Boolean)">
+            <summary>
+            获取服务
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <param name="serviceProvider"></param>
+            <param name="isBuild"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetRequiredService(System.Type,System.IServiceProvider,System.Boolean)">
+            <summary>
+            获得服务
+            </summary>
+            <param name="type"></param>
+            <param name="serviceProvider"></param>
+            <param name="isBuild"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetOptions``1(System.String)">
+            <summary>
+            获得选项
+            </summary>
+            <typeparam name="TOptions"></typeparam>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetOptions``1(System.IServiceProvider)">
+            <summary>
+            获得选项
+            </summary>
+            <typeparam name="TOptions"></typeparam>
+            <param name="serviceProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetOptionsMonitor``1(System.IServiceProvider)">
+            <summary>
+            获得选项
+            </summary>
+            <typeparam name="TOptions"></typeparam>
+            <param name="serviceProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.AppInfo.GetOptionsSnapshot``1(System.IServiceProvider)">
+            <summary>
+            获得选项
+            </summary>
+            <typeparam name="TOptions"></typeparam>
+            <param name="serviceProvider"></param>
+            <returns></returns>
         </member>
         <member name="T:ZhonTai.Admin.Core.Attributes.AdminTransactionAttribute">
             <summary>
@@ -118,6 +277,31 @@
         <member name="T:ZhonTai.Admin.Core.Attributes.NoOprationLogAttribute">
             <summary>
             禁用操作日志
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Core.Attributes.NotGenAttribute">
+            <summary>
+            不生成特性
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Core.Attributes.SchemaIdAttribute">
+            <summary>
+            SchemaId
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Attributes.SchemaIdAttribute.Prefix">
+            <summary>
+            前缀
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Attributes.SchemaIdAttribute.Suffix">
+            <summary>
+            后缀
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Attributes.SchemaIdAttribute.SchemaId">
+            <summary>
+            SchemaId
             </summary>
         </member>
         <member name="T:ZhonTai.Admin.Core.Attributes.SingleInstanceAttribute">
@@ -158,6 +342,11 @@
         <member name="T:ZhonTai.Admin.Core.Attributes.VersionRouteAttribute">
             <summary>
             自定义路由 /api/{version}/[area]/[controler]/[action]
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Core.Validators.ValidateRequiredAttribute">
+            <summary>
+            指定属性、字段、参数必填
             </summary>
         </member>
         <member name="T:ZhonTai.Admin.Core.Auth.ClaimAttributes">
@@ -367,6 +556,15 @@
             基础控制器
             </summary>
         </member>
+        <member name="M:ZhonTai.Admin.Core.Captcha.ISlideCaptcha.Validate(System.String,Lazy.SlideCaptcha.Core.Validator.SlideTrack,System.Boolean)">
+            <summary>
+            校验
+            </summary>
+            <param name="captchaId">验证码id</param>
+            <param name="slideTrack">滑动轨迹</param>
+            <param name="removeIfSuccess">校验成功时是否移除缓存(用于多次验证)</param>
+            <returns></returns>
+        </member>
         <member name="T:ZhonTai.Admin.Core.Configs.AppConfig">
             <summary>
             应用配置
@@ -452,6 +650,26 @@
             动态Api配置
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.AppConfig.PasswordHasher">
+            <summary>
+            实现标准标识密码哈希
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.AppConfig.MaxRequestBodySize">
+            <summary>
+            最大请求大小
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.AppConfig.HealthChecks">
+            <summary>
+            健康检查配置
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.AppConfig.PreflightMaxAge">
+            <summary>
+            指定跨域访问时预检等待时间，以秒为单位，默认30分钟
+            </summary>
+        </member>
         <member name="T:ZhonTai.Admin.Core.Configs.SwaggerConfig">
             <summary>
             Swagger配置
@@ -470,6 +688,21 @@
         <member name="P:ZhonTai.Admin.Core.Configs.SwaggerConfig.EnableOrderTagsDocumentFilter">
             <summary>
             启用接口排序文档过滤器
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.SwaggerConfig.EnableJsonStringEnumConverter">
+            <summary>
+            启用枚举属性名
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.SwaggerConfig.EnableSchemaIdNamespace">
+            <summary>
+            启用SchemaId命名空间
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.SwaggerConfig.AssemblyNameList">
+            <summary>
+            程序集列表
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Configs.SwaggerConfig.RoutePrefix">
@@ -532,6 +765,16 @@
             地址
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.IdentityServer.RequireHttpsMetadata">
+            <summary>
+            启用Https
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.IdentityServer.Audience">
+            <summary>
+            受众
+            </summary>
+        </member>
         <member name="T:ZhonTai.Admin.Core.Configs.AopConfig">
             <summary>
             Aop配置
@@ -564,7 +807,12 @@
         </member>
         <member name="P:ZhonTai.Admin.Core.Configs.ValidateConfig.Permission">
             <summary>
-            权限
+            接口权限
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.ValidateConfig.DataPermission">
+            <summary>
+            数据权限
             </summary>
         </member>
         <member name="T:ZhonTai.Admin.Core.Configs.VarifyCodeConfig">
@@ -617,6 +865,21 @@
             结果格式化
             </summary>
         </member>
+        <member name="T:ZhonTai.Admin.Core.Configs.HealthChecksConfig">
+            <summary>
+            健康检查配置
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.HealthChecksConfig.Enable">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.HealthChecksConfig.Path">
+            <summary>
+            访问路径
+            </summary>
+        </member>
         <member name="T:ZhonTai.Admin.Core.Configs.AppType">
             <summary>
             应用程序类型
@@ -662,9 +925,19 @@
             同步结构
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.SyncStructureSql">
+            <summary>
+            同步结构脚本
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.SyncData">
             <summary>
             同步数据
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.SyncDataCurd">
+            <summary>
+            同步数据监听Curd操作
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.SysUpdateData">
@@ -675,6 +948,21 @@
         <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.SyncDataPath">
             <summary>
             同步数据地址
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.SyncDataIncludeTables">
+            <summary>
+            同步数据包含表列表
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.SyncDataExcludeTables">
+            <summary>
+            同步数据排除表列表
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.SyncDataUser">
+            <summary>
+            同步数据操作用户
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.CreateDb">
@@ -702,6 +990,11 @@
             监听Curd操作
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.IdleTime">
+            <summary>
+            空闲时间（分），默认10分钟，设置idleTime=0则不自动回收
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Core.Configs.DbConfig.Dbs">
             <summary>
             多数据库
@@ -725,6 +1018,26 @@
         <member name="P:ZhonTai.Admin.Core.Configs.SlaveDb.ConnectionString">
             <summary>
             数据库连接字符串
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Core.Configs.SyncDataUser">
+            <summary>
+            同步数据操作用户
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.SyncDataUser.Id">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.SyncDataUser.UserName">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.SyncDataUser.TenantId">
+            <summary>
+            租户Id
             </summary>
         </member>
         <member name="T:ZhonTai.Admin.Core.Configs.JwtConfig">
@@ -840,6 +1153,21 @@
         <member name="P:ZhonTai.Admin.Core.Configs.LocalUploadConfig.Md5">
             <summary>
             文件Md5码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.LocalUploadConfig.MaxSize">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.LocalUploadConfig.IncludeExtension">
+            <summary>
+            包含文件拓展名列表
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Configs.LocalUploadConfig.ExcludeExtension">
+            <summary>
+            排除文件拓展名列表
             </summary>
         </member>
         <member name="T:ZhonTai.Admin.Core.Configs.OSSConfig">
@@ -962,6 +1290,19 @@
             数据权限 admin:user:data:permission:用户主键
             </summary>
         </member>
+        <member name="F:ZhonTai.Admin.Core.Consts.CacheKeys.SmsCode">
+            <summary>
+            短信验证码 admin:sms:code:guid
+            </summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.Consts.CacheKeys.GetSmsCodeKey(System.String,System.String)">
+            <summary>
+            获取短信验证码缓存键
+            </summary>
+            <param name="mobile">手机号</param>
+            <param name="code">唯一码</param>
+            <returns></returns>
+        </member>
         <member name="T:ZhonTai.Admin.Core.Consts.DbKeys">
             <summary>
             数据库键名
@@ -1002,6 +1343,16 @@
             会员
             </summary>
         </member>
+        <member name="T:ZhonTai.Admin.Core.Consts.SubscribeNames">
+            <summary>
+            订阅命名
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Consts.SubscribeNames.SmsSingleSend">
+            <summary>
+            短信单发
+            </summary>
+        </member>
         <member name="T:ZhonTai.Admin.Core.Conventions.ApiGroupConvention">
             <summary>
             Api分组约定
@@ -1024,19 +1375,25 @@
             <typeparam name="T"></typeparam>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Core.Db.Data.SyncData.InitDataAsync``1(IFreeSql,FreeSql.IUnitOfWork,System.Data.Common.DbTransaction,``0[],ZhonTai.Admin.Core.Configs.DbConfig)">
+        <member name="M:ZhonTai.Admin.Core.Db.Data.SyncData.GetTableName``1">
+            <summary>
+            获得表名
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.Db.Data.SyncData.InitDataAsync``1(IFreeSql,System.Data.Common.DbTransaction,``0[],ZhonTai.Admin.Core.Configs.DbConfig)">
             <summary>
             初始化数据表数据
             </summary>
             <typeparam name="T"></typeparam>
             <param name="db"></param>
-            <param name="unitOfWork"></param>
             <param name="tran"></param>
             <param name="dataList"></param>
             <param name="dbConfig"></param>
             <returns></returns>
         </member>
-        <member name="F:ZhonTai.Admin.Core.Db.DbHelper.TimeOffset">
+        <member name="F:ZhonTai.Admin.Core.Db.DbHelper.timeOffset">
             <summary>
             偏移时间
             </summary>
@@ -1071,17 +1428,10 @@
             <param name="timeOffset"></param>
             <param name="user"></param>
         </member>
-        <member name="M:ZhonTai.Admin.Core.Db.DbHelper.SyncStructure(IFreeSql,System.String,ZhonTai.Admin.Core.Configs.DbConfig,ZhonTai.Admin.Core.Configs.AppConfig)">
+        <member name="M:ZhonTai.Admin.Core.Db.DbHelper.SyncStructure(IFreeSql,System.String,ZhonTai.Admin.Core.Configs.DbConfig)">
             <summary>
             同步结构
             </summary>
-        </member>
-        <member name="M:ZhonTai.Admin.Core.Db.DbHelper.SyncDataAuditValue(System.Object,FreeSql.Aop.AuditValueEventArgs)">
-            <summary>
-            同步数据审计方法
-            </summary>
-            <param name="s"></param>
-            <param name="e"></param>
         </member>
         <member name="M:ZhonTai.Admin.Core.Db.DbHelper.SyncDataAsync(IFreeSql,ZhonTai.Admin.Core.Configs.DbConfig,ZhonTai.Admin.Core.Configs.AppConfig)">
             <summary>
@@ -1149,6 +1499,14 @@
             <param name="filter">数据过滤 + 验证</param>
             <returns></returns>
         </member>
+        <member name="M:ZhonTai.Admin.Core.Db.FreeSqlDbContextExtensions.SyncSchedulerStructure(IFreeSql,ZhonTai.Admin.Core.Configs.DbConfig,System.Action{IFreeSql})">
+            <summary>
+            同步调度结构
+            </summary>
+            <param name="that"></param>
+            <param name="dbConfig"></param>
+            <param name="configureFreeSql"></param>
+        </member>
         <member name="M:ZhonTai.Admin.Core.Db.Transaction.TransactionAsyncInterceptor.InterceptSynchronous(Castle.DynamicProxy.IInvocation)">
             <summary>
             拦截同步执行的方法
@@ -1167,6 +1525,20 @@
             </summary>
             <typeparam name="TResult"></typeparam>
             <param name="invocation"></param>
+        </member>
+        <member name="M:ZhonTai.Admin.Core.Db.UnitOfWorkExtensions.BeginCapTran(FreeSql.IUnitOfWork,DotNetCore.CAP.ICapPublisher,System.Boolean)">
+            <summary>
+            开启Cap分布式事务
+            </summary>
+            <param name="unitOfWork"></param>
+            <param name="capPublisher"></param>
+            <param name="autoCommit"></param>
+            <remarks>
+            using var uow = LazyGetRequiredService&lt;UnitOfWorkManagerCloud&gt;().Begin(DbKeys.AppDb);<br/>
+            using var capTran = uow.BeginCapTran(LazyGetRequiredService&lt;ICapPublisher&gt;(), false);<br/>
+            capTran.Commit();
+            </remarks>
+            <returns></returns>
         </member>
         <member name="P:ZhonTai.Admin.Core.Dto.CreateFreeSqlTenantDto.DbKey">
             <summary>
@@ -1727,13 +2099,6 @@
             </summary>
             <param name="args"></param>
         </member>
-        <member name="M:ZhonTai.Admin.Core.HostApp.DefaultSchemaIdSelector(System.Type)">
-            <summary>
-            实体类型重命名
-            </summary>
-            <param name="modelType"></param>
-            <returns></returns>
-        </member>
         <member name="M:ZhonTai.Admin.Core.HostApp.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Configuration.IConfiguration,ZhonTai.Common.Helpers.ConfigHelper,ZhonTai.Admin.Core.Configs.AppConfig)">
             <summary>
             配置服务
@@ -1913,44 +2278,64 @@
             宿主应用配置
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigurePreWebApplicationBuilder">
+            <summary>
+            配置前置应用程序构建器
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigureWebApplicationBuilder">
+            <summary>
+            配置应用程序构建器
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigurePreServices">
             <summary>
-            注入前置服务
+            配置前置服务
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigureServices">
             <summary>
-            注入服务
+            配置服务
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigurePostServices">
             <summary>
-            注入后置服务
+            配置后置服务
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigureMvcBuilder">
+            <summary>
+            配置mvc构建器
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigureAutofacContainer">
+            <summary>
+            配置Autofac容器
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigurePreMiddleware">
             <summary>
-            注入前置中间件
+            配置前置中间件
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigureMiddleware">
             <summary>
-            注入中间件
+            配置中间件
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigurePostMiddleware">
             <summary>
-            注入后置中间件
+            配置后置中间件
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigureFreeSqlBuilder">
             <summary>
-            配置主库FreeSql构建器
+            配置FreeSql构建器
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigureFreeSql">
             <summary>
-            配置主库FreeSql
+            配置FreeSql
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Core.Startup.HostAppOptions.ConfigureDynamicApi">
@@ -1968,113 +2353,98 @@
             自定义数据库初始化
             </summary>
         </member>
-        <member name="T:ZhonTai.Admin.Core.Validators.ValidateRequiredAttribute">
-            <summary>
-            指定属性、字段、参数必填
-            </summary>
-        </member>
-        <member name="T:ZhonTai.Admin.Domain.DictionaryType.DictionaryTypeEntity">
+        <member name="T:ZhonTai.Admin.Domain.DictType.DictTypeEntity">
             <summary>
             数据字典类型
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.DictionaryType.DictionaryTypeEntity.Name">
+        <member name="P:ZhonTai.Admin.Domain.DictType.DictTypeEntity.Name">
             <summary>
             名称
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.DictionaryType.DictionaryTypeEntity.Code">
+        <member name="P:ZhonTai.Admin.Domain.DictType.DictTypeEntity.Code">
             <summary>
             编码
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.DictionaryType.DictionaryTypeEntity.IsSystem">
+        <member name="P:ZhonTai.Admin.Domain.DictType.DictTypeEntity.IsSystem">
             <summary>
             是否系统字典 ，系统字典正常不可删除，可以认为是一种可动态添加的枚举
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.DictionaryType.DictionaryTypeEntity.Description">
+        <member name="P:ZhonTai.Admin.Domain.DictType.DictTypeEntity.Description">
             <summary>
             描述
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.DictionaryType.DictionaryTypeEntity.Enabled">
+        <member name="P:ZhonTai.Admin.Domain.DictType.DictTypeEntity.Enabled">
             <summary>
             启用
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.DictionaryType.DictionaryTypeEntity.Sort">
+        <member name="P:ZhonTai.Admin.Domain.DictType.DictTypeEntity.Sort">
             <summary>
             排序
             </summary>
         </member>
-        <member name="T:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity">
+        <member name="T:ZhonTai.Admin.Domain.Dict.DictEntity">
             <summary>
             数据字典
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity.DictionaryTypeId">
+        <member name="P:ZhonTai.Admin.Domain.Dict.DictEntity.DictTypeId">
             <summary>
             字典类型Id
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity.DictionaryType">
+        <member name="P:ZhonTai.Admin.Domain.Dict.DictEntity.DictType">
             <summary>
             字典类型
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity.Name">
+        <member name="P:ZhonTai.Admin.Domain.Dict.DictEntity.Name">
             <summary>
             字典名称
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity.Code">
+        <member name="P:ZhonTai.Admin.Domain.Dict.DictEntity.Code">
             <summary>
             字典编码
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity.Value">
+        <member name="P:ZhonTai.Admin.Domain.Dict.DictEntity.Value">
             <summary>
             字典值
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity.ExpiredTime">
+        <member name="P:ZhonTai.Admin.Domain.Dict.DictEntity.ExpiredTime">
             <summary>
             字典值过期时间
             部分字典因为时间推移会过期但不能删除
             设置过期时间让其保留关联之前单据的作用
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity.EffectiveTime">
+        <member name="P:ZhonTai.Admin.Domain.Dict.DictEntity.EffectiveTime">
             <summary>
             生效时间
             不用等到指定时间再增加
             暂时保留，不做实现
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity.Description">
+        <member name="P:ZhonTai.Admin.Domain.Dict.DictEntity.Description">
             <summary>
             描述
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity.Enabled">
+        <member name="P:ZhonTai.Admin.Domain.Dict.DictEntity.Enabled">
             <summary>
             启用
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.DictionaryEntity.Sort">
+        <member name="P:ZhonTai.Admin.Domain.Dict.DictEntity.Sort">
             <summary>
             排序
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.Dto.DictionaryGetPageDto.DictionaryTypeId">
-            <summary>
-            字典类型Id
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Domain.Dictionary.Dto.DictionaryGetPageDto.Name">
-            <summary>
-            字典名称
             </summary>
         </member>
         <member name="T:ZhonTai.Admin.Domain.File.FileEntity">
@@ -2227,6 +2597,16 @@
             组织单元类型 ，通过数据字典定义
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Domain.Dictionary.Dto.DictionaryGetPageDto.DictTypeId">
+            <summary>
+            字典类型Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Dictionary.Dto.DictionaryGetPageDto.Name">
+            <summary>
+            字典名称
+            </summary>
+        </member>
         <member name="T:ZhonTai.Admin.Domain.User.StaffAddInput">
             <summary>
             员工添加
@@ -2282,6 +2662,21 @@
             数据范围
             </summary>
         </member>
+        <member name="T:ZhonTai.Admin.Domain.User.PasswordEncryptType">
+            <summary>
+            密码加密类型
+            </summary>
+        </member>
+        <member name="F:ZhonTai.Admin.Domain.User.PasswordEncryptType.MD5Encrypt32">
+            <summary>
+            32位MD5加密
+            </summary>
+        </member>
+        <member name="F:ZhonTai.Admin.Domain.User.PasswordEncryptType.PasswordHasher">
+            <summary>
+            标准标识密码哈希
+            </summary>
+        </member>
         <member name="T:ZhonTai.Admin.Domain.User.UserEntity">
             <summary>
             用户
@@ -2295,6 +2690,11 @@
         <member name="P:ZhonTai.Admin.Domain.User.UserEntity.Password">
             <summary>
             密码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.User.UserEntity.PasswordEncryptType">
+            <summary>
+            密码加密类型
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Domain.User.UserEntity.Name">
@@ -2352,6 +2752,11 @@
             用户类型
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Domain.User.UserEntity.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Domain.User.UserEntity.Roles">
             <summary>
             角色列表
@@ -2370,16 +2775,6 @@
         <member name="T:ZhonTai.Admin.Domain.User.UserStatus">
             <summary>
             用户状态
-            </summary>
-        </member>
-        <member name="F:ZhonTai.Admin.Domain.User.UserStatus.Enabled">
-            <summary>
-            正常
-            </summary>
-        </member>
-        <member name="F:ZhonTai.Admin.Domain.User.UserStatus.Disabled">
-            <summary>
-            禁用
             </summary>
         </member>
         <member name="F:ZhonTai.Admin.Domain.User.UserStatus.WaitChangePasssword">
@@ -2812,6 +3207,95 @@
             权限点
             </summary>
         </member>
+        <member name="T:ZhonTai.Admin.Domain.PkgPermission.PkgPermissionEntity">
+            <summary>
+            套餐权限
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.PkgPermission.PkgPermissionEntity.PkgId">
+            <summary>
+            套餐Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.PkgPermission.PkgPermissionEntity.Pkg">
+            <summary>
+            套餐
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.PkgPermission.PkgPermissionEntity.PermissionId">
+            <summary>
+            权限Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.PkgPermission.PkgPermissionEntity.Permission">
+            <summary>
+            权限
+            </summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Domain.Pkg.IPkgRepository.GetChildIdListAsync(System.Int64)">
+            <summary>
+            获得本套餐和下级套餐Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Domain.Pkg.IPkgRepository.GetChildIdListAsync(System.Int64[])">
+            <summary>
+            获得当前套餐和下级套餐Id
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZhonTai.Admin.Domain.Pkg.PkgEntity">
+            <summary>
+            套餐
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Pkg.PkgEntity.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Pkg.PkgEntity.Childs">
+            <summary>
+            子级列表
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Pkg.PkgEntity.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Pkg.PkgEntity.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Pkg.PkgEntity.Description">
+            <summary>
+            说明
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Pkg.PkgEntity.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Pkg.PkgEntity.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Pkg.PkgEntity.Tenants">
+            <summary>
+            租户列表
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Pkg.PkgEntity.Permissions">
+            <summary>
+            权限列表
+            </summary>
+        </member>
         <member name="T:ZhonTai.Admin.Domain.RoleOrgEntity">
             <summary>
             角色部门
@@ -2900,6 +3384,16 @@
         <member name="P:ZhonTai.Admin.Domain.Role.Dto.RoleGetPageDto.Name">
             <summary>
             名称
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Role.Dto.RoleGetRoleUserListInput.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Role.Dto.RoleGetRoleUserListInput.RoleId">
+            <summary>
+            角色Id
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Domain.Role.Dto.UserGetRoleUserListInput.Name">
@@ -3031,6 +3525,21 @@
             权限
             </summary>
         </member>
+        <member name="T:ZhonTai.Admin.Domain.TenantPkg.TenantPkgEntity">
+            <summary>
+            租户套餐
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.TenantPkg.TenantPkgEntity.TenantId">
+            <summary>
+            租户Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.TenantPkg.TenantPkgEntity.PkgId">
+            <summary>
+            套餐Id
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Domain.Tenant.Dto.CreateFreeSqlTenantDto.DbType">
             <summary>
             数据库
@@ -3056,34 +3565,24 @@
             租户
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.Name">
-            <summary>
-            企业名称
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.Code">
-            <summary>
-            编码
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.RealName">
-            <summary>
-            姓名
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.Phone">
-            <summary>
-            手机号码
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.Email">
-            <summary>
-            邮箱地址
-            </summary>
-        </member>
         <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.UserId">
             <summary>
             授权用户
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.User">
+            <summary>
+            用户
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.OrgId">
+            <summary>
+            授权部门
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.Org">
+            <summary>
+            部门
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.TenantType">
@@ -3114,6 +3613,11 @@
         <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.Description">
             <summary>
             说明
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Domain.Tenant.TenantEntity.Pkgs">
+            <summary>
+            套餐列表
             </summary>
         </member>
         <member name="T:ZhonTai.Admin.Domain.Tenant.TenantType">
@@ -3310,6 +3814,11 @@
             入职时间
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Domain.UserStaff.UserStaffEntity.WorkWeChatCard">
+            <summary>
+            企业微信名片
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Domain.UserStaff.UserStaffEntity.Introduce">
             <summary>
             个人简介
@@ -3383,6 +3892,258 @@
             </summary>
             <typeparam name="TEntity"></typeparam>
         </member>
+        <member name="T:ZhonTai.Admin.Repositories.CustomGenerateData">
+            <summary>
+            生成数据
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Repositories.CustomSyncData">
+            <summary>
+            同步数据
+            </summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitDictTypeAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化字典类型
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitDictAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化字典
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitUserAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig,System.Boolean)">
+            <summary>
+            初始化用户
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <param name="isTenant"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitUserStaffAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig,System.Boolean)">
+            <summary>
+            初始化用户员工
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <param name="isTenant"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitOrgAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig,System.Boolean)">
+            <summary>
+            初始化部门
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <param name="isTenant"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitRoleAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig,System.Boolean)">
+            <summary>
+            初始化角色
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <param name="isTenant"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitApiAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化接口
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitViewAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化视图
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitPermissionAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化权限
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitPermissionApiAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化权限接口
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZhonTai.Admin.Repositories.CustomSyncData.UserRoleRecord">
+            <summary>
+            用户角色记录
+            </summary>
+            <param name="UserId"></param>
+            <param name="RoleId"></param>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.UserRoleRecord.#ctor(System.Int64,System.Int64)">
+            <summary>
+            用户角色记录
+            </summary>
+            <param name="UserId"></param>
+            <param name="RoleId"></param>
+        </member>
+        <member name="P:ZhonTai.Admin.Repositories.CustomSyncData.UserRoleRecord.UserId">
+            <summary></summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Repositories.CustomSyncData.UserRoleRecord.RoleId">
+            <summary></summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitUserRoleAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化用户角色
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZhonTai.Admin.Repositories.CustomSyncData.UserOrgRecord">
+            <summary>
+            用户部门记录
+            </summary>
+            <param name="UserId"></param>
+            <param name="OrgId"></param>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.UserOrgRecord.#ctor(System.Int64,System.Int64)">
+            <summary>
+            用户部门记录
+            </summary>
+            <param name="UserId"></param>
+            <param name="OrgId"></param>
+        </member>
+        <member name="P:ZhonTai.Admin.Repositories.CustomSyncData.UserOrgRecord.UserId">
+            <summary></summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Repositories.CustomSyncData.UserOrgRecord.OrgId">
+            <summary></summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitUserOrgAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化用户部门
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZhonTai.Admin.Repositories.CustomSyncData.RolePermissionRecord">
+            <summary>
+            角色权限记录
+            </summary>
+            <param name="RoleId"></param>
+            <param name="PermissionId"></param>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.RolePermissionRecord.#ctor(System.Int64,System.Int64)">
+            <summary>
+            角色权限记录
+            </summary>
+            <param name="RoleId"></param>
+            <param name="PermissionId"></param>
+        </member>
+        <member name="P:ZhonTai.Admin.Repositories.CustomSyncData.RolePermissionRecord.RoleId">
+            <summary></summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Repositories.CustomSyncData.RolePermissionRecord.PermissionId">
+            <summary></summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitRolePermissionAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化角色权限
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitTenantAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化租户
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZhonTai.Admin.Repositories.CustomSyncData.TenantPermissionRecord">
+            <summary>
+            租户权限记录
+            </summary>
+            <param name="TenantId"></param>
+            <param name="PermissionId"></param>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.TenantPermissionRecord.#ctor(System.Int64,System.Int64)">
+            <summary>
+            租户权限记录
+            </summary>
+            <param name="TenantId"></param>
+            <param name="PermissionId"></param>
+        </member>
+        <member name="P:ZhonTai.Admin.Repositories.CustomSyncData.TenantPermissionRecord.TenantId">
+            <summary></summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Repositories.CustomSyncData.TenantPermissionRecord.PermissionId">
+            <summary></summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.InitTenantPermissionAsync(IFreeSql,FreeSql.IRepositoryUnitOfWork,ZhonTai.Admin.Core.Configs.DbConfig)">
+            <summary>
+            初始化租户权限
+            </summary>
+            <param name="db"></param>
+            <param name="unitOfWork"></param>
+            <param name="dbConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.CustomSyncData.SyncDataAsync(IFreeSql,ZhonTai.Admin.Core.Configs.DbConfig,ZhonTai.Admin.Core.Configs.AppConfig)">
+            <summary>
+            同步数据
+            </summary>
+            <param name="db"></param>
+            <param name="dbConfig"></param>
+            <param name="appConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.PkgRepository.GetChildIdListAsync(System.Int64)">
+            <summary>
+            获得本角色和下级角色Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Repositories.PkgRepository.GetChildIdListAsync(System.Int64[])">
+            <summary>
+            获得当前角色和下级角色Id
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
         <member name="M:ZhonTai.Admin.Repositories.RoleRepository.GetChildIdListAsync(System.Int64)">
             <summary>
             获得本角色和下级角色Id
@@ -3411,192 +4172,197 @@
             <param name="idList"></param>
             <returns></returns>
         </member>
-        <member name="T:ZhonTai.Admin.Services.DictionaryType.DictionaryTypeService">
+        <member name="T:ZhonTai.Admin.Services.DictType.DictTypeService">
             <summary>
             字典类型服务
             </summary>
         </member>
-        <member name="M:ZhonTai.Admin.Services.DictionaryType.DictionaryTypeService.GetAsync(System.Int64)">
+        <member name="M:ZhonTai.Admin.Services.DictType.DictTypeService.GetAsync(System.Int64)">
             <summary>
             查询字典类型
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.DictionaryType.DictionaryTypeService.GetPageAsync(ZhonTai.Admin.Core.Dto.PageInput{ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeGetPageDto})">
+        <member name="M:ZhonTai.Admin.Services.DictType.DictTypeService.GetPageAsync(ZhonTai.Admin.Core.Dto.PageInput{ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeGetPageDto})">
             <summary>
             查询字典类型列表
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.DictionaryType.DictionaryTypeService.AddAsync(ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeAddInput)">
+        <member name="M:ZhonTai.Admin.Services.DictType.DictTypeService.AddAsync(ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeAddInput)">
             <summary>
             新增
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.DictionaryType.DictionaryTypeService.UpdateAsync(ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeUpdateInput)">
+        <member name="M:ZhonTai.Admin.Services.DictType.DictTypeService.UpdateAsync(ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeUpdateInput)">
             <summary>
             修改
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.DictionaryType.DictionaryTypeService.DeleteAsync(System.Int64)">
+        <member name="M:ZhonTai.Admin.Services.DictType.DictTypeService.DeleteAsync(System.Int64)">
             <summary>
             彻底删除
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.DictionaryType.DictionaryTypeService.SoftDeleteAsync(System.Int64)">
+        <member name="M:ZhonTai.Admin.Services.DictType.DictTypeService.SoftDeleteAsync(System.Int64)">
             <summary>
             删除
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.DictionaryType.DictionaryTypeService.BatchSoftDeleteAsync(System.Int64[])">
+        <member name="M:ZhonTai.Admin.Services.DictType.DictTypeService.BatchSoftDeleteAsync(System.Int64[])">
             <summary>
             批量删除
             </summary>
             <param name="ids"></param>
             <returns></returns>
         </member>
-        <member name="T:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeAddInput">
+        <member name="T:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeAddInput">
             <summary>
             添加
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeAddInput.Name">
+        <member name="P:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeAddInput.Name">
             <summary>
             字典名称
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeAddInput.Code">
+        <member name="P:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeAddInput.Code">
             <summary>
             字典编码
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeAddInput.Description">
+        <member name="P:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeAddInput.Description">
             <summary>
             描述
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeAddInput.Enabled">
+        <member name="P:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeAddInput.Enabled">
             <summary>
             启用
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeGetPageDto.Name">
+        <member name="P:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeGetPageDto.Name">
             <summary>
             字典名称
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeListOutput.Id">
+        <member name="P:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeListOutput.Id">
             <summary>
             主键Id
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeListOutput.Name">
+        <member name="P:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeListOutput.Name">
             <summary>
             字典名称
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeListOutput.Code">
+        <member name="P:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeListOutput.Code">
             <summary>
             字典编码
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeListOutput.Enabled">
+        <member name="P:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeListOutput.Enabled">
             <summary>
             启用
             </summary>
         </member>
-        <member name="T:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeUpdateInput">
+        <member name="T:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeUpdateInput">
             <summary>
             修改
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.DictionaryType.Dto.DictionaryTypeUpdateInput.Id">
+        <member name="P:ZhonTai.Admin.Services.DictType.Dto.DictionaryTypeUpdateInput.Id">
             <summary>
             主键Id
             </summary>
         </member>
-        <member name="T:ZhonTai.Admin.Services.DictionaryType.IDictionaryTypeService">
+        <member name="T:ZhonTai.Admin.Services.DictType.IDictTypeService">
             <summary>
             数据字典类型接口
             </summary>
         </member>
-        <member name="T:ZhonTai.Admin.Services.Dictionary.DictionaryService">
+        <member name="T:ZhonTai.Admin.Services.Dict.DictService">
             <summary>
             字典服务
             </summary>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Dictionary.DictionaryService.GetAsync(System.Int64)">
+        <member name="M:ZhonTai.Admin.Services.Dict.DictService.GetAsync(System.Int64)">
             <summary>
             查询数据字典
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Dictionary.DictionaryService.GetPageAsync(ZhonTai.Admin.Core.Dto.PageInput{ZhonTai.Admin.Domain.Dictionary.Dto.DictionaryGetPageDto})">
+        <member name="M:ZhonTai.Admin.Services.Dict.DictService.GetPageAsync(ZhonTai.Admin.Core.Dto.PageInput{ZhonTai.Admin.Domain.Dictionary.Dto.DictionaryGetPageDto})">
             <summary>
             查询数据字典列表
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Dictionary.DictionaryService.AddAsync(ZhonTai.Admin.Services.Dictionary.Dto.DictionaryAddInput)">
+        <member name="M:ZhonTai.Admin.Services.Dict.DictService.AddAsync(ZhonTai.Admin.Services.Dictionary.Dto.DictionaryAddInput)">
             <summary>
             新增
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Dictionary.DictionaryService.UpdateAsync(ZhonTai.Admin.Services.Dictionary.Dto.DictionaryUpdateInput)">
+        <member name="M:ZhonTai.Admin.Services.Dict.DictService.UpdateAsync(ZhonTai.Admin.Services.Dictionary.Dto.DictionaryUpdateInput)">
             <summary>
             修改
             </summary>
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Dictionary.DictionaryService.DeleteAsync(System.Int64)">
+        <member name="M:ZhonTai.Admin.Services.Dict.DictService.DeleteAsync(System.Int64)">
             <summary>
             彻底删除
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Dictionary.DictionaryService.SoftDeleteAsync(System.Int64)">
+        <member name="M:ZhonTai.Admin.Services.Dict.DictService.SoftDeleteAsync(System.Int64)">
             <summary>
             删除
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Dictionary.DictionaryService.BatchSoftDeleteAsync(System.Int64[])">
+        <member name="M:ZhonTai.Admin.Services.Dict.DictService.BatchSoftDeleteAsync(System.Int64[])">
             <summary>
             批量删除
             </summary>
             <param name="ids"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Dictionary.DictionaryService.GetListAsync(System.String)">
+        <member name="M:ZhonTai.Admin.Services.Dict.DictService.GetListAsync(System.String)">
             <summary>
             获取指定名称的数据字典列表
             </summary>
             <param name="name"></param>
             <returns></returns>
         </member>
+        <member name="T:ZhonTai.Admin.Services.Dict.IDictService">
+            <summary>
+            数据字典接口
+            </summary>
+        </member>
         <member name="T:ZhonTai.Admin.Services.Dictionary.Dto.DictionaryAddInput">
             <summary>
             添加
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.Dictionary.Dto.DictionaryAddInput.DictionaryTypeId">
+        <member name="P:ZhonTai.Admin.Services.Dictionary.Dto.DictionaryAddInput.DictTypeId">
             <summary>
             字典类型Id
             </summary>
@@ -3661,268 +4427,19 @@
             主键Id
             </summary>
         </member>
-        <member name="T:ZhonTai.Admin.Services.Dictionary.IDictioanryService">
+        <member name="T:ZhonTai.Admin.Services.User.Dto.UserSetEnableInput">
             <summary>
-            数据字典接口
+            设置启用
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileDeleteInput.Id">
+        <member name="P:ZhonTai.Admin.Services.User.Dto.UserSetEnableInput.UserId">
             <summary>
-            文件Id
+            用户Id
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.Id">
+        <member name="P:ZhonTai.Admin.Services.User.Dto.UserSetEnableInput.Enabled">
             <summary>
-            文件Id
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.ProviderName">
-            <summary>
-            OSS供应商
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.BucketName">
-            <summary>
-            存储桶名称
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.FileDirectory">
-            <summary>
-            文件目录
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.FileGuid">
-            <summary>
-            文件Guid
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.FileName">
-            <summary>
-            文件名
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.Extension">
-            <summary>
-            文件扩展名
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.SizeFormat">
-            <summary>
-            文件大小格式化
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.LinkUrl">
-            <summary>
-            链接地址
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.CreatedUserName">
-            <summary>
-            创建者
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.CreatedTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.ModifiedUserName">
-            <summary>
-            修改者
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.ModifiedTime">
-            <summary>
-            修改时间
-            </summary>
-        </member>
-        <member name="T:ZhonTai.Admin.Services.File.FileService">
-            <summary>
-            文件服务
-            </summary>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.File.FileService.GetPageAsync(ZhonTai.Admin.Core.Dto.PageInput{ZhonTai.Admin.Domain.File.Dto.FileGetPageDto})">
-            <summary>
-            查询分页
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.File.FileService.DeleteAsync(ZhonTai.Admin.Services.File.Dto.FileDeleteInput)">
-            <summary>
-            删除
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.File.FileService.UploadFileAsync(Microsoft.AspNetCore.Http.IFormFile,System.String,System.Boolean)">
-            <summary>
-            上传文件
-            </summary>
-            <param name="file">文件</param>
-            <param name="fileDirectory">文件目录</param>
-            <param name="fileReName">文件重命名</param>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.File.FileService.UploadFilesAsync(Microsoft.AspNetCore.Http.IFormFileCollection,System.String,System.Boolean)">
-            <summary>
-            上传多文件
-            </summary>
-            <param name="files">文件列表</param>
-            <param name="fileDirectory">文件目录</param>
-            <param name="fileReName">文件重命名</param>
-            <returns></returns>
-        </member>
-        <member name="T:ZhonTai.Admin.Services.File.IFileService">
-            <summary>
-            文件接口
-            </summary>
-        </member>
-        <member name="T:ZhonTai.Admin.Services.Org.Input.OrgAddInput">
-            <summary>
-            添加
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.ParentId">
-            <summary>
-            父级
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Name">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Code">
-            <summary>
-            编码
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Value">
-            <summary>
-            值
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Enabled">
-            <summary>
-            启用
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Sort">
-            <summary>
-            排序
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Description">
-            <summary>
-            描述
-            </summary>
-        </member>
-        <member name="T:ZhonTai.Admin.Services.Org.Input.OrgUpdateInput">
-            <summary>
-            修改
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgUpdateInput.Id">
-            <summary>
-            主键Id
-            </summary>
-        </member>
-        <member name="T:ZhonTai.Admin.Services.Org.OrgService">
-            <summary>
-            部门服务
-            </summary>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.Org.OrgService.GetAsync(System.Int64)">
-            <summary>
-            查询
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.Org.OrgService.GetListAsync(System.String)">
-            <summary>
-            查询列表
-            </summary>
-            <param name="key"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.Org.OrgService.AddAsync(ZhonTai.Admin.Services.Org.Input.OrgAddInput)">
-            <summary>
-            新增
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.Org.OrgService.UpdateAsync(ZhonTai.Admin.Services.Org.Input.OrgUpdateInput)">
-            <summary>
-            修改
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.Org.OrgService.DeleteAsync(System.Int64)">
-            <summary>
-            彻底删除
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.Org.OrgService.SoftDeleteAsync(System.Int64)">
-            <summary>
-            删除
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Id">
-            <summary>
-            主键Id
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.ParentId">
-            <summary>
-            父级
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Name">
-            <summary>
-            名称
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Code">
-            <summary>
-            编码
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Value">
-            <summary>
-            值
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Enabled">
-            <summary>
-            启用
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Sort">
-            <summary>
-            排序
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Type">
-            <summary>
-            组织类型
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Description">
-            <summary>
-            描述
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.CreatedTime">
-            <summary>
-            创建时间
+            是否启用
             </summary>
         </member>
         <member name="T:ZhonTai.Admin.Services.User.Dto.UserAddInput">
@@ -4276,6 +4793,13 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="M:ZhonTai.Admin.Services.User.UserService.UpdateAsync(ZhonTai.Admin.Services.User.Dto.UserUpdateInput)">
+            <summary>
+            修改用户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:ZhonTai.Admin.Services.User.UserService.AddMemberAsync(ZhonTai.Admin.Services.User.Dto.UserAddMemberInput)">
             <summary>
             新增会员
@@ -4286,13 +4810,6 @@
         <member name="M:ZhonTai.Admin.Services.User.UserService.UpdateMemberAsync(ZhonTai.Admin.Services.User.Dto.UserUpdateMemberInput)">
             <summary>
             修改会员
-            </summary>
-            <param name="input"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.User.UserService.UpdateAsync(ZhonTai.Admin.Services.User.Dto.UserUpdateInput)">
-            <summary>
-            修改用户
             </summary>
             <param name="input"></param>
             <returns></returns>
@@ -4321,6 +4838,13 @@
         <member name="M:ZhonTai.Admin.Services.User.UserService.SetManagerAsync(ZhonTai.Admin.Services.User.Dto.UserSetManagerInput)">
             <summary>
             设置主管
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.User.UserService.SetEnableAsync(ZhonTai.Admin.Services.User.Dto.UserSetEnableInput)">
+            <summary>
+            设置启用
             </summary>
             <param name="input"></param>
             <returns></returns>
@@ -4361,9 +4885,274 @@
             <param name="autoUpdate"></param>
             <returns></returns>
         </member>
+        <member name="M:ZhonTai.Admin.Services.User.UserService.OneClickLoginAsync(System.String)">
+            <summary>
+            一键登录用户
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ZhonTai.Admin.Services.User.MapConfig">
             <summary>
             映射配置
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileDeleteInput.Id">
+            <summary>
+            文件Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.Id">
+            <summary>
+            文件Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.ProviderName">
+            <summary>
+            OSS供应商
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.BucketName">
+            <summary>
+            存储桶名称
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.FileDirectory">
+            <summary>
+            文件目录
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.FileGuid">
+            <summary>
+            文件Guid
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.FileName">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.Extension">
+            <summary>
+            文件扩展名
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.SizeFormat">
+            <summary>
+            文件大小格式化
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.LinkUrl">
+            <summary>
+            链接地址
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.CreatedUserName">
+            <summary>
+            创建者
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.CreatedTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.ModifiedUserName">
+            <summary>
+            修改者
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.File.Dto.FileGetPageOutput.ModifiedTime">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.File.FileService">
+            <summary>
+            文件服务
+            </summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.File.FileService.GetPageAsync(ZhonTai.Admin.Core.Dto.PageInput{ZhonTai.Admin.Domain.File.Dto.FileGetPageDto})">
+            <summary>
+            查询分页
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.File.FileService.DeleteAsync(ZhonTai.Admin.Services.File.Dto.FileDeleteInput)">
+            <summary>
+            删除
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.File.FileService.UploadFileAsync(Microsoft.AspNetCore.Http.IFormFile,System.String,System.Boolean)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="file">文件</param>
+            <param name="fileDirectory">文件目录</param>
+            <param name="fileReName">文件重命名</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.File.FileService.UploadFilesAsync(Microsoft.AspNetCore.Http.IFormFileCollection,System.String,System.Boolean)">
+            <summary>
+            上传多文件
+            </summary>
+            <param name="files">文件列表</param>
+            <param name="fileDirectory">文件目录</param>
+            <param name="fileReName">文件重命名</param>
+            <returns></returns>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.File.IFileService">
+            <summary>
+            文件接口
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Org.Input.OrgAddInput">
+            <summary>
+            添加
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.ParentId">
+            <summary>
+            父级
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgAddInput.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Org.Input.OrgUpdateInput">
+            <summary>
+            修改
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Input.OrgUpdateInput.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Org.OrgService">
+            <summary>
+            部门服务
+            </summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Org.OrgService.GetAsync(System.Int64)">
+            <summary>
+            查询
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Org.OrgService.GetListAsync(System.String)">
+            <summary>
+            查询列表
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Org.OrgService.AddAsync(ZhonTai.Admin.Services.Org.Input.OrgAddInput)">
+            <summary>
+            新增
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Org.OrgService.UpdateAsync(ZhonTai.Admin.Services.Org.Input.OrgUpdateInput)">
+            <summary>
+            修改
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Org.OrgService.DeleteAsync(System.Int64)">
+            <summary>
+            彻底删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Org.OrgService.SoftDeleteAsync(System.Int64)">
+            <summary>
+            删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.ParentId">
+            <summary>
+            父级
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Type">
+            <summary>
+            组织类型
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Org.Output.OrgListOutput.CreatedTime">
+            <summary>
+            创建时间
             </summary>
         </member>
         <member name="T:ZhonTai.Admin.Services.Api.ApiService">
@@ -4471,6 +5260,11 @@
             说明
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Services.Api.Dto.ApiAddInput.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Services.Api.Dto.ApiAddInput.Enabled">
             <summary>
             启用
@@ -4509,6 +5303,11 @@
         <member name="P:ZhonTai.Admin.Services.Api.Dto.ApiListOutput.Description">
             <summary>
             说明
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Api.Dto.ApiListOutput.Sort">
+            <summary>
+            排序
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Services.Api.Dto.ApiListOutput.Enabled">
@@ -4579,6 +5378,24 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ZhonTai.Admin.Services.Auth.AuthService.GetUserProfileAsync">
+            <summary>
+            查询用户个人信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Auth.AuthService.GetUserMenusAsync">
+            <summary>
+            查询用户菜单列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Auth.AuthService.GetUserPermissionsAsync">
+            <summary>
+            查询用户权限列表
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ZhonTai.Admin.Services.Auth.AuthService.GetUserInfoAsync">
             <summary>
             查询用户信息
@@ -4592,6 +5409,13 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="M:ZhonTai.Admin.Services.Auth.AuthService.MobileLoginAsync(ZhonTai.Admin.Services.Auth.Dto.AuthMobileLoginInput)">
+            <summary>
+            手机号登录
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
         <member name="M:ZhonTai.Admin.Services.Auth.AuthService.Refresh(System.String)">
             <summary>
             刷新Token
@@ -4600,15 +5424,9 @@
             <param name="token"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Auth.AuthService.GetCaptcha">
+        <member name="M:ZhonTai.Admin.Services.Auth.AuthService.IsCaptcha">
             <summary>
-            获取验证数据
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Services.Auth.AuthService.CheckCaptcha(ZhonTai.Admin.Tools.Captcha.CaptchaInput)">
-            <summary>
-            检查验证数据
+            是否开启验证码
             </summary>
             <returns></returns>
         </member>
@@ -4629,12 +5447,22 @@
         </member>
         <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthGetUserInfoOutput.Menus">
             <summary>
-            用户菜单
+            用户菜单列表
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthGetUserInfoOutput.Permissions">
             <summary>
-            用户权限点
+            用户权限列表
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthGetUserPermissionsOutput.User">
+            <summary>
+            用户个人信息
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthGetUserPermissionsOutput.Permissions">
+            <summary>
+            用户权限列表
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthGetVerifyCodeOutput.Key">
@@ -4667,9 +5495,14 @@
             密码键
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginInput.Captcha">
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginInput.CaptchaId">
             <summary>
-            验证数据
+            验证码Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginInput.CaptchaData">
+            <summary>
+            验证码数据
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginOutput.Id">
@@ -4702,14 +5535,54 @@
             部门Id
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginOutput.TenantType">
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginOutput.Tenant">
+            <summary>
+            租户信息
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginOutput.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Auth.Dto.AuthLoginTenantDto">
+            <summary>
+            租户信息
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginTenantDto.TenantType">
             <summary>
             租户类型
             </summary>
         </member>
-        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginOutput.DbKey">
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginTenantDto.DbKey">
             <summary>
             数据库注册键
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthLoginTenantDto.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Auth.Dto.AuthMobileLoginInput">
+            <summary>
+            手机号登录信息
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthMobileLoginInput.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthMobileLoginInput.Code">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthMobileLoginInput.CodeId">
+            <summary>
+            验证码Id
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthUserMenuDto.Id">
@@ -4795,6 +5668,11 @@
         <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthUserMenuDto.Sort">
             <summary>
             排序
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Auth.Dto.AuthUserProfileDto">
+            <summary>
+            用户个人信息
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Services.Auth.Dto.AuthUserProfileDto.UserName">
@@ -4896,6 +5774,58 @@
             </summary>
             <param name="cacheKey"></param>
             <returns></returns>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Cache.CaptchaService">
+            <summary>
+            验证码服务
+            </summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Cache.CaptchaService.Generate(System.String)">
+            <summary>
+            生成
+            </summary>
+            <param name="captchaId">验证码id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Cache.CaptchaService.CheckAsync(System.String,Lazy.SlideCaptcha.Core.Validator.SlideTrack)">
+            <summary>
+            验证
+            </summary>
+            <param name="captchaId">验证码id</param>
+            <param name="track">滑动轨迹</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Cache.CaptchaService.SendSmsCodeAsync(ZhonTai.Admin.Services.Captcha.Dto.SendSmsCodeInput)">
+            <summary>
+            发送短信验证码
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Captcha.Dto.SendSmsCodeInput">
+            <summary>
+            发送短信验证码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Captcha.Dto.SendSmsCodeInput.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Captcha.Dto.SendSmsCodeInput.CodeId">
+            <summary>
+            验证码Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Captcha.Dto.SendSmsCodeInput.CaptchaId">
+            <summary>
+            验证码Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Captcha.Dto.SendSmsCodeInput.Track">
+            <summary>
+            滑动轨迹
+            </summary>
         </member>
         <member name="T:ZhonTai.Admin.Services.Document.DocumentService">
             <summary>
@@ -5853,20 +6783,20 @@
             <param name="end"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Permission.PermissionService.GetPermissionList">
+        <member name="M:ZhonTai.Admin.Services.Permission.PermissionService.GetPermissionListAsync">
             <summary>
-            查询角色权限-权限列表
+            查询授权权限列表
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Permission.PermissionService.GetRolePermissionList(System.Int64)">
+        <member name="M:ZhonTai.Admin.Services.Permission.PermissionService.GetRolePermissionListAsync(System.Int64)">
             <summary>
             查询角色权限列表
             </summary>
             <param name="roleId"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Permission.PermissionService.GetTenantPermissionList(System.Int64)">
+        <member name="M:ZhonTai.Admin.Services.Permission.PermissionService.GetTenantPermissionListAsync(System.Int64)">
             <summary>
             查询租户权限列表
             </summary>
@@ -5958,6 +6888,297 @@
             <returns></returns>
         </member>
         <member name="T:ZhonTai.Admin.Services.Admin.Permission.MapConfig">
+            <summary>
+            映射配置
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Pkg.Dto.PkgAddInput">
+            <summary>
+            添加
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgAddInput.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgAddInput.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgAddInput.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgAddInput.Description">
+            <summary>
+            说明
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgAddInput.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgAddInput.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Pkg.Dto.PkgAddPkgTenantListInput">
+            <summary>
+            添加套餐租户列表
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgAddPkgTenantListInput.PkgId">
+            <summary>
+            套餐
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgAddPkgTenantListInput.TenantIds">
+            <summary>
+            租户列表
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetListInput.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetListOutput.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetListOutput.ParentId">
+            <summary>
+            父级Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetListOutput.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetListOutput.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetListOutput.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetListOutput.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetListOutput.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetListOutput.CreatedTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPageDto.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPageOutput.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPageOutput.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPageOutput.Code">
+            <summary>
+            编码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPageOutput.Description">
+            <summary>
+            说明
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPageOutput.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPageOutput.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPageOutput.CreatedTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPkgTenantListInput.TenantName">
+            <summary>
+            租户名
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPkgTenantListInput.PkgId">
+            <summary>
+            套餐Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPkgTenantListOutput.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPkgTenantListOutput.Name">
+            <summary>
+            租户名
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgGetPkgTenantListOutput.Code">
+            <summary>
+            租户编码
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Pkg.Dto.PkgUpdateInput">
+            <summary>
+            修改
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Pkg.Dto.PkgUpdateInput.Id">
+            <summary>
+            套餐Id
+            </summary>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Pkg.PkgService">
+            <summary>
+            套餐服务
+            </summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.ClearUserPermissionsAsync(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            清除租户下所有用户权限缓存
+            </summary>
+            <param name="tenantIds"></param>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.GetAsync(System.Int64)">
+            <summary>
+            查询
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.GetListAsync(ZhonTai.Admin.Services.Pkg.Dto.PkgGetListInput)">
+            <summary>
+            查询列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.GetPageAsync(ZhonTai.Admin.Core.Dto.PageInput{ZhonTai.Admin.Services.Pkg.Dto.PkgGetPageDto})">
+            <summary>
+            查询分页
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.GetPkgTenantListAsync(ZhonTai.Admin.Services.Pkg.Dto.PkgGetPkgTenantListInput)">
+            <summary>
+            查询套餐租户列表
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.GetPkgTenantPageAsync(ZhonTai.Admin.Core.Dto.PageInput{ZhonTai.Admin.Services.Pkg.Dto.PkgGetPkgTenantListInput})">
+            <summary>
+            查询套餐租户分页
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.GetPkgPermissionListAsync(System.Int64)">
+            <summary>
+            查询套餐权限列表
+            </summary>
+            <param name="pkgId">套餐编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.SetPkgPermissionsAsync(ZhonTai.Admin.Services.Pkg.Dto.PkgSetPkgPermissionsInput)">
+            <summary>
+            设置套餐权限
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.AddPkgTenantAsync(ZhonTai.Admin.Services.Pkg.Dto.PkgAddPkgTenantListInput)">
+            <summary>
+            添加套餐租户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.RemovePkgTenantAsync(ZhonTai.Admin.Services.Pkg.Dto.PkgAddPkgTenantListInput)">
+            <summary>
+            移除套餐租户
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.AddAsync(ZhonTai.Admin.Services.Pkg.Dto.PkgAddInput)">
+            <summary>
+            新增
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.UpdateAsync(ZhonTai.Admin.Services.Pkg.Dto.PkgUpdateInput)">
+            <summary>
+            修改
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.DeleteAsync(System.Int64)">
+            <summary>
+            彻底删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.BatchDeleteAsync(System.Int64[])">
+            <summary>
+            批量彻底删除
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.SoftDeleteAsync(System.Int64)">
+            <summary>
+            删除
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Pkg.PkgService.BatchSoftDeleteAsync(System.Int64[])">
+            <summary>
+            批量删除
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Pkg.MapConfig">
             <summary>
             映射配置
             </summary>
@@ -6092,6 +7313,21 @@
             创建时间
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Services.Role.Dto.RoleGetRoleUserListOutput.Id">
+            <summary>
+            主键Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Role.Dto.RoleGetRoleUserListOutput.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Role.Dto.RoleGetRoleUserListOutput.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
         <member name="T:ZhonTai.Admin.Services.Role.Dto.RoleSetDataScopeInput">
             <summary>
             设置数据范围
@@ -6142,6 +7378,14 @@
             角色服务
             </summary>
         </member>
+        <member name="M:ZhonTai.Admin.Services.Role.RoleService.AddRoleOrgAsync(System.Int64,System.Int64[])">
+            <summary>
+            添加角色部门
+            </summary>
+            <param name="roleId"></param>
+            <param name="orgIds"></param>
+            <returns></returns>
+        </member>
         <member name="M:ZhonTai.Admin.Services.Role.RoleService.GetAsync(System.Int64)">
             <summary>
             查询
@@ -6163,7 +7407,7 @@
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:ZhonTai.Admin.Services.Role.RoleService.GetRoleUserListAsync(ZhonTai.Admin.Domain.Role.Dto.UserGetRoleUserListInput)">
+        <member name="M:ZhonTai.Admin.Services.Role.RoleService.GetRoleUserListAsync(ZhonTai.Admin.Domain.Role.Dto.RoleGetRoleUserListInput)">
             <summary>
             查询角色用户列表
             </summary>
@@ -6172,7 +7416,7 @@
         </member>
         <member name="M:ZhonTai.Admin.Services.Role.RoleService.AddRoleUserAsync(ZhonTai.Admin.Services.Role.Dto.RoleAddRoleUserListInput)">
             <summary>
-            新增角色用户
+            添加角色用户
             </summary>
             <param name="input"></param>
             <returns></returns>
@@ -6186,7 +7430,7 @@
         </member>
         <member name="M:ZhonTai.Admin.Services.Role.RoleService.AddAsync(ZhonTai.Admin.Services.Role.Dto.RoleAddInput)">
             <summary>
-            添加
+            新增
             </summary>
             <param name="input"></param>
             <returns></returns>
@@ -6421,6 +7665,11 @@
             添加
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantAddInput.Id">
+            <summary>
+            租户Id
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantAddInput.Name">
             <summary>
             企业名称
@@ -6431,9 +7680,24 @@
             编码
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantAddInput.PkgIds">
+            <summary>
+            套餐Ids
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantAddInput.RealName">
             <summary>
             姓名
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantAddInput.UserName">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantAddInput.Password">
+            <summary>
+            密码
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantAddInput.Phone">
@@ -6471,14 +7735,19 @@
             说明
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantGetOutput.Pkgs">
+            <summary>
+            套餐列表
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantGetOutput.PkgIds">
+            <summary>
+            套餐Ids
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantListOutput.Id">
             <summary>
             主键
-            </summary>
-        </member>
-        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantListOutput.Code">
-            <summary>
-            企业编码
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantListOutput.Name">
@@ -6486,9 +7755,24 @@
             企业名称
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantListOutput.Code">
+            <summary>
+            企业编码
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantListOutput.PkgNames">
+            <summary>
+            套餐
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantListOutput.RealName">
             <summary>
             姓名
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantListOutput.UserName">
+            <summary>
+            账号
             </summary>
         </member>
         <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantListOutput.Phone">
@@ -6526,6 +7810,21 @@
             创建时间
             </summary>
         </member>
+        <member name="T:ZhonTai.Admin.Services.Tenant.Dto.TenantSetEnableInput">
+            <summary>
+            设置启用
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantSetEnableInput.TenantId">
+            <summary>
+            租户Id
+            </summary>
+        </member>
+        <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantSetEnableInput.Enabled">
+            <summary>
+            是否启用
+            </summary>
+        </member>
         <member name="T:ZhonTai.Admin.Services.Tenant.Dto.TenantUpdateInput">
             <summary>
             修改
@@ -6533,7 +7832,7 @@
         </member>
         <member name="P:ZhonTai.Admin.Services.Tenant.Dto.TenantUpdateInput.Id">
             <summary>
-            接口Id
+            租户Id
             </summary>
         </member>
         <member name="T:ZhonTai.Admin.Services.Tenant.ITenantService">
@@ -6594,6 +7893,18 @@
             </summary>
             <param name="ids"></param>
             <returns></returns>
+        </member>
+        <member name="M:ZhonTai.Admin.Services.Tenant.TenantService.SetEnableAsync(ZhonTai.Admin.Services.Tenant.Dto.TenantSetEnableInput)">
+            <summary>
+            设置启用
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZhonTai.Admin.Services.Tenant.MapConfig">
+            <summary>
+            映射配置
+            </summary>
         </member>
         <member name="T:ZhonTai.Admin.Services.View.Dto.ViewAddInput">
             <summary>
@@ -6927,15 +8238,7 @@
             <param name="value">值</param>
             <param name="expire">有效期</param>
         </member>
-        <member name="M:ZhonTai.Admin.Tools.Cache.ICacheTool.SetAsync(System.String,System.Object)">
-            <summary>
-            设置指定 key 的值，所有写入参数object都支持string | byte[] | 数值 | 对象
-            </summary>
-            <param name="key">键</param>
-            <param name="value">值</param>
-            <returns></returns>
-        </member>
-        <member name="M:ZhonTai.Admin.Tools.Cache.ICacheTool.SetAsync(System.String,System.Object,System.TimeSpan)">
+        <member name="M:ZhonTai.Admin.Tools.Cache.ICacheTool.SetAsync(System.String,System.Object,System.Nullable{System.TimeSpan})">
             <summary>
             设置指定 key 的值，所有写入参数object都支持string | byte[] | 数值 | 对象
             </summary>
@@ -6959,10 +8262,30 @@
             内存缓存
             </summary>
         </member>
+        <member name="M:ZhonTai.Admin.Tools.Cache.MemoryCacheTool.PatternRegex">
+            <remarks>
+            Pattern explanation:<br/>
+            <code>
+            ○ Match '{'.<br/>
+            ○ Match a character other than '\n' greedily any number of times.<br/>
+            ○ Match '}'.<br/>
+            </code>
+            </remarks>
+        </member>
         <member name="T:ZhonTai.Admin.Tools.Cache.RedisCacheTool">
             <summary>
             Redis缓存
             </summary>
+        </member>
+        <member name="M:ZhonTai.Admin.Tools.Cache.RedisCacheTool.PatternRegex">
+            <remarks>
+            Pattern explanation:<br/>
+            <code>
+            ○ Match '{'.<br/>
+            ○ Match a character other than '\n' greedily any number of times.<br/>
+            ○ Match '}'.<br/>
+            </code>
+            </remarks>
         </member>
         <member name="P:ZhonTai.Admin.Tools.Captcha.CaptchaInput.Token">
             <summary>
@@ -7106,6 +8429,11 @@
             数据库实例
             </summary>
         </member>
+        <member name="P:ZhonTai.Admin.Tools.TaskScheduler.TaskSchedulerOptions.FreeSqlCloud">
+            <summary>
+            多库实例
+            </summary>
+        </member>
         <member name="P:ZhonTai.Admin.Tools.TaskScheduler.TaskSchedulerOptions.ConfigureFreeSql">
             <summary>
             配置FreeSql
@@ -7141,6 +8469,47 @@
             使用任务调度
             </summary>
             <param name="app"></param>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.PatternRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the PatternRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.PatternRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PatternRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.PatternRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PatternRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.PatternRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PatternRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PatternRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.PatternRegex_0.RunnerFactory.Runner.TryMatchAtCurrentPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Determine whether <paramref name="inputSpan"/> at base.runtextpos is a match for the regular expression.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if the regular expression matches at the current position; otherwise, false.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
+            <summary>Default timeout value set in <see cref="T:System.AppContext"/>, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout"/> if none was set.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
+            <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout"/> is non-infinite.</summary>
         </member>
     </members>
 </doc>

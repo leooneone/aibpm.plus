@@ -2,51 +2,121 @@
   {
     "id": 391449161990213,
     "userId": 386321605353541,
-    "orgId": 391447829155909
+    "orgId": 391447829155909,
+    "isManager": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": null,
+    "modifiedUserName": null,
+    "modifiedTime": null
   },
   {
     "id": 391452871012421,
     "userId": 391450500943941,
-    "orgId": 391447752503365
+    "orgId": 391447752503365,
+    "isManager": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": null,
+    "modifiedUserName": null,
+    "modifiedTime": null
   },
   {
     "id": 391452871012422,
     "userId": 391450500943941,
-    "orgId": 391448493031493
+    "orgId": 391448493031493,
+    "isManager": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": null,
+    "modifiedUserName": null,
+    "modifiedTime": null
   },
   {
     "id": 391452931059781,
     "userId": 391450720129093,
-    "orgId": 391448493031493
+    "orgId": 391448493031493,
+    "isManager": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": null,
+    "modifiedUserName": null,
+    "modifiedTime": null
   },
   {
     "id": 391453015937093,
     "userId": 391449091633221,
-    "orgId": 391447829155909
+    "orgId": 391447829155909,
+    "isManager": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": null,
+    "modifiedUserName": null,
+    "modifiedTime": null
   },
   {
     "id": 391453069230149,
     "userId": 391450167926853,
-    "orgId": 391447752503365
+    "orgId": 391447752503365,
+    "isManager": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": null,
+    "modifiedUserName": null,
+    "modifiedTime": null
   },
   {
     "id": 391453114064965,
     "userId": 391449683779653,
-    "orgId": 391447913197637
+    "orgId": 391447913197637,
+    "isManager": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": null,
+    "modifiedUserName": null,
+    "modifiedTime": null
   },
   {
     "id": 391453202427973,
     "userId": 391449929683013,
-    "orgId": 391448102109253
+    "orgId": 391448102109253,
+    "isManager": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": null,
+    "modifiedUserName": null,
+    "modifiedTime": null
   },
   {
     "id": 391453268250693,
     "userId": 391451290554437,
-    "orgId": 391448408477765
+    "orgId": 391448408477765,
+    "isManager": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": null,
+    "modifiedUserName": null,
+    "modifiedTime": null
   },
   {
     "id": 394331585740869,
     "userId": 161223411986501,
-    "orgId": 189097691009093
+    "orgId": 189097691009093,
+    "isManager": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": null,
+    "modifiedUserName": null,
+    "modifiedTime": null
   }
 ]

@@ -17,5 +17,5 @@ public class UserAddInput: UserFormInput
     /// <summary>
     /// 状态
     /// </summary>
-    public UserStatus Status { get; set; } = UserStatus.Enabled;
+    public UserStatus Status { get; set; } = UserStatus.WaitActive;//Enabled;
 }

@@ -16,10 +16,9 @@ namespace AI.Core.Model.BPM
     /// </summary>
     [Table(Name = "ai_bpm_setting")]
     //[Index("idx_{tablename}_01", nameof(Name) + "," + nameof(TenantId), true)]
-    public class BPMSettingEntity  
-    {
-
-        public long Id { get; set; }
+    public class BPMSettingEntity:Entity
+    { 
+        //public long Id { get; set; }
         public string  AdminName { get; set; }
         public long  AdminId { get; set;}
          

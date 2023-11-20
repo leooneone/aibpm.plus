@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using ZhonTai.Admin.Domain.DictionaryType;
-using ZhonTai.Admin.Domain.Dictionary;
+using ZhonTai.Admin.Domain.DictType;
+using ZhonTai.Admin.Domain.Dict;
 using ZhonTai.Admin.Domain.Api;
 using ZhonTai.Admin.Domain.Permission;
 using ZhonTai.Admin.Domain.User;
@@ -19,6 +19,7 @@ using ZhonTai.Admin.Domain.UserOrg;
 using System.Linq;
 using ZhonTai.Common.Extensions;
 using AI.BPM.Domain.WorkflowTemplate;
+using AI.Core.Model.BPM;
 
 namespace ZhonTai.Admin.Repositories;
 
@@ -30,13 +31,15 @@ public class CustomSyncData : SyncData, ISyncData
         using var tran = uow.GetOrBeginTransaction();
         var isTenant = appConfig.Tenant;
 
-        var dictionaryTypes = GetData<WorkflowTemplateEntity>(isTenant, "InitData/BPM");
-        await InitDataAsync(db, uow, tran, dictionaryTypes, dbConfig);
- 
-       /*  
-        var permissionTree = GetData<PermissionEntity>(path: dbConfig.SyncDataPath);
-        await InitDataAsync(db, uow, tran, permissionTree.ToList().ToPlainList((a) => a.Childs).ToArray(), dbConfig);
-       */  
+        var tpls = GetData<WorkflowTemplateEntity>(isTenant, "InitData/BPM");
+        var setting = GetData<BPMSettingEntity>(isTenant, "InitData/BPM");
+        await InitDataAsync(db,  tran, tpls, dbConfig);
+        await InitDataAsync(db, tran, setting, dbConfig);
+
+        /*  
+         var permissionTree = GetData<PermissionEntity>(path: dbConfig.SyncDataPath);
+         await InitDataAsync(db, uow, tran, permissionTree.ToList().ToPlainList((a) => a.Childs).ToArray(), dbConfig);
+        */
         uow.Commit();
     }
 }

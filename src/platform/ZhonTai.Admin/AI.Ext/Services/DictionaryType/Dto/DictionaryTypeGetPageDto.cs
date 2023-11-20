@@ -1,5 +1,5 @@
 ﻿
-namespace ZhonTai.Admin.Services.DictionaryType.Dto;
+namespace ZhonTai.Admin.Services.DictType.Dto;
 
 public partial class DictionaryTypeGetPageDto
 {

@@ -13,6 +13,7 @@ namespace AI.BPM.Core.Enums
 
     public enum ActivityState : int
     {
+        #region 可人工干处理表单
         /// <summary>
         /// 草稿
         /// </summary>
@@ -28,7 +29,8 @@ namespace AI.BPM.Core.Enums
         /// </summary>
         [Description("待阅")]
         UnRead = 3 << 7 | DisplayType.Default,
-
+        #endregion
+        #region 不可人工处理表单
         /// <summary>
         /// 已完成
         /// </summary>
@@ -60,5 +62,6 @@ namespace AI.BPM.Core.Enums
         /// </summary>
         [Description("跳过")]
         Skiped = 9 << 7 | DisplayType.Warning,
+        #endregion
     }
 }

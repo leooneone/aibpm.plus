@@ -1,13 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
-		<Description>AIBPM.Plus.Host</Description>
-		<IsPackable>true</IsPackable>
-		<Company>AIliCloud</Company>
-		<Authors>Leo</Authors>
-		<GenerateDocumentationFile>True</GenerateDocumentationFile>
-		<AssemblyVersion>0.9.5.0</AssemblyVersion>
-		<FileVersion>0.9.6.0</FileVersion>
+		<Description>AIBPM宿主</Description>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,30 +10,38 @@
 		<NoWarn>1701;1702;1591</NoWarn>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<ServerGarbageCollection>false</ServerGarbageCollection>
+	</PropertyGroup>
+
 	<ItemGroup>
-	  <Compile Remove="addins\**" />
 	  <Compile Remove="wwwroot\**" />
-	  <Content Remove="addins\**" />
 	  <Content Remove="wwwroot\**" />
-	  <EmbeddedResource Remove="addins\**" />
 	  <EmbeddedResource Remove="wwwroot\**" />
-	  <None Remove="addins\**" />
 	  <None Remove="wwwroot\**" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Configs\createdbsql.txt" />
-	</ItemGroup>
-
+	
 	<ItemGroup>
 	  <Content Include="Configs\createdbsql.txt">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(Configuration)'=='Debug'">
+		<PackageReference Include="FreeSql.Provider.MySql" Version="3.2.700" />
+		<PackageReference Include="FreeSql.Provider.SqlServer" Version="3.2.700" />
+		<PackageReference Include="FreeSql.Provider.PostgreSQL" Version="3.2.700" />
+		<PackageReference Include="FreeSql.Provider.Oracle" Version="3.2.700" />
+		<PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.700" />
+		<PackageReference Include="FreeSql.Provider.MySqlConnector" Version="3.2.700" />
+	</ItemGroup>
+	
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\src\platform\ZhonTai.ApiUI\ZhonTai.ApiUI.csproj" />
-		<ProjectReference Include="..\..\AI\AI.BPM\AI.BPM.csproj" /> 
+		<ProjectReference Include="..\..\..\src\platform\ZhonTai.Admin\ZhonTai.Admin.csproj" />
+		<ProjectReference Include="..\..\..\src\platform\ZhonTai.ApiUI\ZhonTai.ApiUI.csproj" />		
+		<ProjectReference Include="..\..\AI\AI.BPM\AI.BPM.csproj" />
+
+  
 	</ItemGroup>
 
 	<ItemGroup>
@@ -46,11 +49,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="InitData\bpm\" />
-	  <Folder Include="InitData\admin\" />
-	</ItemGroup>
-
-	<ItemGroup>
+		<PackageReference Include="DotNetCore.CAP.Dashboard" Version="7.2.0" />
+		<PackageReference Include="DotNetCore.CAP.InMemoryStorage" Version="7.2.0" />
+		<PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.700" />
+		<PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="7.0.0" />
+		<PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.5" />
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>

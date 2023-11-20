@@ -92,8 +92,8 @@ namespace AI.BPM.Services.BPM.Activity.Activities
                     ///仅保存的话不存储流程实例
                     {
                         instance.State = InstanceState.Running;
-                        //
-                        instance.ReferenceNo = AiliCould.Core.BPM.Helper.ReferenceNoHelper.GetNo(new AiliCould.Core.BPM.Helper.ReferenceNoSetting { DateFormat = "yyyyMMdd", Length = 10, Type = AiliCould.Core.BPM.Helper.ReferenceNoType.Global, Format = "" }, "");
+                        var setting = await base.GetSetting();
+                        instance.ReferenceNo = AiliCould.Core.BPM.Helper.ReferenceNoHelper.GetNo(setting.ReferenceNoSetting, "");
                     }
                     else
                         instance.State = InstanceState.UnInitiated;
@@ -111,7 +111,10 @@ namespace AI.BPM.Services.BPM.Activity.Activities
 
 
             if (string.IsNullOrEmpty(instance.ReferenceNo) && !input.IsSaveOnly)
-            {  instance.ReferenceNo = AiliCould.Core.BPM.Helper.ReferenceNoHelper.GetNo(new AiliCould.Core.BPM.Helper.ReferenceNoSetting { DateFormat = "yyyyMMdd", Length = 10, Type = AiliCould.Core.BPM.Helper.ReferenceNoType.Global, Format = "" }, "");
+            {
+                var setting = await base.GetSetting();
+                 
+                instance.ReferenceNo = AiliCould.Core.BPM.Helper.ReferenceNoHelper.GetNo(setting.ReferenceNoSetting, "");
                 instance.State = InstanceState.Running;
             }
 

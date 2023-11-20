@@ -71,7 +71,7 @@ namespace AI.BPM.Services.BPMSetting
           
 
         /// <summary>
-        /// 更新设置
+        /// 更新设置 
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -82,7 +82,7 @@ namespace AI.BPM.Services.BPMSetting
             var ent = new BPMSettingEntity(); //await _BPMSettingRepository.GetAsync(input.Id);
             
 
-            Mapper.Map(input, ent);
+            Mapper.Map(input, ent); 
             await _BPMSettingRepository.InsertOrUpdateAsync(ent);
 
             //  await _BPMSettingOrganizationRepository.DeleteAsync(a => a.BPMSettingId == BPMSetting.Id);

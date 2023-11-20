@@ -1,0 +1,50 @@
+[
+  {
+    "id": 187395320434757,
+    "name": "性别",
+    "code": "sex",
+    "isSystem": false,
+    "description": "",
+    "enabled": true,
+    "sort": 1,
+    "isDeleted": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-11-19T01:36:04",
+    "modifiedUserId": 161223411986501,
+    "modifiedUserName": "admin",
+    "modifiedTime": "2023-11-19T01:36:57"
+  },
+  {
+    "id": 391439329738821,
+    "name": "流程分组",
+    "code": "bpm-group",
+    "isSystem": false,
+    "description": null,
+    "enabled": true,
+    "sort": 0,
+    "isDeleted": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": 161223411986501,
+    "modifiedUserName": "admin",
+    "modifiedTime": "2023-11-20T09:55:44"
+  },
+  {
+    "id": 391440894779461,
+    "name": "组织单元类型",
+    "code": "ou-type",
+    "isSystem": false,
+    "description": null,
+    "enabled": true,
+    "sort": 0,
+    "isDeleted": false,
+    "createdUserId": 161223411986501,
+    "createdUserName": "admin",
+    "createdTime": "2023-09-08T17:30:47",
+    "modifiedUserId": 161223411986501,
+    "modifiedUserName": "admin",
+    "modifiedTime": "2023-11-20T09:55:44"
+  }
+]

@@ -10,12 +10,12 @@ public class AuthGetUserInfoOutput
     public AuthUserProfileDto User { get; set; }
 
     /// <summary>
-    /// 用户菜单
+    /// 用户菜单列表
     /// </summary>
     public List<AuthUserMenuDto> Menus { get; set; }
 
     /// <summary>
-    /// 用户权限点
+    /// 用户权限列表
     /// </summary>
     public List<string> Permissions { get; set; }
 }
