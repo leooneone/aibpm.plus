@@ -1,0 +1,1 @@
+const t="treeNodeId",o="formConf";function r(){const e=localStorage.getItem(t);return e?parseInt(e,10):100}function n(e){localStorage.setItem(t,`${e}`)}function s(){const e=localStorage.getItem(o);return e?JSON.parse(e):null}function a(e){localStorage.setItem(o,JSON.stringify(e))}export{r as a,n as b,s as g,a as s};

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>AAR</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-440.000000, -680.000000)">
+            <g id="编组-13" transform="translate(440.000000, 680.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <path d="M32.0997383,5 L34,23.0524866 L34,24 L6,24 L6,23.0524866 L7.90026175,5 L32.0997383,5 Z" id="形状结合备份-3" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <rect id="形状结合备份-4" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="6" y="24" width="28" height="11"></rect>
+                <rect id="矩形" fill="#455A74" mask="url(#mask-2)" x="10" y="28" width="3" height="3"></rect>
+                <rect id="矩形备份-23" fill="#455A74" mask="url(#mask-2)" x="16" y="28" width="3" height="3"></rect>
+                <path d="M12.566,18 L12.953,16.461 L14.933,16.461 L15.32,18 L17.012,18 L14.933,11.304 L13.007,11.304 L10.928,18 L12.566,18 Z M14.627,15.219 L13.259,15.219 L13.403,14.652 C13.574,13.986 13.754,13.203 13.916,12.501 L13.952,12.501 C14.132,13.185 14.303,13.986 14.483,14.652 L14.627,15.219 Z M18.506,18 L18.893,16.461 L20.873,16.461 L21.26,18 L22.952,18 L20.873,11.304 L18.947,11.304 L16.868,18 L18.506,18 Z M20.567,15.219 L19.199,15.219 L19.343,14.652 C19.514,13.986 19.694,13.203 19.856,12.501 L19.892,12.501 C20.072,13.185 20.243,13.986 20.423,14.652 L20.567,15.219 Z M25.265,18 L25.265,15.642 L26.039,15.642 L27.272,18 L29.072,18 L27.578,15.345 C28.271,15.021 28.73,14.391 28.73,13.41 C28.73,11.79 27.542,11.304 26.111,11.304 L23.654,11.304 L23.654,18 L25.265,18 Z M25.985,14.373 L25.265,14.373 L25.265,12.573 L25.985,12.573 C26.75,12.573 27.155,12.78 27.155,13.41 C27.155,14.04 26.75,14.373 25.985,14.373 Z" id="AAR" fill="#455A74" fill-rule="nonzero" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>PTN</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-200.000000, -440.000000)">
+            <g id="编组-13" transform="translate(200.000000, 440.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <path d="M34.1801961,6 L36,15.0990195 L36,16 L4,16 L4,15.0990195 L5.8198039,6 L34.1801961,6 Z" id="形状结合备份-3" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <rect id="形状结合备份-4" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="4" y="16" width="32" height="18"></rect>
+                <path d="M28,26.25 L28,28.125 L16.308,28.126 L16.3076923,30 L12,26.25 L15.693,26.251 L15.6923077,26.25 L28,26.25 Z M23.6923077,20 L28,23.75 L24.307,23.749 L24.3076923,23.75 L12,23.75 L12,21.875 L23.692,21.874 L23.6923077,20 Z" id="形状结合" fill="#455A74" mask="url(#mask-2)"></path>
+                <rect id="矩形" fill="#455A74" mask="url(#mask-2)" x="9" y="10" width="3" height="2"></rect>
+                <rect id="矩形备份" fill="#455A74" mask="url(#mask-2)" x="14" y="10" width="3" height="2"></rect>
+                <rect id="矩形备份-2" fill="#455A74" mask="url(#mask-2)" x="19" y="10" width="3" height="2"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

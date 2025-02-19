@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="68px" viewBox="0 0 60 68" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>GPS定位</title>
+    <defs>
+        <linearGradient x1="45.656395%" y1="9.53118044%" x2="76.1897668%" y2="66.9629244%" id="linearGradient-1">
+            <stop stop-color="#52B8F1" offset="0%"></stop>
+            <stop stop-color="#076488" offset="100%"></stop>
+        </linearGradient>
+        <path d="M12.1825675,3.66145841 C9.60123957,2.36546458 1.89051223,1.10324917 0.182949343,9.88760807 C-0.955425915,15.7438473 3.21872773,26.6835098 12.7054103,42.7065954 C23.8075644,37.1924604 27.9629554,29.6220089 25.1715833,19.995241 C20.6838255,8.1183909 14.7638954,4.95745225 12.1825675,3.66145841 Z" id="path-2"></path>
+        <filter x="-1.9%" y="-1.3%" width="107.7%" height="102.5%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="1" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.8 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="67.0138889%" y1="69.7756966%" x2="38.7251215%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#4CBCED" offset="0%"></stop>
+            <stop stop-color="#229ACC" offset="100%"></stop>
+        </linearGradient>
+        <ellipse id="path-5" cx="12.5283056" cy="19.4260064" rx="3.83870968" ry="6.58064516"></ellipse>
+        <filter x="-19.5%" y="-3.8%" width="126.1%" height="107.6%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="-1" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.358364292 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="26.051126%" y1="36.1067771%" x2="50%" y2="76.5706783%" id="linearGradient-7">
+            <stop stop-color="#C1D4EB" offset="0%"></stop>
+            <stop stop-color="#E5EBFC" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="28.5417454%" x2="100%" y2="67.7794749%" id="linearGradient-8">
+            <stop stop-color="#D2D5EC" offset="0%"></stop>
+            <stop stop-color="#E2F0F7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-43" transform="translate(-1398.000000, -735.000000)">
+            <g id="GPS定位" transform="translate(1398.000000, 735.000000)">
+                <g id="编组-13" transform="translate(0.000000, 0.870968)">
+                    <polygon id="矩形" fill="#A8B4DA" opacity="0.298339844" points="30 34.5860913 60 50.5349811 30 66.483871 0 50.5349811"></polygon>
+                    <polygon id="矩形" fill="#FFFFFF" points="30 21 60 36.9488898 30 52.8977796 0 36.9488898"></polygon>
+                    <g id="编组-44" transform="translate(13.000000, 0.000000)">
+                        <path d="M13.172292,0.352595265 C15.7417945,-0.43050764 18.5062566,0.239862629 19.8599869,0.91952293 C22.4413148,2.21551676 28.3612449,5.37645542 32.8490027,17.2533055 C35.6403748,26.8800734 31.4849837,34.4505249 20.3828296,39.9646599 L20.3828296,39.9646599 L12.7054103,42.7065954 L4.89214213,3.41271756 L12.391202,0.640261244 C12.6438105,0.530106316 12.90005,0.436134256 13.1582894,0.356877811 L13.1712841,0.352555519 Z" id="形状结合" fill="url(#linearGradient-1)"></path>
+                        <g id="路径-30">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                            <use fill="#6CC8F0" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        </g>
+                        <g id="椭圆形" transform="translate(12.528306, 19.426006) rotate(-30.000000) translate(-12.528306, -19.426006) ">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                            <use fill="url(#linearGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
+                        </g>
+                    </g>
+                    <polygon id="矩形" fill="url(#linearGradient-7)" points="30 52.8977796 60 36.9488898 60 41.7101685 30 58.8183253"></polygon>
+                    <polygon id="矩形" fill="url(#linearGradient-8)" points="1.80064297e-14 36.9488898 30 52.8977796 30 58.8183253 2.66453526e-14 41.7786569"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

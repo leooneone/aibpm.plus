@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>NRF</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-520.000000, -280.000000)">
+            <g id="编组-13" transform="translate(520.000000, 280.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <path d="M20,5.33795495 L35.3698007,19 L32,19 L32,35 L8,35 L8,19 L4.63019932,19 L20,5.33795495 Z" id="形状结合" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <path d="M21,32 L21,37 L16,37 L16,32 L21,32 Z M34,32 L34,37 L21,37 L21,32 L34,32 Z M21,27 L21,32 L16,32 L16,27 L21,27 Z M34,27 L34,32 L21,32 L21,27 L34,27 Z M21,22 L21,27 L16,27 L16,22 L21,22 Z M34,22 L34,27 L21,27 L21,22 L34,22 Z" id="形状结合" stroke="#FFFFFF" stroke-width="2" fill="#455A74" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

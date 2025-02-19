@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>SDH</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-40.000000, -440.000000)">
+            <g id="编组-13" transform="translate(40.000000, 440.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <path d="M34.1801961,6 L36,15.0990195 L36,16 L4,16 L4,15.0990195 L5.8198039,6 L34.1801961,6 Z" id="形状结合备份-3" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <rect id="形状结合备份-4" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="4" y="16" width="32" height="18"></rect>
+                <rect id="矩形" fill="#455A74" mask="url(#mask-2)" x="9" y="10" width="3" height="2"></rect>
+                <rect id="矩形备份" fill="#455A74" mask="url(#mask-2)" x="14" y="10" width="3" height="2"></rect>
+                <rect id="矩形备份-2" fill="#455A74" mask="url(#mask-2)" x="19" y="10" width="3" height="2"></rect>
+                <polyline id="路径-3" stroke="#455A74" stroke-width="2" mask="url(#mask-2)" points="4 27.2359803 12.0512663 27.2359803 13.9775932 23.9470134 17.007338 29 22.0569126 21 25.0165696 27.2359803 36 27.2359803"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

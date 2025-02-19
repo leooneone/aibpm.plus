@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>pad</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-360.000000, -520.000000)">
+            <g id="编组-13" transform="translate(360.000000, 520.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <rect id="形状结合备份-4" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="6" y="2" width="28" height="36" rx="4"></rect>
+                <path d="M33,31 L33,38 L7,38 L7,31 L33,31 Z M20,33 C18.8954305,33 18,33.8954305 18,35 C18,36.1045695 18.8954305,37 20,37 C21.1045695,37 22,36.1045695 22,35 C22,33.8954305 21.1045695,33 20,33 Z" id="形状结合" fill="#455A74" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

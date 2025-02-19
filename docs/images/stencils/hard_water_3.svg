@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="67px" viewBox="0 0 60 67" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>硬水准仪</title>
+    <defs>
+        <linearGradient x1="26.051126%" y1="36.1067771%" x2="50%" y2="76.5706783%" id="linearGradient-1">
+            <stop stop-color="#C1D4EB" offset="0%"></stop>
+            <stop stop-color="#E5EBFC" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="28.5417454%" x2="100%" y2="67.7794749%" id="linearGradient-2">
+            <stop stop-color="#D2D5EC" offset="0%"></stop>
+            <stop stop-color="#E2F0F7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="24.2206876%" y1="82.5866979%" x2="83.36414%" y2="-24.6006387%" id="linearGradient-3">
+            <stop stop-color="#52B8F1" offset="0%"></stop>
+            <stop stop-color="#076488" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="24.2206876%" y1="82.5866979%" x2="76.0812672%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#52B8F1" offset="0%"></stop>
+            <stop stop-color="#076488" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="硬水准仪">
+            <g id="编组-4备份-6" transform="translate(0.000000, 20.000000)">
+                <g id="编组-13" transform="translate(0.000000, 0.870968)">
+                    <polygon id="矩形" fill="#A8B4DA" opacity="0.298339844" points="30 13.5860913 60 29.5349811 30 45.483871 0 29.5349811"></polygon>
+                    <polygon id="矩形" fill="#FFFFFF" points="30 0 60 15.9488898 30 31.8977796 0 15.9488898"></polygon>
+                    <polygon id="矩形" fill="url(#linearGradient-1)" points="30 31.8977796 60 15.9488898 60 20.7101685 30 37.8183253"></polygon>
+                    <polygon id="矩形" fill="url(#linearGradient-2)" points="1.80064297e-14 15.9488898 30 31.8977796 30 37.8183253 2.66453526e-14 20.7786569"></polygon>
+                </g>
+            </g>
+            <g id="数据主节点_1_" transform="translate(9.000000, 0.000000)">
+                <polygon id="Fill-6_12_" fill="url(#linearGradient-3)" points="41.0307692 35.0558696 20.6769231 46.7411594 20.6769231 23.8507971 41.0307692 12.3255797"></polygon>
+                <polygon id="Fill-7_12_" fill="url(#linearGradient-4)" points="0.323076923 35.0558696 20.6769231 46.7411594 20.6769231 23.8507971 0.323076923 12.3255797"></polygon>
+                <polygon id="Fill-8_10_" fill="#FFFFFF" points="41.0307692 25.4515217 20.6769231 36.9767391 20.6769231 34.0954348 41.0307692 22.4101449"></polygon>
+                <path d="M25.2,28.0126812 L24.2307692,28.8130435 C23.7461538,29.1331884 23.1,28.8130435 23.1,28.3328261 L23.1,26.572029 C23.1,26.4119565 23.2615385,26.0918116 23.4230769,26.0918116 L24.5538462,25.2914493 C25.0384615,24.9713043 25.6846154,25.2914493 25.6846154,25.7716667 L25.6846154,27.5324638 C25.5230769,27.6925362 25.3615385,27.8526087 25.2,28.0126812" id="Fill-10_42_" fill="#FFFFFF"></path>
+                <path d="M25.2,40.0181159 L24.2307692,40.8184783 C23.7461538,41.1386232 23.1,40.8184783 23.1,40.3382609 L23.1,38.5774638 C23.1,38.4173913 23.2615385,38.0972464 23.4230769,38.0972464 L24.5538462,37.2968841 C25.0384615,36.9767391 25.6846154,37.2968841 25.6846154,37.7771014 L25.6846154,39.5378986 C25.5230769,39.697971 25.3615385,40.0181159 25.2,40.0181159" id="Fill-12_5_" fill="#FFFFFF"></path>
+                <polygon id="Fill-14_11_" fill="#6CC8F0" points="0.323076923 12.3255797 20.6769231 23.8507971 41.0307692 12.3255797 20.6769231 0.640289855"></polygon>
+                <polygon id="Fill-15_10_" fill="#FFFFFF" points="8.88461538 7.5234058 29.7230769 18.7284783 32.6307692 17.1277536 11.6307692 5.92268116"></polygon>
+                <line x1="20.6769231" y1="24.0108696" x2="41.1923077" y2="12.3255797" id="路径-7_41_" stroke="#FFFFFF"></line>
+                <line x1="20.6769231" y1="24.0108696" x2="20.6769231" y2="46.581087" id="路径-7_40_" stroke="#FFFFFF"></line>
+                <line x1="20.6769231" y1="24.0108696" x2="0.323076923" y2="12.3255797" id="路径-7_39_" stroke="#FFFFFF"></line>
+            </g>
+        </g>
+    </g>
+</svg>

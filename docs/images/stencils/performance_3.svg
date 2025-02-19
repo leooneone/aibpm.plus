@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="65px" viewBox="0 0 60 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>性能管理中心</title>
+    <defs>
+        <linearGradient x1="26.051126%" y1="35.7896809%" x2="50%" y2="77.1771222%" id="linearGradient-1">
+            <stop stop-color="#C1D4EB" offset="0%"></stop>
+            <stop stop-color="#E5EBFC" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="28.0519865%" x2="100%" y2="68.1852701%" id="linearGradient-2">
+            <stop stop-color="#D2D5EC" offset="0%"></stop>
+            <stop stop-color="#E2F0F7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="59.6193988%" y1="89.1161676%" x2="75.3103689%" y2="-36.9438217%" id="linearGradient-3">
+            <stop stop-color="#A6E5FD" offset="0%"></stop>
+            <stop stop-color="#59BCDF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#6F49E5" offset="0%"></stop>
+            <stop stop-color="#A265E9" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="68.673992%" y1="60.1988347%" x2="42.0570831%" y2="35.5558645%" id="linearGradient-5">
+            <stop stop-color="#2087B3" offset="0%"></stop>
+            <stop stop-color="#1594CC" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="65.9707985%" y1="30.8594278%" x2="30.2530234%" y2="87.5886689%" id="linearGradient-6">
+            <stop stop-color="#1B89B8" offset="0%"></stop>
+            <stop stop-color="#56C2F1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="86.0556998%" x2="89.2654397%" y2="5.06959586%" id="linearGradient-7">
+            <stop stop-color="#A4E4FC" offset="0%"></stop>
+            <stop stop-color="#90E1FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="77.9199179%" y1="-5.86951334%" x2="22.0800821%" y2="100%" id="linearGradient-8">
+            <stop stop-color="#C1EFFF" offset="0%"></stop>
+            <stop stop-color="#D6F5FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="119.77058%" x2="86.960683%" y2="-36.9438217%" id="linearGradient-9">
+            <stop stop-color="#B0E9FF" offset="0%"></stop>
+            <stop stop-color="#5DBEE1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="67.3751407%" y1="69.7727899%" x2="40.9717102%" y2="36.717254%" id="linearGradient-10">
+            <stop stop-color="#E4F8FF" offset="0%"></stop>
+            <stop stop-color="#B9EDFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="性能管理中心">
+            <g id="编组-22" transform="translate(0.000000, 19.000000)">
+                <polygon id="矩形" fill="#A8B4DA" opacity="0.299874442" points="30 13.7402597 60 29.8701299 30 46 0 29.8701299"></polygon>
+                <polygon id="矩形" fill="#FFFFFF" points="30 0 60 16.1298701 30 32.2597403 0 16.1298701"></polygon>
+                <polygon id="矩形" fill="url(#linearGradient-1)" points="30 32.2597403 60 16.1298701 60 20.9451775 30 38.2474694"></polygon>
+                <polygon id="矩形" fill="url(#linearGradient-2)" points="1.80064297e-14 16.1298701 30 32.2597403 30 38.2474694 2.66453526e-14 21.0144431"></polygon>
+            </g>
+            <g id="Group-11" transform="translate(5.000000, 0.000000)">
+                <g id="graphic-2" transform="translate(25.972916, 25.941842) rotate(60.000000) translate(-25.972916, -25.941842) translate(7.472916, 7.441842)">
+                    <g id="Group-72" transform="translate(0.128625, -0.000000)">
+                        <path d="M24.143155,5.4048204 L22.2053749,2.13801695 L31.6057159,7.71912822 C33.3698819,8.58414327 34.5978002,10.4289028 34.9981811,13.0873871 L20.8484649,19.7619861 L22.683749,5.85480527 C23.182446,5.65970943 23.6697063,5.51016568 24.143155,5.4048204 Z" id="Combined-Shape" fill="url(#linearGradient-3)"></path>
+                        <path d="M20.8484649,19.7619861 L12.2301731,33.0349586 C10.6324597,31.7467049 9.67167162,29.4419657 9.67167162,26.305326 C9.67167162,19.1733838 14.6388982,10.4412785 20.7662826,6.80162288 C21.4201936,6.41320091 22.0608915,6.09847414 22.683749,5.85480527 L20.8484649,19.7619861 Z" id="Combined-Shape" fill="url(#linearGradient-4)"></path>
+                        <polygon id="Combined-Shape-Copy-14" fill="url(#linearGradient-5)" points="20.8484649 19.7619861 12.2301731 33.0349586 2.5656577 27.2956148 13.0192337 0.115461416 22.683749 5.85480527"></polygon>
+                        <path d="M11.1839495,14.0226423 L2.5656577,27.2956148 C0.967944363,26.007361 0.00715625079,23.7026219 0.00715625079,20.5659821 C0.00715625079,13.43404 4.97438279,4.70193463 11.1017672,1.06227903 C11.7556782,0.67385706 12.3963761,0.359130282 13.0192337,0.115461416 L11.1839495,14.0226423 Z" id="Combined-Shape-Copy-8" fill="url(#linearGradient-6)"></path>
+                        <polygon id="Combined-Shape-Copy-9" fill="url(#linearGradient-7)" points="25.2764793 7.3154333 31.7194895 11.1416625 20.8484649 19.7619861 14.4054547 15.9357569"></polygon>
+                        <path d="M16.2407388,2.02857603 C20.8784435,0.214253972 24.5270688,2.33943197 25.2764793,7.3154333 L14.4054547,15.9357569 L16.2407388,2.02857603 Z" id="Combined-Shape-Copy-7" fill="url(#linearGradient-8)"></path>
+                        <path d="M12.707316,32.3001141 L20.8484649,19.7619861 L28.4464196,13.7370869 C28.5731095,12.8808677 28.6393885,12.0356844 28.6393885,11.2118525 C28.6393885,10.5081893 28.591035,9.84639311 28.4979844,9.22854791 L34.9981811,13.0873871 C35.0912317,13.7052323 35.1395852,14.3670284 35.1395852,15.0706916 C35.1395852,22.2026338 30.1723587,30.9347391 24.0449742,34.5743948 C20.6124234,36.6133239 17.5439559,36.6215995 15.5088647,34.9806832 L9.00866795,31.121844 C10.015594,31.9337395 11.2754998,32.341898 12.707316,32.3001141 Z" id="Combined-Shape" fill="url(#linearGradient-9)"></path>
+                        <path d="M9.00866795,31.121844 L17.6269598,17.8488715 L28.4979844,9.22854791 C28.591035,9.84639311 28.6393885,10.5081893 28.6393885,11.2118525 C28.6393885,18.3437947 23.6721619,27.0759 17.5447775,30.7155556 C14.1122267,32.7544848 11.0437592,32.7627603 9.00866795,31.121844 Z" id="Combined-Shape-Copy-6" fill="url(#linearGradient-10)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

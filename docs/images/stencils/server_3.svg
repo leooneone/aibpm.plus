@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="73px" viewBox="0 0 60 73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>服务器</title>
+    <defs>
+        <linearGradient x1="35.6073347%" y1="82.5866979%" x2="68.6272966%" y2="-24.6006387%" id="linearGradient-1">
+            <stop stop-color="#52B8F1" offset="0%"></stop>
+            <stop stop-color="#076488" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="31.6632487%" y1="82.5866979%" x2="68.5515309%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#52B8F1" offset="0%"></stop>
+            <stop stop-color="#076488" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="26.051126%" y1="36.1067771%" x2="50%" y2="76.5706783%" id="linearGradient-3">
+            <stop stop-color="#C1D4EB" offset="0%"></stop>
+            <stop stop-color="#E5EBFC" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="28.5417454%" x2="100%" y2="67.7794749%" id="linearGradient-4">
+            <stop stop-color="#D2D5EC" offset="0%"></stop>
+            <stop stop-color="#E2F0F7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-13" transform="translate(0.000000, 0.870968)">
+            <polygon id="矩形" fill="#A8B4DA" opacity="0.298339844" points="30 39.5860913 60 55.5349811 30 71.483871 0 55.5349811"></polygon>
+            <polygon id="矩形" fill="#FFFFFF" points="30 26 60 41.9488898 30 57.8977796 0 41.9488898"></polygon>
+            <g id="编组" transform="translate(8.000000, 0.129032)">
+                <polygon id="Fill-3_44_" fill="#6CC8F0" points="1.164 6.95 23.632 20.034375 41.344 11.25625 20.352 0.325"></polygon>
+                <polygon id="Fill-2_44_" fill="url(#linearGradient-1)" points="23.632 20.034375 23.632 51.3375 41.344 41.4 41.344 11.25625"></polygon>
+                <polygon id="Fill-1_140_" fill="url(#linearGradient-2)" points="1.164 38.0875 23.304 51.3375 23.304 20.2 1.164 6.95"></polygon>
+                <polygon id="路径-7_61_" fill="#FFFFFF" fill-rule="nonzero" points="41.1633739 10.8845348 41.5246261 11.6279652 23.8126261 20.4060902 23.4513739 19.6626598"></polygon>
+                <polygon id="路径-7_60_" fill="#FFFFFF" fill-rule="nonzero" points="23.3860059 20.3634108 24.2059941 20.3678392 24.0419941 51.3397142 23.2220059 51.3352858"></polygon>
+                <polygon id="路径-7_59_" fill="#FFFFFF" fill-rule="nonzero" points="1.37074778 6.42681125 23.8387478 19.6768112 23.4252522 20.3919388 0.957252216 7.14193875"></polygon>
+                <path d="M27.732,24.340625 L26.748,25.003125 C26.256,25.334375 25.764,25.003125 25.764,24.50625 L25.764,22.85 C25.764,22.684375 25.928,22.51875 26.092,22.353125 L27.076,21.690625 C27.568,21.359375 28.06,21.690625 28.06,22.1875 L28.06,23.84375 C28.06,24.009375 27.896,24.175 27.732,24.340625" id="Fill-10_71_" fill="#FFFFFF"></path>
+                <polygon id="Fill-8_13_" fill="#FFFFFF" points="41.344 24.340625 24.288 33.78125 24.288 31.13125 41.344 21.690625"></polygon>
+                <polygon id="Fill-8_12_" fill="#FFFFFF" points="41.344 30.46875 24.288 39.909375 24.288 37.09375 41.344 27.653125"></polygon>
+                <polygon id="Fill-8_11_" fill="#FFFFFF" points="41.344 36.596875 24.288 46.0375 24.288 43.221875 41.344 33.78125"></polygon>
+            </g>
+            <polygon id="矩形" fill="url(#linearGradient-3)" points="30 57.8977796 60 41.9488898 60 46.7101685 30 63.8183253"></polygon>
+            <polygon id="矩形" fill="url(#linearGradient-4)" points="1.80064297e-14 41.9488898 30 57.8977796 30 63.8183253 2.66453526e-14 46.7786569"></polygon>
+        </g>
+    </g>
+</svg>

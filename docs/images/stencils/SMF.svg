@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>SMF</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-120.000000, -280.000000)">
+            <g id="编组-13" transform="translate(120.000000, 280.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <path d="M32.0997383,5 L34,23.0524866 L34,24 L6,24 L6,23.0524866 L7.90026175,5 L32.0997383,5 Z" id="形状结合备份-3" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <path d="M24.7297297,9 L27,11.027027 L24.7297297,13.0540541 L24.7297297,11.972973 L22.684573,11.972973 L21.106,14.259 L23.0521405,17.1081081 L25.8918919,17.1081081 L25.8918919,19 L22.164244,19 L20,15.863 L17.835756,19 L14.1081081,19 L14.1081081,17.1081081 L16.9478595,17.1081081 L18.893,14.259 L17.315427,11.972973 L15.2702703,11.972973 L15.2702703,13.0540541 L13,11.027027 L15.2702703,9 L15.2702703,10.0810811 L18.2528264,10.0810811 L20,12.639 L21.7471736,10.0810811 L24.7297297,10.0810811 L24.7297297,9 Z" id="形状结合" fill="#455A74" mask="url(#mask-2)"></path>
+                <rect id="形状结合备份-4" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="6" y="24" width="28" height="11"></rect>
+                <rect id="矩形" fill="#455A74" mask="url(#mask-2)" x="18" y="27" width="3" height="2"></rect>
+                <rect id="矩形备份" fill="#455A74" mask="url(#mask-2)" x="10" y="27" width="5" height="5" rx="2.5"></rect>
+                <rect id="矩形备份-2" fill="#455A74" mask="url(#mask-2)" x="18" y="30" width="12" height="2"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

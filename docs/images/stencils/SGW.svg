@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>SGW</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-280.000000, -360.000000)">
+            <g id="编组-13" transform="translate(280.000000, 360.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <rect id="形状结合备份-3" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="4" y="4" width="32" height="32" rx="16"></rect>
+                <path d="M25,21.8316655 L29.1507426,24.5 L25,27.1683345 L25,25 L16,25 L16,24 L25,24 L25,21.8316655 Z M12,24 L12,25 L11,25 L11,24 L12,24 Z M15,12.8316655 L15,15 L24,15 L24,16 L15,16 L15,18.1683345 L10.8492574,15.5 L15,12.8316655 Z M29,15 L29,16 L28,16 L28,15 L29,15 Z" id="形状结合" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

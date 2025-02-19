@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="78px" viewBox="0 0 60 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>AAU</title>
+    <defs>
+        <linearGradient x1="26.051126%" y1="36.1067771%" x2="50%" y2="76.5706783%" id="linearGradient-1">
+            <stop stop-color="#C1D4EB" offset="0%"></stop>
+            <stop stop-color="#E5EBFC" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="28.5417454%" x2="100%" y2="67.7794749%" id="linearGradient-2">
+            <stop stop-color="#D2D5EC" offset="0%"></stop>
+            <stop stop-color="#E2F0F7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="34.0616661%" y1="37.6150302%" x2="50%" y2="69.1382407%" id="linearGradient-3">
+            <stop stop-color="#56BEFF" offset="0%"></stop>
+            <stop stop-color="#2387FF" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-4" points="0 47.5661595 9.41666853 52.9242608 22.5064058 45.203361 13.5756931 39"></polygon>
+        <filter x="-13.2%" y="-11.5%" width="126.2%" height="137.2%" filterUnits="objectBoundingBox" id="filter-5">
+            <feMorphology radius="0.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.163396615   0 0 0 0 0.299991305   0 0 0 0 0.576086957  0 0 0 0.71361451 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="50.1385042%" y1="18.2131601%" x2="50%" y2="100%" id="linearGradient-6">
+            <stop stop-color="#83C2FF" offset="0%"></stop>
+            <stop stop-color="#0E79D1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="48.450535%" y1="48.8530725%" x2="76.5437024%" y2="48.8530725%" id="linearGradient-7">
+            <stop stop-color="#107FD6" offset="0%"></stop>
+            <stop stop-color="#004CA7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="69.3502248%" y1="73.5556712%" x2="30.6906416%" y2="26.5290674%" id="linearGradient-8">
+            <stop stop-color="#53BAFF" offset="0%"></stop>
+            <stop stop-color="#57BFFF" offset="10%"></stop>
+            <stop stop-color="#1E82FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="48.450535%" y1="48.8530725%" x2="76.5437024%" y2="48.8530725%" id="linearGradient-9">
+            <stop stop-color="#107FD6" offset="0%"></stop>
+            <stop stop-color="#004CA7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="69.3502248%" y1="71.843119%" x2="30.6906416%" y2="28.235459%" id="linearGradient-10">
+            <stop stop-color="#53BAFF" offset="0%"></stop>
+            <stop stop-color="#57BFFF" offset="10%"></stop>
+            <stop stop-color="#1E82FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="AAU">
+            <g id="编组-4备份-11" transform="translate(0.000000, 31.000000)">
+                <g id="编组-13" transform="translate(0.000000, 0.870968)">
+                    <polygon id="矩形" fill="#A8B4DA" opacity="0.301292783" points="30 13.5860913 60 29.5349811 30 45.483871 0 29.5349811"></polygon>
+                    <polygon id="矩形" fill="#FFFFFF" points="30 0 60 15.9488898 30 31.8977796 0 15.9488898"></polygon>
+                    <polygon id="矩形" fill="url(#linearGradient-1)" points="30 31.8977796 60 15.9488898 60 20.7101685 30 37.8183253"></polygon>
+                    <polygon id="矩形" fill="url(#linearGradient-2)" points="1.80064297e-14 15.9488898 30 31.8977796 30 37.8183253 2.66453526e-14 20.7786569"></polygon>
+                </g>
+            </g>
+            <g id="编组-18" transform="translate(19.000000, 0.000000)">
+                <g id="路径-15">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                    <use stroke="url(#linearGradient-3)" stroke-width="1" fill="#0E79D1" fill-rule="evenodd" xlink:href="#path-4"></use>
+                </g>
+                <rect id="矩形" fill="url(#linearGradient-6)" x="5" y="30" width="1" height="19"></rect>
+                <rect id="矩形备份-6" fill="url(#linearGradient-6)" x="7" y="30" width="1" height="19"></rect>
+                <rect id="矩形备份-7" fill="url(#linearGradient-6)" x="9" y="30" width="1" height="19"></rect>
+                <rect id="矩形备份-8" fill="url(#linearGradient-6)" x="11" y="30" width="1" height="19"></rect>
+                <rect id="矩形备份-9" fill="url(#linearGradient-6)" x="13" y="30" width="1" height="19"></rect>
+                <rect id="矩形备份-11" fill="url(#linearGradient-6)" x="15" y="30" width="1" height="19"></rect>
+                <path d="M4.13765059,11 L16.9858712,11 L16.5626998,31.5397454 C14.2406716,33.1799151 12.2197717,34 10.5,34 C8.78022833,34 6.78507671,33.1799151 4.51454514,31.5397454 L4.13765059,11 Z" id="矩形备份-5" fill="url(#linearGradient-7)" fill-rule="nonzero"></path>
+                <path d="M7,28.1816792 C7.55228475,28.5292239 8,29.2586798 8,29.8109646 L8,30.8109646 C8,31.3632493 7.55228475,31.5292239 7,31.1816792 C6.44771525,30.8341345 6,30.1046785 6,29.5523938 L6,28.5523938 C6,28.000109 6.44771525,27.8341345 7,28.1816792 Z" id="矩形" fill="#FFFFFF"></path>
+                <ellipse id="椭圆形备份-15" fill="url(#linearGradient-8)" fill-rule="nonzero" cx="10.5" cy="23.5" rx="6.5" ry="4.5"></ellipse>
+                <path d="M3,5 L18,5 L17,24 C14.3864383,25.5970692 12.2197717,26.3956038 10.5,26.3956038 C8.78022833,26.3956038 6.61356166,25.5970692 4,24 L3,5 Z" id="矩形" fill="url(#linearGradient-9)" fill-rule="nonzero"></path>
+                <ellipse id="椭圆形" fill="url(#linearGradient-10)" fill-rule="nonzero" cx="10.5" cy="5" rx="7.5" ry="5"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>

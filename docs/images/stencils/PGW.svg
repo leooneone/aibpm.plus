@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>PGW</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-360.000000, -360.000000)">
+            <g id="编组-13" transform="translate(360.000000, 360.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <path d="M20,12.236068 L28.381966,29 L11.618034,29 L20,12.236068 Z" id="路径-2" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <rect id="形状结合备份-4" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="15" y="5" width="10" height="10"></rect>
+                <rect id="形状结合备份-11" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="5" y="25" width="10" height="10"></rect>
+                <rect id="形状结合备份-12" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="25" y="25" width="10" height="10"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

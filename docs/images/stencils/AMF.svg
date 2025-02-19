@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>AMF</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-40.000000, -280.000000)">
+            <g id="编组-13" transform="translate(40.000000, 280.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <path d="M34.1801961,6 L36,15.0990195 L36,16 L4,16 L4,15.0990195 L5.8198039,6 L34.1801961,6 Z" id="形状结合备份-3" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <rect id="形状结合备份-4" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="4" y="16" width="32" height="18"></rect>
+                <path d="M26.1875,19.2926829 L29,21.6341463 L26.1875,23.9756098 L26.187,22.512 L22.6506911,22.5121951 L17.5270433,29.5365854 L13.812,29.536 L13.8125,31 L11,28.6585366 L13.8125,26.3170732 L13.812,27.78 L16.6893728,27.7804878 L21.8130206,20.7560976 L26.187,20.756 L26.1875,19.2926829 Z M21.5943147,25.1354146 L23.3106272,27.4878049 L26.187,27.487 L26.1875,26.0243902 L29,28.3658537 L26.1875,30.7073171 L26.187,29.243 L22.4729567,29.2439024 L20.5613147,26.6234146 L21.5943147,25.1354146 Z M13.8125,19 L13.812,20.463 L18.1869794,20.4634146 L19.6133147,22.4194146 L18.5883147,23.9194146 L17.3493089,22.2195122 L13.812,22.219 L13.8125,23.6829268 L11,21.3414634 L13.8125,19 Z" id="形状结合" fill="#455A74" mask="url(#mask-2)"></path>
+                <rect id="矩形" fill="#455A74" mask="url(#mask-2)" x="9" y="10" width="3" height="2"></rect>
+                <rect id="矩形备份" fill="#455A74" mask="url(#mask-2)" x="14" y="10" width="3" height="2"></rect>
+                <rect id="矩形备份-2" fill="#455A74" mask="url(#mask-2)" x="19" y="10" width="3" height="2"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,15 @@
+﻿{
+  "SpecificationDocumentSettings": {
+    "DocumentTitle": "同步住建厅接口",
+    "GroupOpenApiInfos": [
+      {
+        "Group": "Default",
+        "Title": "同步住建厅",
+        "License": {
+          "Name": "PushZJTV2",
+          "Url": "https://gitee.com/dotnetchina/Furion/blob/rc1/LICENSE"
+        }
+      }
+    ]
+  }
+}

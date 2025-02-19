@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>PCRF</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-520.000000, -360.000000)">
+            <g id="编组-13" transform="translate(520.000000, 360.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <rect id="形状结合备份-11" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="7" y="5" width="24" height="30"></rect>
+                <rect id="矩形" stroke="#FFFFFF" stroke-width="2" fill="#455A74" mask="url(#mask-2)" x="11" y="9" width="8" height="4"></rect>
+                <rect id="矩形备份-6" stroke="#FFFFFF" stroke-width="2" fill="#455A74" mask="url(#mask-2)" x="11" y="15" width="15" height="4"></rect>
+                <rect id="矩形备份-7" stroke="#FFFFFF" stroke-width="2" fill="#455A74" mask="url(#mask-2)" x="11" y="21" width="15" height="4"></rect>
+                <path d="M27.9767442,20.39 C30.1791285,20.39 32.1728831,21.2803251 33.6161271,22.7193857 C35.0604231,24.1594954 35.9534884,26.1490577 35.9534884,28.3465217 C35.9534884,30.5439858 35.0604231,32.5335481 33.6161271,33.9736577 C32.1728831,35.4127184 30.1791285,36.3030435 27.9767442,36.3030435 C25.7743599,36.3030435 23.7806052,35.4127184 22.3373613,33.9736577 C20.8930652,32.5335481 20,30.5439858 20,28.3465217 C20,26.1490577 20.8930652,24.1594954 22.3373613,22.7193857 C23.7806052,21.2803251 25.7743599,20.39 27.9767442,20.39 Z" id="形状结合" stroke="#FFFFFF" stroke-width="2" fill="#455A74" mask="url(#mask-2)"></path>
+                <g id="编组" mask="url(#mask-2)">
+                    <g transform="translate(25.000000, 6.000000)" id="woshou"></g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

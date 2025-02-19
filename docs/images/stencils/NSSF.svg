@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>NSSF</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-120.000000, -360.000000)">
+            <g id="编组-13" transform="translate(120.000000, 360.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <path d="M31,23.2037682 L36.4814077,28 L31,32.7962318 L31,30 L28,30 L28,26 L31,26 L31,23.2037682 Z M11,24 L11,32 L5,32 L5,24 L11,24 Z M17,26 L17,30 L16,30 L16,26 L17,26 Z M23,26 L23,30 L22,30 L22,26 L23,26 Z M9,7.20376823 L9,10 L12,10 L12,14 L9,14 L9,16.7962318 L3.51859226,12 L9,7.20376823 Z M35,8 L35,16 L29,16 L29,8 L35,8 Z M24,10 L24,14 L23,14 L23,10 L24,10 Z M18,10 L18,14 L17,14 L17,10 L18,10 Z" id="形状结合" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

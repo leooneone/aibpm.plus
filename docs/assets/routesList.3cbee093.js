@@ -1,0 +1,1 @@
+import{af as e}from"./vue.72f2672d.js";const t=e("routesList",{state:()=>({routesList:[],isColumnsMenuHover:!1,isColumnsNavHover:!1}),actions:{async setRoutesList(s){this.routesList=s},async setColumnsMenuHover(s){this.isColumnsMenuHover=s},async setColumnsNavHover(s){this.isColumnsNavHover=s}}});export{t as u};

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>手机</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="图标合集" transform="translate(-280.000000, -520.000000)">
+            <g id="编组-13" transform="translate(280.000000, 520.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="蒙版" opacity="0.200000003"></g>
+                <rect id="形状结合备份-4" stroke="#455A74" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)" x="8" y="1" width="24" height="38" rx="4"></rect>
+                <rect id="矩形备份-9" fill="#455A74" mask="url(#mask-2)" x="7" y="30" width="26" height="2"></rect>
+                <rect id="矩形备份-11" fill="#455A74" mask="url(#mask-2)" x="7" y="6" width="26" height="2"></rect>
+                <rect id="矩形备份-12" fill="#455A74" mask="url(#mask-2)" x="16" y="3" width="8" height="2" rx="1"></rect>
+                <rect id="矩形备份-10" fill="#455A74" mask="url(#mask-2)" x="18" y="33" width="4" height="4" rx="2"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

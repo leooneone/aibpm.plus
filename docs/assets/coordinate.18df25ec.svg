@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>缩略图</title>
+    <g id="山东移动" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4_拓扑图制作备份" transform="translate(-802.000000, -112.000000)">
+            <g id="编组-2" transform="translate(24.000000, 100.000000)">
+                <g id="编组-20" transform="translate(77.000000, 7.000000)">
+                    <g id="编组-4备份-10" transform="translate(701.000000, 5.000000)">
+                        <rect id="矩形" opacity="0.400000006" x="0" y="0" width="16" height="16"></rect>
+                        <rect id="矩形" stroke="#455A74" stroke-width="2" x="3" y="3" width="3" height="3"></rect>
+                        <rect id="矩形备份-20" stroke="#455A74" stroke-width="2" x="10" y="3" width="3" height="3"></rect>
+                        <rect id="矩形备份-22" stroke="#455A74" stroke-width="2" x="3" y="10" width="3" height="3"></rect>
+                        <rect id="矩形备份-21" stroke="#455A74" stroke-width="2" x="10" y="10" width="3" height="3"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
