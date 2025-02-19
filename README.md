@@ -26,7 +26,7 @@
 
 ### 在线体验
 
-- 演示地址：<a href="https://demo.aibpm.ailicloud.com" target="_blank">demo.bpm.ailicloud.com</a>
+- 演示地址：<a href="https://demo.aibpm.ailicloud.com" target="_blank">已关闭后台，仅文档页面可用，请自行部署后台测试</a>
 
 - 查看文档：<a href="https://doc.aibpm.ailicloud.com" target="_blank">doc.bpm.ailicloud.com</a>
 
